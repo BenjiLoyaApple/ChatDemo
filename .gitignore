@@ -1,0 +1,51 @@
+### macOS / Общие системные файлы ###
+.DS_Store
+.AppleDouble
+.LSOverride
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Xcode ###
+# Личные настройки пользователя
+xcuserdata/
+# Временные файлы
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Построенные файлы и директории
+build/
+DerivedData/
+
+# Логи и промежуточные файлы
+*.log
+*.xcworkspace/xcuserdata
+
+# Исключаем только временные и настройки, но оставляем важные файлы конфигурации проекта
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace
+!*.xcworkspace/contents.xcworkspacedata
+
+### Tuist ###
+# Сгенерированные файлы и временные директории Tuist
+/.xcodeproj
+/.xcworkspace
+/DerivedData
+/.build
+graph.dot
+Tuist/.build
+Tuist/Generated/
+
+### Swift Package Manager (SPM) ###
+.build/
+.swiftpm/
+Package.resolved
