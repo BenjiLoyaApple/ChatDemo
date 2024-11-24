@@ -60,6 +60,7 @@
 
 import ProjectDescription
 import EnvironmentPlugin
+import DependencyPlugin
 
 let launchScreenInfo: [String: Plist.Value] = [
     "UILaunchScreen": .dictionary([
@@ -70,10 +71,18 @@ let launchScreenInfo: [String: Plist.Value] = [
 
 let project = Project.app(
     name: "ChatDemo",
-    bundleId: "io.tuist.ChatDemo",
+  //  bundleId: "io.tuist.ChatDemo",
+    bundleId: "com.benjiloya.ChatMessage",
     infoPlist: .extendingDefault(with: launchScreenInfo),
     dependencies: [
         .project(target: "Feature", path: "../Feature"),
-        .project(target: "Components", path: "../Components")
+        .project(target: "Components", path: "../Components"),
+        .SPM.Kingfisher,
+        .SPM.FirebaseAuth,
+        .SPM.FirebaseFirestore,
+        .SPM.FirebaseFirestoreSwift,
+        .SPM.FirebaseStorage,
+        .SPM.SwiftfulUI,
+        .SPM.SwiftfulRouting
     ]
 )

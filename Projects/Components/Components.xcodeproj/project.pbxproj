@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		135AE2E8681D6E590F3BDF08 /* TuistBundle+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */; };
+		444F127E033E9B3FCC10910C /* placeholder.txt in Resources */ = {isa = PBXBuildFile; fileRef = 789DE368E9BEFFAF91C36C1A /* placeholder.txt */; };
 		BF45C85020D5E51F8F207486 /* CustomChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0B4FBC2AC07E22871091E /* CustomChatButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +26,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		789DE368E9BEFFAF91C36C1A /* placeholder.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder.txt; sourceTree = "<group>"; };
 		AC39659DF4EBCAE411AFD163 /* Components-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Components-Info.plist"; sourceTree = "<group>"; };
 		AED0B4FBC2AC07E22871091E /* CustomChatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChatButton.swift; sourceTree = "<group>"; };
+		BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Components.swift"; sourceTree = "<group>"; };
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -48,6 +52,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		32B1ACB8D7491ACF3F2BBB04 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				789DE368E9BEFFAF91C36C1A /* placeholder.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		3BF6B164AC14AEEFB16DA3D2 /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA60BE068E97FEC2C9790DE /* Derived */,
+				32B1ACB8D7491ACF3F2BBB04 /* Resources */,
 				A874B33A7F4C14F599FB8DB3 /* Sources */,
 			);
 			name = Project;
@@ -77,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF6B164AC14AEEFB16DA3D2 /* InfoPlists */,
+				FBEB75612E591DB00C957705 /* Sources */,
 			);
 			path = Derived;
 			sourceTree = "<group>";
@@ -85,6 +99,14 @@
 			isa = PBXGroup;
 			children = (
 				AED0B4FBC2AC07E22871091E /* CustomChatButton.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FBEB75612E591DB00C957705 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -143,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444F127E033E9B3FCC10910C /* placeholder.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				135AE2E8681D6E590F3BDF08 /* TuistBundle+Components.swift in Sources */,
 				BF45C85020D5E51F8F207486 /* CustomChatButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +200,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Components;
 				PRODUCT_NAME = Components;
 				SDKROOT = iphoneos;
@@ -324,6 +349,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Components;
 				PRODUCT_NAME = Components;
 				SDKROOT = iphoneos;

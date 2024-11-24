@@ -22,6 +22,34 @@
 public enum ChatDemoAsset: Sendable {
   public enum Assets {
   public static let accentColor = ChatDemoColors(name: "AccentColor")
+    public static let primaryBackground = ChatDemoColors(name: "PrimaryBackground")
+    public static let moon = ChatDemoColors(name: "Moon")
+    public static let sun = ChatDemoColors(name: "Sun")
+    public static let themeBG = ChatDemoColors(name: "ThemeBG")
+    public static let appNotification = ChatDemoColors(name: "appNotification")
+    public static let buttonsCreatePost = ChatDemoColors(name: "buttonsCreatePost")
+    public static let buttonsPostCard = ChatDemoColors(name: "buttonsPostCard")
+    public static let darkBlack = ChatDemoColors(name: "darkBlack")
+    public static let darkWhite = ChatDemoColors(name: "darkWhite")
+    public static let igChatBG = ChatDemoColors(name: "igChatBG")
+    public static let igChatViolet = ChatDemoColors(name: "igChatViolet")
+    public static let messageImputBG = ChatDemoColors(name: "messageImputBG")
+    public static let searchShadow = ChatDemoColors(name: "searchShadow")
+    public static let xmark = ChatDemoColors(name: "xmark")
+    public static let backgroundColor = ChatDemoColors(name: "BackgroundColor")
+    public static let primaryBlue = ChatDemoColors(name: "PrimaryBlue")
+    public static let primaryGray = ChatDemoColors(name: "PrimaryGray")
+    public static let primaryGray2 = ChatDemoColors(name: "PrimaryGray2")
+    public static let primaryTextColor = ChatDemoColors(name: "PrimaryTextColor")
+    public static let secondaryBackground = ChatDemoColors(name: "SecondaryBackground")
+    public static let edit = ChatDemoImages(name: "edit")
+    public static let gallery = ChatDemoImages(name: "gallery")
+    public static let pen = ChatDemoImages(name: "pen")
+    public static let apple = ChatDemoImages(name: "apple")
+    public static let facebook = ChatDemoImages(name: "facebook")
+    public static let google = ChatDemoImages(name: "google")
+    public static let instagram = ChatDemoImages(name: "instagram")
+    public static let nullProfile = ChatDemoImages(name: "nullProfile")
   }
   public enum PreviewAssets {
   }
@@ -79,6 +107,58 @@ public extension SwiftUI.Color {
   init(asset: ChatDemoColors) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
+  }
+}
+#endif
+
+public struct ChatDemoImages: Sendable {
+  public let name: String
+
+  #if os(macOS)
+  public typealias Image = NSImage
+  #elseif os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
+  public typealias Image = UIImage
+  #endif
+
+  public var image: Image {
+    let bundle = Bundle.module
+    #if os(iOS) || os(tvOS) || os(visionOS)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
+    #elseif os(macOS)
+    let image = bundle.image(forResource: NSImage.Name(name))
+    #elseif os(watchOS)
+    let image = Image(named: name)
+    #endif
+    guard let result = image else {
+      fatalError("Unable to load image asset named \(name).")
+    }
+    return result
+  }
+
+  #if canImport(SwiftUI)
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
+  public var swiftUIImage: SwiftUI.Image {
+    SwiftUI.Image(asset: self)
+  }
+  #endif
+}
+
+#if canImport(SwiftUI)
+@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
+public extension SwiftUI.Image {
+  init(asset: ChatDemoImages) {
+    let bundle = Bundle.module
+    self.init(asset.name, bundle: bundle)
+  }
+
+  init(asset: ChatDemoImages, label: Text) {
+    let bundle = Bundle.module
+    self.init(asset.name, bundle: bundle, label: label)
+  }
+
+  init(decorative asset: ChatDemoImages) {
+    let bundle = Bundle.module
+    self.init(decorative: asset.name, bundle: bundle)
   }
 }
 #endif

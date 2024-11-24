@@ -98,10 +98,12 @@ public extension Project {
         additionalSettings: SettingsDictionary = [:]
     ) -> Project {
         let debugSettings: SettingsDictionary = [
-            "SWIFT_OPTIMIZATION_LEVEL": "-Onone"
+            "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
+            "OTHER_LDFLAGS": ["-ObjC"] // Добавляем флаг
         ]
         let releaseSettings: SettingsDictionary = [
-            "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule"
+            "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule",
+            "OTHER_LDFLAGS": ["-ObjC"] // Добавляем флаг
         ]
 
         return Project(
@@ -150,8 +152,12 @@ public extension Project {
         dependencies: [TargetDependency] = [],
         additionalSettings: SettingsDictionary = [:]
     ) -> Project {
-        let debugSettings: SettingsDictionary = [:]
-        let releaseSettings: SettingsDictionary = [:]
+        let debugSettings: SettingsDictionary = [
+            "OTHER_LDFLAGS": ["-ObjC"] // Добавляем флаг
+        ]
+        let releaseSettings: SettingsDictionary = [
+            "OTHER_LDFLAGS": ["-ObjC"] // Добавляем флаг
+        ]
 
         var targets: [Target] = [
             .target(
