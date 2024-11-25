@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulRouting
+import Components
 
 struct SettingsView: View {
     @Environment(\.router) var router
@@ -144,8 +145,8 @@ struct SettingsView: View {
             CustomButton(
                 imageName: "puzzlepiece.extension",
                 title: "Delete Account",
-                imageForegroundStyle: .red,
-                textForegroundStyle: .red
+                imageForegroundColor: .red,
+                textForegroundColor: .red
             ) {
                 Task {
                     do {

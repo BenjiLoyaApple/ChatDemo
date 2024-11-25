@@ -8,6 +8,7 @@
 import FirebaseFirestoreSwift
 import Foundation
 import Firebase
+import Components
 
 struct User: Identifiable, Codable, Hashable {
     @DocumentID var userId: String?
@@ -31,10 +32,6 @@ struct User: Identifiable, Codable, Hashable {
         return userId ?? UUID().uuidString
     }
     
-//    var firstName: String {
-//        let components = username.components(separatedBy: " ")
-//        return components.first ?? username
-//    }
 }
 
 extension User: Equatable {
@@ -42,3 +39,5 @@ extension User: Equatable {
         return lhs.id == rhs.id
     }
 }
+
+extension User: ProfileRepresentable {}

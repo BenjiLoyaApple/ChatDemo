@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct IntrosView: View {
     
@@ -39,7 +40,7 @@ struct IntrosView: View {
                         font: .system(size: 150, weight: .bold),
                         frame: .init(width: 250, height: 200),
                         radius: 30,
-                        foregroudColor: .white
+                        foregroundColor: .white
                     )
                 )
                 

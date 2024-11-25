@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulRouting
+import Components
 
 struct ChatView: View {
     @Environment(\.router) var router
@@ -74,16 +75,16 @@ struct ChatView: View {
             HStack(alignment: .center, spacing: 20) {
                 
                 CustomChatButton(
-                    imageName: .systemName("chevron.left"),
+                    imageSource: .systemName("chevron.left"),
                     font: .title2,
-                    foregroundStyle: Color.theme.primaryText,
+                    foregroundColor: Color.theme.primaryText,
                     padding: 5
                 ) {
                     router.dismissScreen()
                 }
                 
                 HStack(spacing: 15) {
-                    CircularProfileImageView(user: user, size: .small34)
+                    CircularProfileImageView(profile: user, size: .small34)
                     
                     VStack(alignment: .leading, spacing: 2) {
                         Text(user.username)

@@ -5,24 +5,29 @@
 //  Created by Benji Loya on 18.02.2024.
 //
 
+import SwiftUI
 
 import SwiftUI
 
-struct TransparentBlurView: UIViewRepresentable {
-    var removeAllFilters: Bool = false
-    func makeUIView(context: Context) -> UIVisualEffectView {
+public struct TransparentBlurView: UIViewRepresentable {
+    public var removeAllFilters: Bool = false
+    
+    public init(removeAllFilters: Bool = false) {
+        self.removeAllFilters = removeAllFilters
+    }
+    
+    public func makeUIView(context: Context) -> UIVisualEffectView {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialLight))
-        
         return view
     }
     
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+    public func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
         DispatchQueue.main.async {
             if let backdropLayer = uiView.layer.sublayers?.first {
                 if removeAllFilters {
                     backdropLayer.filters = []
                 } else {
-                    /// Removing All Expect Blur Filter
+                    /// Удаляем все фильтры, кроме размытия
                     backdropLayer.filters?.removeAll(where: { filter in
                         String(describing: filter) != "gaussianBlur"
                     })

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Components
 
 struct ChatMessageCell: View {
     let message: Message
@@ -26,7 +27,7 @@ struct ChatMessageCell: View {
             } else {
                 HStack(alignment: .bottom, spacing: 8) {
                     if shouldShowChatPartnerImage {
-                        CircularProfileImageView(user: message.user, size: .small28)
+                        CircularProfileImageView(profile: message.user, size: .small28)
                     }
                     messageContent
                         .padding(.leading, shouldShowChatPartnerImage ? 0 : 32)

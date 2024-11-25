@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulRouting
+import Components
 
 struct NewMessageView: View {
     @Environment(\.router) var router
@@ -40,7 +41,7 @@ struct NewMessageView: View {
             LazyVStack {
                 ForEach(viewModel.filteredUsers) { user in
                         HStack(spacing: 15) {
-                            CircularProfileImageView(user: user, size: .medium50)
+                            CircularProfileImageView(profile: user, size: .medium50)
                             
                             Text(user.username)
                                 .font(.subheadline)

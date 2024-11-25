@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulRouting
+import Components
 
 struct InboxView: View {
     @Environment(\.router) var router
@@ -88,7 +89,7 @@ struct InboxView: View {
         .overlay(alignment: .top) {
             // Header
             InboxHeader(
-                headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: vmInbox.user, size: .small40), username: vmInbox.user?.username ?? "",
+                headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(profile: vmInbox.user, size: .small40), username: vmInbox.user?.username ?? "",
                 profileimageTapped: {
                     router.showScreen(.push) { _ in
                         if let user = vmInbox.user {

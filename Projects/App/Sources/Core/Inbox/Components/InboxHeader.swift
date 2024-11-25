@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulUI
+import Components
 
 // MARK: Swipe Direction
 enum SwipeDirection {
@@ -44,9 +45,9 @@ struct InboxHeader<ProfileImageView: View>: View {
                 HStack(spacing: 2) {
                     // Search
                     CustomChatButton(
-                        imageName: .systemName("magnifyingglass"),
+                        imageSource: .systemName("magnifyingglass"),
                         font: .title2,
-                        foregroundStyle: .primary,
+                        foregroundColor: .primary,
                         padding: 10,
                         onButtonPressed: {
                             searchTapped?()
@@ -54,8 +55,8 @@ struct InboxHeader<ProfileImageView: View>: View {
                     )
                     
                     CustomChatButton(
-                        imageName: .assetName("pen"),
-                        foregroundStyle: .primary,
+                        imageSource: .assetName("pen"),
+                        foregroundColor: .primary,
                         padding: 10,
                         frame: CGSize(width: 23, height: 23),
                         onButtonPressed: {

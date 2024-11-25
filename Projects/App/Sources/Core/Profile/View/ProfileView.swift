@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import SwiftfulRouting
+import Components
 
 struct ProfileView: View {
     @Environment(\.router) var router
@@ -46,9 +47,9 @@ struct ProfileView: View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 CustomChatButton(
-                    imageName: .systemName("chevron.left"),
+                    imageSource: .systemName("chevron.left"),
                     font: .title2,
-                    foregroundStyle: Color.theme.primaryText,
+                    foregroundColor: Color.theme.primaryText,
                     padding: 5
                 ) {
                     router.dismissScreen()
@@ -68,7 +69,7 @@ struct ProfileView: View {
                 CustomChatButton(
                     text: "Done",
                     font: .subheadline,
-                    foregroundStyle: Color.theme.primaryText,
+                    foregroundColor: Color.theme.primaryText,
                     padding: 5
                 ) {
                     router.dismissScreen()
@@ -117,7 +118,7 @@ struct ProfileView: View {
                             .clipShape(Circle())
                             .foregroundColor(Color(.systemGray4))
                     } else {
-                        CircularProfileImageView(user: user, size: .small40)
+                        CircularProfileImageView(profile: user, size: .small40)
                     }
                 }
             }

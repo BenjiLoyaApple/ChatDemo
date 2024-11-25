@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Components
 
 struct RecentChatsView: View {
     @ObservedObject var viewModel: InboxViewModel
@@ -32,7 +33,7 @@ struct RecentChatsView: View {
                         if let user = recentMessage.user {
                             RecentChatCell(
                                 message: recentMessage,
-                                profileImage: CircularProfileImageView(user: user, size: .medium50),
+                                profileImage: CircularProfileImageView(profile: user, size: .medium50),
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
                                 textMessage: recentMessage.caption,

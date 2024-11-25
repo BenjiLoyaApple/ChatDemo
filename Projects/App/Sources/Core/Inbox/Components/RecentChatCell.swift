@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulUI
+import Components
 
 struct RecentChatCell<ProfileImageView: View>: View {
     var message: Message
@@ -99,7 +100,7 @@ struct InboxCell_Previews: PreviewProvider {
     static var previews: some View {
         let messages = DeveloperPreview.shared.messages
         let user = DeveloperPreview.shared.user
-        let profileImageView = CircularProfileImageView(user: user, size: .medium50)
+        let profileImageView = CircularProfileImageView(profile: user, size: .medium50)
         
         return VStack {
             ForEach(messages.indices, id: \.self) { index in

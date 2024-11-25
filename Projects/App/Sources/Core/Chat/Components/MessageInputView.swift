@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import Components
 
 struct MessageInputView: View {
     @Binding var messageText: String
@@ -32,9 +33,9 @@ struct MessageInputView: View {
                             )
 
                         CustomChatButton(
-                            imageName: .systemName("xmark.circle.fill"),
+                            imageSource: .systemName("xmark.circle.fill"),
                             font: .callout,
-                            foregroundStyle: .gray.opacity(0.8),
+                            foregroundColor: .gray.opacity(0.8),
                             padding: 5,
                             onButtonPressed: {
                                 viewModel.messageImage = nil
@@ -74,7 +75,7 @@ struct MessageInputView: View {
                 if messageText.isEmpty && viewModel.messageImage == nil {
                     
                     CustomChatButton(
-                        imageName: .assetName("gallery"),
+                        imageSource: .assetName("gallery"),
                         font: .system(size: 10),
                         padding: 12,
                         frame: CGSize(width: 22, height: 22),
@@ -84,10 +85,10 @@ struct MessageInputView: View {
                     )
                     
                     CustomChatButton(
-                        imageName: .systemName("mic"),
+                        imageSource: .systemName("mic"),
                         text: "",
                         font: .title3,
-                        foregroundStyle: .primary,
+                        foregroundColor: .primary,
                         padding: 5,
                         onButtonPressed: {
                             
@@ -114,7 +115,7 @@ struct MessageInputView: View {
                             font: .title2,
                             frame: .init(width: 50, height: 50),
                             radius: 2,
-                            foregroudColor: .primary,
+                            foregroundColor: .primary,
                             keyFrameDuration: 0.3,
                             symbolAnimation: .smooth(duration: 0.3, extraBounce: 0)
                         )

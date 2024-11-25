@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulUI
+import Components
 
 // MARK: - ActiveNowView
 struct ActiveNowView: View {
@@ -36,7 +37,7 @@ struct ActiveNowView: View {
                         ForEach(viewModel.users) { user in
                             ActiveCell(
                                 user: user,
-                                profileImage: CircularProfileImageView(user: user, size: .large60),
+                                profileImage: CircularProfileImageView(profile: user, size: .large60),
                                 username: user.username,
                                 showChatTapped: {
                                     onChatTapped?(user)
