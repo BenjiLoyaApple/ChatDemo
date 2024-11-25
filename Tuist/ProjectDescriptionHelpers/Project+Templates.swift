@@ -2,7 +2,7 @@ import ProjectDescription
 
 extension Project {
     /// Шаблон для создания фреймворков с дополнительными настройками
-    public static func featureFramework(
+    public static func buildTarget(
         name: String,
         destinations: Destinations = [.iPhone],
         product: Product = .framework,

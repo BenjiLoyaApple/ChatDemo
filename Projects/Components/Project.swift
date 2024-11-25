@@ -7,6 +7,7 @@ let project = Project.framework(
     bundleIdPrefix: "io.tuist",
     includeTests: false,
     dependencies: [
-      //  .SPM.Kingfisher
+        .SPM.Kingfisher
     ]
 )
+

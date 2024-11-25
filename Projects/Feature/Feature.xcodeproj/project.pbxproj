@@ -308,6 +308,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Feature;
 				PRODUCT_NAME = Feature;
 				SDKROOT = iphoneos;
@@ -367,6 +368,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Feature;
 				PRODUCT_NAME = Feature;
 				SDKROOT = iphoneos;
