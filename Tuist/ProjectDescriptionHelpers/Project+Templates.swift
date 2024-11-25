@@ -1,56 +1,147 @@
 import ProjectDescription
+import EnvironmentPlugin
 
-extension Project {
-    /// Шаблон для создания фреймворков с дополнительными настройками
-    public static func buildTarget(
+public extension Project {
+    // MARK: - Шаблон для создания приложения или фреймворка с использованием ProjectEnvironment
+    static func createProject(
         name: String,
-        destinations: Destinations = [.iPhone],
-        product: Product = .framework,
+        bundleId: String,
+        product: Product,
+        infoPlist: InfoPlist = .default,
+        sources: SourceFilesList = ["Sources/**"],
+        resources: ResourceFileElements = ["Resources/**"],
         dependencies: [TargetDependency] = [],
-        includeTests: Bool = false, // Параметр для включения тестов
-        infoPlist: InfoPlist = .default, // Параметр для Info.plist
-        testsSources: String = "Tests/**", // Параметр для источников тестов
-        bundleIdPrefix: String = "com.example", // Префикс для BundleId
-        buildSettings: [String: SettingValue] = [:] // Параметры для настроек сборки
+        includeTests: Bool = false,
+        additionalSettings: SettingsDictionary = [:],
+        environment: ProjectEnvironment
     ) -> Project {
+        let debugSettings: SettingsDictionary = [
+            "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
+            "OTHER_LDFLAGS": ["-ObjC"]
+        ]
+        
+        let releaseSettings: SettingsDictionary = [
+            "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule",
+            "OTHER_LDFLAGS": ["-ObjC"]
+        ]
+        
+        let settingsWithEnv = environment.baseSetting.merging([
+            "MARKETING_VERSION": .string(environment.marketingVersion),
+            "CURRENT_PROJECT_VERSION": .string(environment.currentProjectVersion)
+        ], uniquingKeysWith: { $1 })
+        
         var targets: [Target] = [
             .target(
                 name: name,
-                destinations: destinations,
+                destinations: .iOS,
                 product: product,
-                bundleId: "\(bundleIdPrefix).\(name)",
+                bundleId: bundleId,
                 infoPlist: infoPlist,
-                sources: ["Sources/**"],
-                resources: ["Resources/**"],
+                sources: sources,
+                resources: resources,
                 dependencies: dependencies,
                 settings: .settings(configurations: [
-                    .debug(name: "Debug", settings: buildSettings),
-                    .release(name: "Release", settings: buildSettings)
+                    .debug(
+                        name: "Debug",
+                        settings: debugSettings.merging(settingsWithEnv, uniquingKeysWith: { $1 })
+                    ),
+                    .release(
+                        name: "Release",
+                        settings: releaseSettings.merging(settingsWithEnv, uniquingKeysWith: { $1 })
+                    )
                 ])
             )
         ]
         
+        // Если нужно, добавляем тесты
         if includeTests {
             targets.append(
                 .target(
                     name: "\(name)Tests",
                     destinations: .iOS,
                     product: .unitTests,
-                    bundleId: "\(bundleIdPrefix).\(name)Tests",
+                    bundleId: "\(bundleId).Tests",
                     infoPlist: .default,
                     sources: ["Tests/**"],
-                    dependencies: [.target(name: name)],
-                    settings: .settings(configurations: [
-                        .debug(name: "Debug", settings: buildSettings),
-                        .release(name: "Release", settings: buildSettings)
-                    ])
+                    dependencies: [.target(name: name)]
                 )
             )
         }
         
         return Project(
             name: name,
+            settings: .settings(configurations: environment.baseConfigurations),
             targets: targets
         )
     }
 }
+
+//import ProjectDescription
+//
+//public extension Project {
+//    // MARK: - Шаблон для создания приложения или фреймворка
+//    static func createProject(
+//        name: String,
+//        bundleId: String,
+//        product: Product,
+//        infoPlist: InfoPlist = .default,
+//        sources: SourceFilesList = ["Sources/**"],
+//        resources: ResourceFileElements = ["Resources/**"],
+//        dependencies: [TargetDependency] = [],
+//        includeTests: Bool = false,
+//        additionalSettings: SettingsDictionary = [:]
+//    ) -> Project {
+//        let debugSettings: SettingsDictionary = [
+//            "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
+//            "OTHER_LDFLAGS": ["-ObjC"]
+//        ]
+//        
+//        let releaseSettings: SettingsDictionary = [
+//            "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule",
+//            "OTHER_LDFLAGS": ["-ObjC"]
+//        ]
+//        
+//        var targets: [Target] = [
+//            .target(
+//                name: name,
+//                destinations: .iOS,
+//                product: product,
+//                bundleId: bundleId,
+//                infoPlist: infoPlist,
+//                sources: sources,
+//                resources: resources,
+//                dependencies: dependencies,
+//                settings: .settings(configurations: [
+//                    .debug(
+//                        name: "Debug",
+//                        settings: debugSettings.merging(additionalSettings, uniquingKeysWith: { $1 })
+//                    ),
+//                    .release(
+//                        name: "Release",
+//                        settings: releaseSettings.merging(additionalSettings, uniquingKeysWith: { $1 })
+//                    )
+//                ])
+//            )
+//        ]
+//        
+//        // Если нужно, добавляем тесты
+//        if includeTests {
+//            targets.append(
+//                .target(
+//                    name: "\(name)Tests",
+//                    destinations: .iOS,
+//                    product: .unitTests,
+//                    bundleId: "\(bundleId).Tests",
+//                    infoPlist: .default,
+//                    sources: ["Tests/**"],
+//                    dependencies: [.target(name: name)]
+//                )
+//            )
+//        }
+//
+//        return Project(
+//            name: name,
+//            targets: targets
+//        )
+//    }
+//}

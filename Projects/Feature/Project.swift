@@ -1,12 +1,29 @@
 import ProjectDescription
-import EnvironmentPlugin
+import ProjectDescriptionHelpers
 import DependencyPlugin
+import EnvironmentPlugin
 
-let project = Project.framework(
+let project = Project.createProject(
     name: "Feature",
-    bundleIdPrefix: "io.tuist",
-    includeTests: true,
+    bundleId: "io.tuist.Feature",
+    product: .framework,
     dependencies: [
         .SPM.Kingfisher
-    ]
+    ],
+    includeTests: false,
+    environment: ProjectEnvironment.defaultEnv
 )
+
+
+//import ProjectDescription
+//import ProjectDescriptionHelpers
+//import DependencyPlugin
+////import EnvironmentPlugin
+//
+//let project = Project.createProject(
+//    name: "Feature",
+//    bundleId: "io.tuist.Feature",
+//    product: .framework,
+//    dependencies: [],
+//    includeTests: false
+//)
