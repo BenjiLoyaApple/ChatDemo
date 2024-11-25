@@ -93,7 +93,5 @@ fileprivate struct ShimmerEffectHelper: ViewModifier {
 
 
 /*
- 
  .shimmer(.init(tint: .white.opacity(0.5), highlight: .white, blur: 5))
- 
  */

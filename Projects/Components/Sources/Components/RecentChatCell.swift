@@ -5,22 +5,40 @@
 //  Created by Benji Loya on 01.09.2024.
 //
 
-
 import SwiftUI
 import SwiftfulUI
-import Components
 
-struct RecentChatCell<ProfileImageView: View>: View {
-    var message: Message
-    let profileImage: ProfileImageView
-    let username: String
-    let timestamp: String
-    let textMessage: String?
-    var actionButtonTapped: (() -> Void)? = nil
-    var showChatTapped: (() -> Void)? = nil
-    var profileImageTapped: (() -> Void)? = nil
+public struct RecentChatCell<ProfileImageView: View>: View {
+    public var message: MockMessage
+    public let profileImage: ProfileImageView
+    public let username: String
+    public let timestamp: String
+    public let textMessage: String?
+    public var actionButtonTapped: (() -> Void)? = nil
+    public var showChatTapped: (() -> Void)? = nil
+    public var profileImageTapped: (() -> Void)? = nil
     
-    var body: some View {
+    public init(
+            message: MockMessage,
+            profileImage: ProfileImageView,
+            username: String,
+            timestamp: String,
+            textMessage: String?,
+            actionButtonTapped: (() -> Void)? = nil,
+            showChatTapped: (() -> Void)? = nil,
+            profileImageTapped: (() -> Void)? = nil
+        ) {
+            self.message = message
+            self.profileImage = profileImage
+            self.username = username
+            self.timestamp = timestamp
+            self.textMessage = textMessage
+            self.actionButtonTapped = actionButtonTapped
+            self.showChatTapped = showChatTapped
+            self.profileImageTapped = profileImageTapped
+        }
+    
+    public var body: some View {
         HStack(spacing: 10) {
             // Отображение изображения
             profileImage
@@ -36,7 +54,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                             .fontWeight(.semibold)
                     
                     // Дата
-                    Text(message.timestamp.timestampString())
+                    Text(timestamp)
                         .textScale(.secondary)
                         .fontWeight(.light)
                         .foregroundStyle(.secondary.opacity(0.7))
@@ -44,7 +62,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                     // прочнено - или нет
                     if !message.read && !message.isFromCurrentUser {
                         Circle()
-                            .fill(Color.theme.primaryBlue)
+                            .fill(Color.blue)
                             .frame(width: 6, height: 6)
                     }
                     
@@ -67,7 +85,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                         // Текст сообщения
                         VStack (spacing: 2) {
                             if let textMessage = textMessage {
-                                Text("\(message.isFromCurrentUser ? "Вы: \(textMessage)" : textMessage)")
+                                Text("\(message.isFromCurrentUser ? "You: \(textMessage)" : textMessage)")
                             }
                             
                             Spacer(minLength: 0)
@@ -96,25 +114,36 @@ struct RecentChatCell<ProfileImageView: View>: View {
     }
 }
 
-
-struct InboxCell_Previews: PreviewProvider {
+/*
+struct RecentChatCell_Previews: PreviewProvider {
     static var previews: some View {
-        let messages = DeveloperPreview.shared.messages
-        let user = DeveloperPreview.shared.user
-        let profileImageView = CircularProfileImageView(profile: user, size: .medium50)
-        
+        // Моковые данные сообщения
+        let message = MockMessage(
+            messageId: "1",
+            fromId: "12345",
+            toId: "67890",
+            caption: "Hello! This is a test message.",
+            timestamp: "2024-11-25T10:00:00Z",
+            user: DeveloperPreview.shared.user,
+            read: false,
+            imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
+        )
+
+        // Моковые данные для отображения изображения профиля
+        let profileImageView = CircularProfileImageView(profile: DeveloperPreview.shared.user as! ProfileRepresentable, size: .medium50)
+
+        // Возвращаем превью
         return VStack {
-            ForEach(messages.indices, id: \.self) { index in
-                RecentChatCell(
-                    message: messages[index],
-                    profileImage: profileImageView,
-                    username: user.username,
-                    timestamp: "1h ago",
-                    textMessage: messages[index].caption
-                )
-            }
+            RecentChatCell(
+                message: message,
+                profileImage: profileImageView,
+                username: message.user.username,
+                timestamp: message.timestamp,
+                textMessage: message.caption
+            )
         }
         .padding(.horizontal)
         .previewLayout(.sizeThatFits)
     }
 }
+*/
