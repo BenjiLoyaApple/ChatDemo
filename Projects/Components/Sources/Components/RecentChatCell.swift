@@ -114,10 +114,10 @@ public struct RecentChatCell<ProfileImageView: View>: View {
     }
 }
 
-/*
+
 struct RecentChatCell_Previews: PreviewProvider {
     static var previews: some View {
-        // Моковые данные сообщения
+       //  Моковые данные сообщения
         let message = MockMessage(
             messageId: "1",
             fromId: "12345",
@@ -129,7 +129,7 @@ struct RecentChatCell_Previews: PreviewProvider {
             imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
         )
 
-        // Моковые данные для отображения изображения профиля
+       //  Моковые данные для отображения изображения профиля
         let profileImageView = CircularProfileImageView(profile: DeveloperPreview.shared.user as! ProfileRepresentable, size: .medium50)
 
         // Возвращаем превью
@@ -146,4 +146,4 @@ struct RecentChatCell_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
-*/
+
