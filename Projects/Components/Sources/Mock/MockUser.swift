@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 // Моковый пользователь
 public struct MockUser {
     var userId: String

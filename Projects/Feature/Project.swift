@@ -13,17 +13,3 @@ let project = Project.createProject(
     includeTests: false,
     environment: ProjectEnvironment.defaultEnv
 )
-
-
-//import ProjectDescription
-//import ProjectDescriptionHelpers
-//import DependencyPlugin
-////import EnvironmentPlugin
-//
-//let project = Project.createProject(
-//    name: "Feature",
-//    bundleId: "io.tuist.Feature",
-//    product: .framework,
-//    dependencies: [],
-//    includeTests: false
-//)

@@ -67,7 +67,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                         // Текст сообщения
                         VStack (spacing: 2) {
                             if let textMessage = textMessage {
-                                Text("\(message.isFromCurrentUser ? "Вы: \(textMessage)" : textMessage)")
+                                Text("\(message.isFromCurrentUser ? "You: \(textMessage)" : textMessage)")
                             }
                             
                             Spacer(minLength: 0)
