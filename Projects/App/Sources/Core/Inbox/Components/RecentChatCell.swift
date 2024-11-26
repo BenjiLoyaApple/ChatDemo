@@ -5,7 +5,7 @@
 //  Created by Benji Loya on 01.09.2024.
 //
 
-
+/*
 import SwiftUI
 import SwiftfulUI
 import Components
@@ -118,3 +118,4 @@ struct InboxCell_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
+*/

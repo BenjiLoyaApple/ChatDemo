@@ -6,61 +6,73 @@
 //
 
 import Foundation
+import LinkPresentation
 
-public struct MockMessage {
-    var messageId: String
-    var fromId: String
-    var toId: String
-    var caption: String
-    var timestamp: String
-    var user: MockUser
-    var read: Bool
-    var imageUrl: String?
+public struct MockMessage: MessageRepresentable {
+    public var messageId: String
+    public var fromId: String
+    public var toId: String
+    public var caption: String
+    public var timestamp: Date
+    public var imageUrl: String?
+    public var read: Bool
+    public var contentType: ContentType
     
+    // Добавляем isFromCurrentUser для проверки текущего пользователя
     public var isFromCurrentUser: Bool {
-        return fromId == user.userId
+        return fromId == "currentUserId" // Замените на ID текущего пользователя
     }
-}
 
-public class DeveloperPreview {
-    static let shared = DeveloperPreview()
-
-    // Моковый пользователь
-    public var user: MockUser {
-        MockUser(
-            userId: "12345",
-            username: "benjiloya",
-            fullname: "Benji Loya",
-            email: "batman@gmail.com",
-            profileImageUrl: nil,
-            bio: "Just a superhero in disguise.",
-            link: "https://batman.com"
+    // Инициализатор для MockMessage
+    public init(messageId: String = UUID().uuidString, fromId: String, toId: String, caption: String, timestamp: Date, imageUrl: String? = nil, read: Bool = false, contentType: ContentType = .text("Sample text")) {
+        self.messageId = messageId
+        self.fromId = fromId
+        self.toId = toId
+        self.caption = caption
+        self.timestamp = timestamp
+        self.imageUrl = imageUrl
+        self.read = read
+        self.contentType = contentType
+    }
+    
+    // Функции для создания моковых сообщений
+    public static func createMockTextMessage() -> MockMessage {
+        return MockMessage(
+            messageId: "mockMessage1",
+            fromId: "1",
+            toId: "2",
+            caption: "This is a mock text message",
+            timestamp: Date(),
+            imageUrl: nil,
+            read: true,
+            contentType: .text("This is a mock text message")
         )
     }
     
-    // Массив моковых сообщений
-    public var messages: [MockMessage] {
-        [
-            MockMessage(
-                messageId: "1",
-                fromId: "12345",
-                toId: "67890",
-                caption: "Hello! This is a test message.",
-                timestamp: "2024-11-25T10:00:00Z",
-                user: user,
-                read: false,
-                imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
-            ),
-            MockMessage(
-                messageId: "2",
-                fromId: "67890",
-                toId: "12345",
-                caption: "Hi! Here's another test message.\nstring test message.",
-                timestamp: "2024-11-25T10:10:00Z",
-                user: user,
-                read: true,
-                imageUrl: nil
-            )
-        ]
+    public static func createMockImageMessage() -> MockMessage {
+        return MockMessage(
+            messageId: "mockMessage2",
+            fromId: "2",
+            toId: "2",
+            caption: "",
+            timestamp: Date(),
+            imageUrl: "https://example.com/image.jpg",
+            read: true,
+            contentType: .image("https://example.com/image.jpg")
+        )
+    }
+    
+    public static func createMockLinkMessage() -> MockMessage {
+        let linkMetaData = LinkMetadataWrapper(metadata: LPLinkMetadata(), imageData: nil)
+        return MockMessage(
+            messageId: "mockMessage3",
+            fromId: "3",
+            toId: "2",
+            caption: "Check this out!",
+            timestamp: Date(),
+            imageUrl: nil,
+            read: false,
+            contentType: .link(linkMetaData)
+        )
     }
 }

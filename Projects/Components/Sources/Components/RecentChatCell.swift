@@ -114,36 +114,28 @@ public struct RecentChatCell<ProfileImageView: View>: View {
     }
 }
 
-
-struct RecentChatCell_Previews: PreviewProvider {
-    static var previews: some View {
-       //  Моковые данные сообщения
-        let message = MockMessage(
-            messageId: "1",
-            fromId: "12345",
-            toId: "67890",
-            caption: "Hello! This is a test message.",
-            timestamp: "2024-11-25T10:00:00Z",
-            user: DeveloperPreview.shared.user,
-            read: false,
-            imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
-        )
-
-       //  Моковые данные для отображения изображения профиля
-        let profileImageView = CircularProfileImageView(profile: DeveloperPreview.shared.user as! ProfileRepresentable, size: .medium50)
-
-        // Возвращаем превью
-        return VStack {
+#Preview {
+    // Массив моковых сообщений
+    let messages = [
+        MockMessage.createMockTextMessage(),
+        MockMessage.createMockLinkMessage()
+    ]
+    
+    // Используем ForEach для отображения всех сообщений
+    VStack(spacing: 20) {
+        ForEach(messages, id: \.messageId) { message in
             RecentChatCell(
                 message: message,
-                profileImage: profileImageView,
-                username: message.user.username,
-                timestamp: message.timestamp,
+                profileImage: Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .foregroundStyle(.gray.opacity(0.4))
+                    .frame(width: 40, height: 40),
+                username: "User \(message.fromId)",
+                timestamp: "2m ago",
                 textMessage: message.caption
             )
         }
-        .padding(.horizontal)
-        .previewLayout(.sizeThatFits)
     }
+    .padding()
 }
-

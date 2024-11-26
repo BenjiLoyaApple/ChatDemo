@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2230291492FD18CEC7212D63 /* MockMessage.swift */; };
 		BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02148BFFF09E74671CB38A1A /* CircularProfileImageView.swift */; };
 		D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */; };
+		E4506BA82CF598950008E18D /* MessageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506BA72CF598950008E18D /* MessageRepresentable.swift */; };
 		EC17E189E6DDBA945B391779 /* MockProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A9C9E5C3B541C5C4D27067 /* MockProfile.swift */; };
 		FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F505C8EE980FE6AF24C1B /* ProfileRepresentable.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Components.swift"; sourceTree = "<group>"; };
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4506BA72CF598950008E18D /* MessageRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				7B9F505C8EE980FE6AF24C1B /* ProfileRepresentable.swift */,
+				E4506BA72CF598950008E18D /* MessageRepresentable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -200,8 +203,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -247,6 +248,7 @@
 				A1BFD7DEF9065455CE4849E4 /* ShimmerEffect.swift in Sources */,
 				922F0B94845526BA22812625 /* TransparentBlurView.swift in Sources */,
 				B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */,
+				E4506BA82CF598950008E18D /* MessageRepresentable.swift in Sources */,
 				EC17E189E6DDBA945B391779 /* MockProfile.swift in Sources */,
 				87DB9124AE6A62081142222F /* MockUser.swift in Sources */,
 				FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */,
@@ -285,10 +287,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

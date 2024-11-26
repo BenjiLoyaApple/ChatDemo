@@ -32,7 +32,7 @@ struct RecentChatsView: View {
                     ForEach(viewModel.filteredMessages) { recentMessage in
                         if let user = recentMessage.user {
                             RecentChatCell(
-                                message: recentMessage,
+                                message: MockMessage.createMockTextMessage(),
                                 profileImage: CircularProfileImageView(profile: user, size: .medium50),
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
