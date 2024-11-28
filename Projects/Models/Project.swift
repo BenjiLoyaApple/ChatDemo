@@ -4,8 +4,8 @@ import DependencyPlugin
 import EnvironmentPlugin
 
 let project = Project.createProject(
-    name: "Feature",
-    bundleId: "io.tuist.Feature",
+    name: "Models",
+    bundleId: "io.tuist.Models",
     product: .framework,
     dependencies: [
         .SPM.Kingfisher

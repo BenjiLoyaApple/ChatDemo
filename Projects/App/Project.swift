@@ -9,7 +9,7 @@ let project = Project.createProject(
     product: .app,
     infoPlist: "Support/Info.plist",
     dependencies: [
-        .project(target: "Feature", path: "../Feature"),
+        .project(target: "Models", path: "../Models"),
         .project(target: "Components", path: "../Components"),
         .SPM.FirebaseAuth,
         .SPM.FirebaseFirestore,

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "889701595646A30881D30ED8"
-               BuildableName = "Feature.framework"
-               BlueprintName = "Feature"
-               ReferencedContainer = "container:Feature.xcodeproj">
+               BlueprintIdentifier = "D906600AE083D01EE355940A"
+               BuildableName = "Models.framework"
+               BlueprintName = "Models"
+               ReferencedContainer = "container:Models.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "889701595646A30881D30ED8"
-            BuildableName = "Feature.framework"
-            BlueprintName = "Feature"
-            ReferencedContainer = "container:Feature.xcodeproj">
+            BlueprintIdentifier = "D906600AE083D01EE355940A"
+            BuildableName = "Models.framework"
+            BlueprintName = "Models"
+            ReferencedContainer = "container:Models.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "889701595646A30881D30ED8"
-            BuildableName = "Feature.framework"
-            BlueprintName = "Feature"
-            ReferencedContainer = "container:Feature.xcodeproj">
+            BlueprintIdentifier = "D906600AE083D01EE355940A"
+            BuildableName = "Models.framework"
+            BlueprintName = "Models"
+            ReferencedContainer = "container:Models.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
