@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 25.11.2024.
 //
 
+/*
 import Foundation
 
 // Моковый пользователь
@@ -22,3 +23,4 @@ public struct MockUser {
         return username
     }
 }
+*/

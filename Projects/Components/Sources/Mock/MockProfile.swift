@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 25.11.2024.
 //
 
+/*
 import Foundation
 
 public struct MockProfile: ProfileRepresentable {
@@ -16,3 +17,4 @@ public struct MockProfile: ProfileRepresentable {
         self.username = username
     }
 }
+*/

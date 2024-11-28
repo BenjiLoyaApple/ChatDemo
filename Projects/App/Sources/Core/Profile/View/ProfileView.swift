@@ -118,7 +118,7 @@ struct ProfileView: View {
                             .clipShape(Circle())
                             .foregroundColor(Color(.systemGray4))
                     } else {
-                        CircularProfileImageView(profile: user, size: .small40)
+                        CircularProfileImageView(user: user, size: .small40)
                     }
                 }
             }

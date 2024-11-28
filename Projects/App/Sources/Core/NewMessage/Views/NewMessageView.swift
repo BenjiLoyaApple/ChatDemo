@@ -41,7 +41,7 @@ struct NewMessageView: View {
             LazyVStack {
                 ForEach(viewModel.filteredUsers) { user in
                         HStack(spacing: 15) {
-                            CircularProfileImageView(profile: user, size: .medium50)
+                            CircularProfileImageView(user: user, size: .medium50)
                             
                             Text(user.username)
                                 .font(.subheadline)

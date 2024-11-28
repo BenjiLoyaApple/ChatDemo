@@ -84,7 +84,8 @@ struct ChatView: View {
                 }
                 
                 HStack(spacing: 15) {
-                    CircularProfileImageView(profile: user, size: .small34)
+             //       CircularProfileImageView(profile: user, size: .small34)
+                    CircularProfileImageView(user: user, size: .small34)
                     
                     VStack(alignment: .leading, spacing: 2) {
                         Text(user.username)

@@ -8,7 +8,7 @@
 import FirebaseFirestoreSwift
 import Foundation
 import Firebase
-import Components
+//import Components
 
 struct User: Identifiable, Codable, Hashable {
     @DocumentID var userId: String?
@@ -40,4 +40,4 @@ extension User: Equatable {
     }
 }
 
-extension User: ProfileRepresentable {}
+//extension User: ProfileRepresentable {}

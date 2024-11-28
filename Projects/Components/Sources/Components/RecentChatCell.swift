@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 01.09.2024.
 //
 
+/*
 import SwiftUI
 import SwiftfulUI
 
@@ -139,3 +140,4 @@ public struct RecentChatCell<ProfileImageView: View>: View {
     }
     .padding()
 }
+*/

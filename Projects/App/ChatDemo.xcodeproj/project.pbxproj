@@ -144,6 +144,7 @@
 		E00EDB2BC211E2E886AAFA45 /* FirebaseAppCheckInterop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B26C54E505E7FB5BFDAD9B /* FirebaseAppCheckInterop.framework */; };
 		E030CDCC9B50E79A5BE8CA3C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273956535013361340123E9 /* UserService.swift */; };
 		E0D75FD64A754FFC78E06544 /* gRPC_grpcWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 16033BFBACE6749691EF4F8F /* gRPC_grpcWrapper.bundle */; };
+		E4506BB52CF86CEE0008E18D /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506BB42CF86CEE0008E18D /* CircularProfileImageView.swift */; };
 		E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E5F9D5ABEE8EFC5976E04 /* MessageServiceProtocol.swift */; };
 		E542FC034EFD776B5414BFB9 /* GoogleUtilities_Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78281A9C0799E266964689F1 /* GoogleUtilities_Reachability.framework */; };
 		E617CA566C12CF2792973851 /* abseil_abslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = A1EE0EA0ABCEC3D3803FE4D3 /* abseil_abslWrapper.bundle */; };
@@ -332,6 +333,7 @@
 		E048DA20891ABE7E4BD15F45 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E0DB94C1475070CC102447EB /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		E3514999B2FA701D10E1DE4C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		E4506BB42CF86CEE0008E18D /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2390DCC0D3A7F6A187F2FAA /* FirebaseFirestoreTarget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreTarget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F456C5EF49CA1C074374CBAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				2293A306070542AD7D1B5907 /* App */,
 				D480C02825F69F122C014740 /* Core */,
 				D5CAF7EA2BF23216FA9027A1 /* Extensions */,
+				E4506BB32CF86C980008E18D /* Components */,
 				010CD6FF0669FE98E6D4B17E /* Model */,
 				FBAD4AE46BD2636695B5458B /* Preview Content */,
 				61C0156E156BBBD474981B52 /* Protocols */,
@@ -960,6 +963,14 @@
 			path = .build;
 			sourceTree = "<group>";
 		};
+		E4506BB32CF86C980008E18D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E4506BB42CF86CEE0008E18D /* CircularProfileImageView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E4C4911C80F9728395E251B9 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1156,7 @@
 				0059DF82A0B0B84AC019299E /* LPLinkView.swift in Sources */,
 				849A1BCC0532111626426848 /* LinkPreviewViewModel.swift in Sources */,
 				D9CC1BE43DA65846C059047B /* NewMessageViewModel.swift in Sources */,
+				E4506BB52CF86CEE0008E18D /* CircularProfileImageView.swift in Sources */,
 				FAC2E2BA4C89FB3EE04A354C /* NewMessageView.swift in Sources */,
 				866704A8DBA68E144B726833 /* ProfileView.swift in Sources */,
 				1C18D8F13B2D9B8E4393D8B8 /* ProfileViewModel.swift in Sources */,
