@@ -53,7 +53,7 @@ public struct CustomImagePicker<Content: View>: View {
     public var body: some View {
         content
             .photosPicker(isPresented: $show, selection: $photosItem)
-            .onChange(of: photosItem) { newValue in
+            .onChange(of: photosItem) { oldValue, newValue in
                 /// - Extracting UIImage From Photos Item
                 if let newValue{
                     Task{
@@ -106,7 +106,7 @@ public struct CropView: View{
     public var body: some View{
         NavigationStack{
             ImageView()
-                .navigationTitle("Crop View")
+                .navigationTitle("Crop Profile image")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarBackground(Color.black, for: .navigationBar)
@@ -164,7 +164,7 @@ public struct CropView: View{
                             let rect = proxy.frame(in: .named("CROPVIEW"))
                             
                             Color.clear
-                                .onChange(of: isInteracting) { newValue in
+                                .onChange(of: isInteracting) { oldValue, newValue in
                                     /// - true Dragging
                                     /// - false Stopped Dragging
                                     /// With the Help of GeometryReader
@@ -195,7 +195,6 @@ public struct CropView: View{
                                                 offset.height = (rect.minY - offset.height)
                                             }
                                         }
-                                        
                                         /// - Storing Last Offset
                                         lastStoredOffset = offset
                                     }
