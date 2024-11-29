@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,16 +13,16 @@
 		444F127E033E9B3FCC10910C /* placeholder.txt in Resources */ = {isa = PBXBuildFile; fileRef = 789DE368E9BEFFAF91C36C1A /* placeholder.txt */; };
 		5656055864792E44D76F09F6 /* MessageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C86EF2CE8B8CD0F3BD041E2 /* MessageRepresentable.swift */; };
 		7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D1D96651F36739BB3A33C /* CustomChatButton.swift */; };
+		826EC8CC43678DFEE593C5F0 /* Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0BCAA28A9E1A9A321AB8D /* Crop.swift */; };
 		87DB9124AE6A62081142222F /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B7293629F61776020554DE /* MockUser.swift */; };
-		8E3062894F5C3A54D9A94DC4 /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FC578C7F4CF2E65794E3C4 /* RecentChatCell.swift */; };
 		922F0B94845526BA22812625 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B7AF6CA7EA4579CE81ABF /* TransparentBlurView.swift */; };
+		9FC95F628B7B4C0EFDD80F9A /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0C16891AD317CA0AF911D /* CustomImagePicker.swift */; };
 		A1BFD7DEF9065455CE4849E4 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BADED043AD418F0634E0033 /* ShimmerEffect.swift */; };
 		A575B3C6A0FF4ADD772A16BD /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */; };
+		AE26A6D0384D658DC438A7BD /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180060130B49B8B5C5412FFC /* RecentChatCell.swift */; };
 		B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2230291492FD18CEC7212D63 /* MockMessage.swift */; };
 		BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02148BFFF09E74671CB38A1A /* CircularProfileImageView.swift */; };
 		D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */; };
-		E4506BDE2CF990F20008E18D /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506BDD2CF990F20008E18D /* CustomImagePicker.swift */; };
-		E4506BE02CF990F70008E18D /* Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506BDF2CF990F70008E18D /* Crop.swift */; };
 		EC17E189E6DDBA945B391779 /* MockProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A9C9E5C3B541C5C4D27067 /* MockProfile.swift */; };
 		FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F505C8EE980FE6AF24C1B /* ProfileRepresentable.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		02148BFFF09E74671CB38A1A /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		0C86EF2CE8B8CD0F3BD041E2 /* MessageRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepresentable.swift; sourceTree = "<group>"; };
+		180060130B49B8B5C5412FFC /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		1D6B7AF6CA7EA4579CE81ABF /* TransparentBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
 		2230291492FD18CEC7212D63 /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
 		380D1D96651F36739BB3A33C /* CustomChatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChatButton.swift; sourceTree = "<group>"; };
@@ -50,17 +51,16 @@
 		62621AE6F23EC6933F8F5544 /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		789DE368E9BEFFAF91C36C1A /* placeholder.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder.txt; sourceTree = "<group>"; };
 		7B9F505C8EE980FE6AF24C1B /* ProfileRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepresentable.swift; sourceTree = "<group>"; };
-		90FC578C7F4CF2E65794E3C4 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
+		83E0C16891AD317CA0AF911D /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		93B7293629F61776020554DE /* MockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		9BADED043AD418F0634E0033 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		AC39659DF4EBCAE411AFD163 /* Components-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Components-Info.plist"; sourceTree = "<group>"; };
+		ACF0BCAA28A9E1A9A321AB8D /* Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crop.swift; sourceTree = "<group>"; };
 		AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
 		B3A9C9E5C3B541C5C4D27067 /* MockProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfile.swift; sourceTree = "<group>"; };
 		BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Components.swift"; sourceTree = "<group>"; };
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4506BDD2CF990F20008E18D /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
-		E4506BDF2CF990F70008E18D /* Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +98,15 @@
 				AC39659DF4EBCAE411AFD163 /* Components-Info.plist */,
 			);
 			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		4214F6D09A3422B94E3B0E22 /* Crop */ = {
+			isa = PBXGroup;
+			children = (
+				ACF0BCAA28A9E1A9A321AB8D /* Crop.swift */,
+				83E0C16891AD317CA0AF911D /* CustomImagePicker.swift */,
+			);
+			path = Crop;
 			sourceTree = "<group>";
 		};
 		771B3BDE58BCB2DD9F7CE9D8 /* Protocols */ = {
@@ -149,11 +158,11 @@
 		A874B33A7F4C14F599FB8DB3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				90FC578C7F4CF2E65794E3C4 /* RecentChatCell.swift */,
-				E4506BD72CF9883C0008E18D /* Crop */,
 				AF39CAF88019FA0078411311 /* Components */,
+				4214F6D09A3422B94E3B0E22 /* Crop */,
 				9553960979B043ABFCFD531C /* Mock */,
 				771B3BDE58BCB2DD9F7CE9D8 /* Protocols */,
+				180060130B49B8B5C5412FFC /* RecentChatCell.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -170,15 +179,6 @@
 				1D6B7AF6CA7EA4579CE81ABF /* TransparentBlurView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		E4506BD72CF9883C0008E18D /* Crop */ = {
-			isa = PBXGroup;
-			children = (
-				E4506BDD2CF990F20008E18D /* CustomImagePicker.swift */,
-				E4506BDF2CF990F70008E18D /* Crop.swift */,
-			);
-			path = Crop;
 			sourceTree = "<group>";
 		};
 		FBEB75612E591DB00C957705 /* Sources */ = {
@@ -217,7 +217,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -259,16 +260,16 @@
 				7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */,
 				D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */,
 				3FA571843DD5BA21A40E8DB1 /* MorphingSymbolView.swift in Sources */,
-				8E3062894F5C3A54D9A94DC4 /* RecentChatCell.swift in Sources */,
 				A1BFD7DEF9065455CE4849E4 /* ShimmerEffect.swift in Sources */,
 				922F0B94845526BA22812625 /* TransparentBlurView.swift in Sources */,
-				E4506BE02CF990F70008E18D /* Crop.swift in Sources */,
+				826EC8CC43678DFEE593C5F0 /* Crop.swift in Sources */,
+				9FC95F628B7B4C0EFDD80F9A /* CustomImagePicker.swift in Sources */,
 				B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */,
 				EC17E189E6DDBA945B391779 /* MockProfile.swift in Sources */,
 				87DB9124AE6A62081142222F /* MockUser.swift in Sources */,
 				5656055864792E44D76F09F6 /* MessageRepresentable.swift in Sources */,
 				FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */,
-				E4506BDE2CF990F20008E18D /* CustomImagePicker.swift in Sources */,
+				AE26A6D0384D658DC438A7BD /* RecentChatCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +288,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Derived/InfoPlists/Components-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -297,7 +297,6 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Components;
 				PRODUCT_NAME = Components;
@@ -306,7 +305,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -320,7 +322,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -356,7 +357,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -375,7 +375,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -411,7 +410,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -444,7 +442,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Derived/InfoPlists/Components-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -454,7 +451,6 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Components;
 				PRODUCT_NAME = Components;

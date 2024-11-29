@@ -37,6 +37,8 @@ class LoginViewModel: ObservableObject {
     }
 }
 
+// MARK: - RegistrationViewModel
+
 class RegistrationViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
