@@ -44,7 +44,7 @@ public struct CustomButton: View {
                 
                 if let title = title {
                     Text(title)
-                        .font(.headline)
+                        .font(.callout)
                         .foregroundColor(textForegroundColor)
                 }
             }
