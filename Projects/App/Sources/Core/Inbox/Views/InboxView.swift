@@ -89,7 +89,7 @@ struct InboxView: View {
         .overlay(alignment: .top) {
             // Header
             InboxHeader(
-                headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(profile: vmInbox.user, size: .small40), username: vmInbox.user?.username ?? "",
+                headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: vmInbox.user, size: .small40), username: vmInbox.user?.username ?? "",
                 profileimageTapped: {
                     router.showScreen(.push) { _ in
                         if let user = vmInbox.user {
@@ -107,6 +107,25 @@ struct InboxView: View {
                     selectedUser = nil
                 }
             )
+//            InboxHeader(
+//                headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(profile: vmInbox.user, size: .small40), username: vmInbox.user?.username ?? "",
+//                profileimageTapped: {
+//                    router.showScreen(.push) { _ in
+//                        if let user = vmInbox.user {
+//                            ProfileView(user: user)
+//                        }
+//                    }
+//                },
+//                searchTapped: {
+//                    
+//                },
+//                newChatTapped: {
+//                    router.showScreen(.fullScreenCover) { _ in
+//                        NewMessageView(selectedUser: $selectedUser)
+//                    }
+//                    selectedUser = nil
+//                }
+//            )
             .task {
               //  vmInbox.
             }

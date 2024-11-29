@@ -29,11 +29,35 @@ struct RecentChatsView: View {
                         placeholderRecentChats()
                     }
                 } else {
+              /*      ForEach(viewModel.filteredMessages) { recentMessage in
+                        if let user = recentMessage.user {
+                            RecentChatCell(
+                                message: MockMessage.createMockTextMessage(),
+                                profileImage: CircularProfileImageView(profile: user, size: .medium50),
+                                username: user.username,
+                                timestamp: recentMessage.timestamp.timestampString(),
+                                textMessage: recentMessage.caption,
+                                actionButtonTapped: {
+                                    Task { try await viewModel.deleteMessage(recentMessage) }
+                                },
+                                showChatTapped: {
+                                    onChatTapped?(user)
+                                }
+                            )
+                            .padding(.horizontal, 10)
+                            .onAppear {
+                                if recentMessage == viewModel.recentMessages.last {
+                                    print("DEBUG: Paginate here..")
+                                }
+                            }
+                        }
+                    }
+               */
                     ForEach(viewModel.filteredMessages) { recentMessage in
                         if let user = recentMessage.user {
                             RecentChatCell(
                                 message: recentMessage,
-                                profileImage: CircularProfileImageView(profile: user, size: .medium50),
+                                profileImage: CircularProfileImageView(user: user, size: .medium50),
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
                                 textMessage: recentMessage.caption,

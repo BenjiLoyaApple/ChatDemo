@@ -4,11 +4,11 @@ import DependencyPlugin
 import EnvironmentPlugin
 
 let project = Project.createProject(
-    name: "Components",
-    bundleId: "io.tuist.Components",
+    name: "Models",
+    bundleId: "io.tuist.Models",
     product: .framework,
     dependencies: [
-        .SPM.Kingfisher
+      //  .SPM.Kingfisher
     ],
     includeTests: false,
     environment: ProjectEnvironment.defaultEnv

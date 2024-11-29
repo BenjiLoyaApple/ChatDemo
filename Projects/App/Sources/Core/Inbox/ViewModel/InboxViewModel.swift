@@ -7,7 +7,6 @@
 
  import Foundation
  import Firebase
- import SwiftUI
 
  @MainActor
  class InboxViewModel: ObservableObject {
@@ -35,7 +34,6 @@
          }
      }
 
-     
      private func setupUser1() {
          user = UserService.shared.currentUser
      }
@@ -44,7 +42,6 @@
          user = try? await UserService.shared.fetchCurrentUser()
      }
 
-     
      func observeRecentMessages() async {
          for await changes in InboxService.shared.observeRecentMessagesStream() {
              if !didCompleteInitialLoad {

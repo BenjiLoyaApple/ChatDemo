@@ -104,23 +104,7 @@ extension ProfileViewModel {
             self.currentUser = try await UserService.fetchUser(uid: user.id)
         }
     }
-    
-    
 }
-
-// MARK: - Subscribers
-//extension ProfileViewModel {
-//    
-//    @MainActor
-//    private func setupSubscribers() {
-//        UserService.shared.$currentUser
-//            .sink { [weak self] user in
-//                self?.currentUser = user
-//                self?.loadUserData() 
-//            }
-//            .store(in: &cancellables)
-//    }
-//}
 
 // MARK: - Image Loading
 extension ProfileViewModel {
@@ -152,3 +136,15 @@ extension ProfileViewModel {
         }
     }
     }
+
+extension ProfileViewModel {
+    func handleCroppedImage(_ image: UIImage?) async {
+        guard let image = image else { return }
+        do {
+            try await updateProfileImage(image)
+            self.uiImage = image
+        } catch {
+            print("Error handling cropped image: \(error)")
+        }
+    }
+}

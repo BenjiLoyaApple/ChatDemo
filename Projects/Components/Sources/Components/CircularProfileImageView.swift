@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 10.08.2023.
 //
 
+
 import SwiftUI
 import Kingfisher
 
@@ -94,17 +95,17 @@ public struct UserInitialsView: View {
 
 /// Компонент для отображения круглой картинки профиля или инициалов
 public struct CircularProfileImageView: View {
-    private let profile: ProfileRepresentable?
+    private let user: ProfileRepresentable?
     private let size: ProfileImageSize
     
     /// Инициализатор
-    public init(profile: ProfileRepresentable?, size: ProfileImageSize) {
-        self.profile = profile
+    public init(user: ProfileRepresentable?, size: ProfileImageSize) {
+        self.user = user
         self.size = size
     }
     
     public var body: some View {
-        if let imageUrl = profile?.profileImageUrl, let url = URL(string: imageUrl) {
+        if let imageUrl = user?.profileImageUrl, let url = URL(string: imageUrl) {
             KFImage(url)
                 .resizable()
                 .scaledToFill()
@@ -115,7 +116,7 @@ public struct CircularProfileImageView: View {
                         .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
                 )
         } else {
-            UserInitialsView(username: profile?.username ?? "?", fontSize: size.fontSize)
+            UserInitialsView(username: user?.username ?? "?", fontSize: size.fontSize)
                 .scaledToFill()
                 .frame(width: size.dimension, height: size.dimension)
                 .clipShape(Circle())
@@ -127,7 +128,7 @@ public struct CircularProfileImageView: View {
     VStack(spacing: 20) {
         // С изображением профиля
         CircularProfileImageView(
-            profile: MockProfile(
+            user: MockProfile(
                 profileImageUrl: "https://via.placeholder.com/150",
                 username: "John Doe"
             ),
@@ -136,7 +137,7 @@ public struct CircularProfileImageView: View {
         
         // Без изображения (инициалы)
         CircularProfileImageView(
-            profile: MockProfile(
+            user: MockProfile(
                 profileImageUrl: nil,
                 username: "benjiloya"
             ),
@@ -145,3 +146,4 @@ public struct CircularProfileImageView: View {
     }
     .padding()
 }
+
