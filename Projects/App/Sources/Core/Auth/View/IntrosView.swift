@@ -12,7 +12,6 @@ struct IntrosView: View {
     
     @StateObject var logigVM = LoginViewModel()
     @StateObject var registrationVM = RegistrationViewModel()
-    
     /// View Properties
     @State private var activePage: Page = .page1
     @State private var showSheet: Bool = false
@@ -351,6 +350,16 @@ struct IntrosView: View {
                 
                 CustomTF(hint: "*****", text: $logigVM.password, icon: "lock", isPassword: true)
                     .padding(10)
+                
+                Button{
+                    // Acrion
+                } label: {
+                    Text("Reset Password")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.gray.opacity(0.7))
+                        .padding(10)
+                }
+                
             } else {
                 /// Registration
                 CustomTF(hint: "Username", text: $registrationVM.username, icon: "person")
