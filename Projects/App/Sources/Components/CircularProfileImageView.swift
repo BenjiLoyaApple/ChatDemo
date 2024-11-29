@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 10.08.2023.
 //
 
+/*
 import SwiftUI
 import Kingfisher
 
@@ -124,3 +125,4 @@ struct CircularProfileImageView: View {
 #Preview {
     CircularProfileImageView(size: .medium50)
 }
+*/

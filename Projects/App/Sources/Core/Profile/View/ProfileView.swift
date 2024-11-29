@@ -16,6 +16,10 @@ struct ProfileView: View {
     
     let user: User
     
+    /// - View Properties
+    @State private var showPicker: Bool = false
+    @State private var croppedImage: UIImage?
+    
     var body: some View {
         VStack(spacing: 0) {
             HeaderView()
@@ -109,18 +113,24 @@ struct ProfileView: View {
                 
                 Spacer()
                 
-                PhotosPicker(selection: $viewModel.selectedImage, matching: .images) {
-                    if let image = viewModel.profileImage {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: ProfileImageSize.small40.dimension, height: ProfileImageSize.small40.dimension)
-                            .clipShape(Circle())
-                            .foregroundColor(Color(.systemGray4))
-                    } else {
-                        CircularProfileImageView(user: user, size: .small40)
-                    }
+                if let croppedImage {
+                    Image(uiImage: croppedImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                        .onAppear {
+                            Task {
+                                await viewModel.handleCroppedImage(croppedImage)
+                            }
+                        }
+                } else {
+                    CircularProfileImageView(user: user, size: .small40)
+                        .onTapGesture {
+                            showPicker.toggle()
+                        }
                 }
+                
             }
             
             Divider()
@@ -151,6 +161,11 @@ struct ProfileView: View {
             RoundedRectangle(cornerRadius: 15)
                 .stroke(Color(.systemGray4), lineWidth: 0.5)
         }
+        .cropImagePicker(
+            options: [.circle, .square, .rectangle, .custom(.init(width: 300, height: 300))],
+            show: $showPicker,
+            croppedImage: $croppedImage
+        )
     }
     
     

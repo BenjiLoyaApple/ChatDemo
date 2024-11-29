@@ -8,7 +8,7 @@ let project = Project.createProject(
     bundleId: "io.tuist.Models",
     product: .framework,
     dependencies: [
-        .SPM.Kingfisher
+      //  .SPM.Kingfisher
     ],
     includeTests: false,
     environment: ProjectEnvironment.defaultEnv

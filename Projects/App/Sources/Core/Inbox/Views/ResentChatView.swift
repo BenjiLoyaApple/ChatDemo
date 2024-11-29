@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import Components
+import Components
 
 struct RecentChatsView: View {
     @ObservedObject var viewModel: InboxViewModel
