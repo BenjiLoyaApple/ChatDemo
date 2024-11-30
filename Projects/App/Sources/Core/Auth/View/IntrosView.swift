@@ -352,18 +352,31 @@ struct IntrosView: View {
                     .padding(10)
                 
                 Button{
-                    // Acrion
+                    // Acrion here
+                    
                     Toast.shared.present(
-                        title: "AirPods Pro",
-                        symbol: "airpodspro",
+                        title: "Password has been reset",
+                        symbol: "lock.open",
                         isUserInteractionEnabled: true,
                         timing: .medium
                     )
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        Toast.shared.present(
+                            title: "Enter new password",
+                            symbol: "exclamationmark.lock",
+                            isUserInteractionEnabled: true,
+                            timing: .medium
+                        )
+                    }
+                    
+                    
                 } label: {
                     Text("Reset Password")
                         .font(.system(size: 12))
                         .foregroundStyle(.gray.opacity(0.7))
                         .padding(10)
+                        .background(Color.black.opacity(0.001))
                 }
                 
             } else {
