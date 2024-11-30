@@ -10,7 +10,7 @@ import Components
 
 struct IntrosView: View {
     
-    @StateObject var logigVM = LoginViewModel()
+    @StateObject var loginVM = LoginViewModel()
     @StateObject var registrationVM = RegistrationViewModel()
     /// View Properties
     @State private var activePage: Page = .page1
@@ -18,6 +18,7 @@ struct IntrosView: View {
     
     @State private var emailAdress: String = ""
     @State private var password: String = ""
+    @State private var resetPasswordButtonDisabled: Bool = false
     @State private var alreadyHavingAccount: Bool = true
     @State private var sheetHeight: CGFloat = .zero
     /// View's Height (Storing For Swipe Calculation)
@@ -63,13 +64,13 @@ struct IntrosView: View {
                 .ignoresSafeArea()
         }
         .alert(isPresented: Binding<Bool>(
-            get: { logigVM.showAlert || registrationVM.showAlert },
+            get: { loginVM.showAlert || registrationVM.showAlert },
             set: { newValue in
-                logigVM.showAlert = newValue
+                loginVM.showAlert = newValue
                 registrationVM.showAlert = newValue
             }
         )) {
-            let errorMessage = logigVM.authError?.localizedDescription
+            let errorMessage = loginVM.authError?.localizedDescription
                             ?? registrationVM.authError?.localizedDescription
                             ?? "An unknown error occurred."
             return Alert(title: Text("Error"), message: Text(errorMessage))
@@ -117,7 +118,7 @@ struct IntrosView: View {
                                     // Логин
                                     Task {
                                         do {
-                                            try await logigVM.login()
+                                            try await loginVM.login()
                                         } catch {
                                             print("Ошибка входа: \(error.localizedDescription)")
                                         }
@@ -134,7 +135,7 @@ struct IntrosView: View {
                                 }
                             }
                         }, label: {
-                            Text("Continie")
+                            Text("Continue")
                                 .fontWeight(.semibold)
                                 .opacity(1 - sheetScrollProgress)
                             /// Adding Some Extra Width for Second Page
@@ -149,9 +150,9 @@ struct IntrosView: View {
                                     }
                                     .fontWeight(.semibold)
                                     .opacity(sheetScrollProgress)
-                                    .opacity(registrationVM.isAuthenticating || logigVM.isAuthenticating ? 0 : 1)
+                                    .opacity(registrationVM.isAuthenticating || loginVM.isAuthenticating ? 0 : 1)
                                     .overlay {
-                                        if registrationVM.isAuthenticating || logigVM.isAuthenticating {
+                                        if registrationVM.isAuthenticating || loginVM.isAuthenticating {
                                             ProgressView()
                                                 .tint(Color.theme.primaryBackground)
                                         }
@@ -171,8 +172,8 @@ struct IntrosView: View {
                         /// Moving Button Near to the Next View
                         .offset(y: sheetScrollProgress * -120)
                         // Disable button when form is not valid and the button is in the Login or Get Started state
-                        .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? logigVM.formIsValid : registrationVM.formIsValid))
-                        .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? logigVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
+                        .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid))
+                        .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
                     }
                 })
             })
@@ -345,14 +346,36 @@ struct IntrosView: View {
             
             if alreadyHavingAccount {
                 /// Login
-                CustomTF(hint: "Email Adress", text: $logigVM.email, icon: "envelope")
+                CustomTF(hint: "Email Adress", text: $loginVM.email, icon: "envelope")
                     .padding(10)
                 
-                CustomTF(hint: "*****", text: $logigVM.password, icon: "lock", isPassword: true)
+                CustomTF(hint: "*****", text: $loginVM.password, icon: "lock", isPassword: true)
                     .padding(10)
                 
-                Button{
-                    // Acrion here
+                Button {
+                    // по-хорошему надо будет добавить проверку на "@", но сделаю позже
+                    
+                    if loginVM.email.isEmpty {
+                        Toast.shared.present(
+                            title: "Please enter your email",
+                            symbol: "exclamationmark.triangle",
+                            isUserInteractionEnabled: true,
+                            timing: .medium
+                        )
+                        return
+                    }
+                    
+                    // установка блокировки кнопки, чтоб ее не нажимали 10 раз
+                    resetPasswordButtonDisabled = true
+                    
+                    Task {
+                        do {
+                            try await loginVM.resetPassword()
+                            print("Password reset!")
+                        } catch {
+                            print(error)
+                        }
+                    }
                     
                     Toast.shared.present(
                         title: "Password has been reset",
@@ -361,10 +384,11 @@ struct IntrosView: View {
                         timing: .medium
                     )
                     
+                    // немного переделал значок и надпись по факту, чтоб смотрел юзер почту
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         Toast.shared.present(
-                            title: "Enter new password",
-                            symbol: "exclamationmark.lock",
+                            title: "Please check your email",
+                            symbol: "email",
                             isUserInteractionEnabled: true,
                             timing: .medium
                         )
@@ -374,10 +398,11 @@ struct IntrosView: View {
                 } label: {
                     Text("Reset Password")
                         .font(.system(size: 12))
-                        .foregroundStyle(.gray.opacity(0.7))
+                        .foregroundStyle(.gray.opacity(resetPasswordButtonDisabled ? 0.4 : 0.7))
                         .padding(10)
                         .background(Color.black.opacity(0.001))
                 }
+                .disabled(resetPasswordButtonDisabled)
                 
             } else {
                 /// Registration
