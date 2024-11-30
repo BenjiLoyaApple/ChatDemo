@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftfulRouting
+import Components
 
 struct ContentView: View {
     @Environment(\.router) var router
@@ -20,7 +21,7 @@ struct ContentView: View {
             if viewModel.userSession != nil {
                 InboxView()
             } else {
-                IntrosView()
+                RootView(content: IntrosView())
             }
         }
         .preferredColorScheme(userTheme.colorScheme)

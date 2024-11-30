@@ -353,6 +353,12 @@ struct IntrosView: View {
                 
                 Button{
                     // Acrion
+                    Toast.shared.present(
+                        title: "AirPods Pro",
+                        symbol: "airpodspro",
+                        isUserInteractionEnabled: true,
+                        timing: .medium
+                    )
                 } label: {
                     Text("Reset Password")
                         .font(.system(size: 12))

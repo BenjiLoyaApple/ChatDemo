@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,9 @@
 		B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2230291492FD18CEC7212D63 /* MockMessage.swift */; };
 		BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02148BFFF09E74671CB38A1A /* CircularProfileImageView.swift */; };
 		D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */; };
+		E471DDF22CFADB0100AE4DFF /* HomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E471DDEF2CFADB0100AE4DFF /* HomeButtonView.swift */; };
+		E471DDF32CFADB0100AE4DFF /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E471DDF02CFADB0100AE4DFF /* CustomLoginButton.swift */; };
+		E471DDF52CFADC4F00AE4DFF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E471DDF42CFADC4F00AE4DFF /* Toast.swift */; };
 		EC17E189E6DDBA945B391779 /* MockProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A9C9E5C3B541C5C4D27067 /* MockProfile.swift */; };
 		FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F505C8EE980FE6AF24C1B /* ProfileRepresentable.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +64,9 @@
 		BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Components.swift"; sourceTree = "<group>"; };
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E471DDEF2CFADB0100AE4DFF /* HomeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonView.swift; sourceTree = "<group>"; };
+		E471DDF02CFADB0100AE4DFF /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		E471DDF42CFADC4F00AE4DFF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,11 +164,13 @@
 		A874B33A7F4C14F599FB8DB3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E471DDF62CFADC6600AE4DFF /* Helpers */,
 				AF39CAF88019FA0078411311 /* Components */,
 				4214F6D09A3422B94E3B0E22 /* Crop */,
 				9553960979B043ABFCFD531C /* Mock */,
 				771B3BDE58BCB2DD9F7CE9D8 /* Protocols */,
 				180060130B49B8B5C5412FFC /* RecentChatCell.swift */,
+				E471DDF12CFADB0100AE4DFF /* Animated Button */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -174,11 +182,28 @@
 				5CB1C1EEADED0FF8E935FBFF /* CustomButton.swift */,
 				380D1D96651F36739BB3A33C /* CustomChatButton.swift */,
 				AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */,
-				62621AE6F23EC6933F8F5544 /* MorphingSymbolView.swift */,
-				9BADED043AD418F0634E0033 /* ShimmerEffect.swift */,
-				1D6B7AF6CA7EA4579CE81ABF /* TransparentBlurView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E471DDF12CFADB0100AE4DFF /* Animated Button */ = {
+			isa = PBXGroup;
+			children = (
+				E471DDEF2CFADB0100AE4DFF /* HomeButtonView.swift */,
+				E471DDF02CFADB0100AE4DFF /* CustomLoginButton.swift */,
+			);
+			path = "Animated Button";
+			sourceTree = "<group>";
+		};
+		E471DDF62CFADC6600AE4DFF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				62621AE6F23EC6933F8F5544 /* MorphingSymbolView.swift */,
+				1D6B7AF6CA7EA4579CE81ABF /* TransparentBlurView.swift */,
+				9BADED043AD418F0634E0033 /* ShimmerEffect.swift */,
+				E471DDF42CFADC4F00AE4DFF /* Toast.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FBEB75612E591DB00C957705 /* Sources */ = {
@@ -217,8 +242,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -257,6 +280,7 @@
 				135AE2E8681D6E590F3BDF08 /* TuistBundle+Components.swift in Sources */,
 				BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */,
 				1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */,
+				E471DDF52CFADC4F00AE4DFF /* Toast.swift in Sources */,
 				7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */,
 				D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */,
 				3FA571843DD5BA21A40E8DB1 /* MorphingSymbolView.swift in Sources */,
@@ -270,6 +294,8 @@
 				5656055864792E44D76F09F6 /* MessageRepresentable.swift in Sources */,
 				FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */,
 				AE26A6D0384D658DC438A7BD /* RecentChatCell.swift in Sources */,
+				E471DDF22CFADB0100AE4DFF /* HomeButtonView.swift in Sources */,
+				E471DDF32CFADB0100AE4DFF /* CustomLoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,10 +331,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
