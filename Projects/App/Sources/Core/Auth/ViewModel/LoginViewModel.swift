@@ -35,6 +35,27 @@ class LoginViewModel: ObservableObject {
             self.authError = AuthError(authErrorCode: authError ?? .userNotFound)
         }
     }
+    
+    @MainActor
+    func resetPassword() async throws {
+        guard !email.isEmpty else {
+            print("Please enter your email to reset your password.")
+            return
+        }
+        
+        do {
+            try await authService.resetPassword(email: email)
+            print("Password reset email sent.")
+        } catch {
+            print("Failed to send password reset email: \(AuthErrorCode.invalidEmail)")
+        }
+        
+        
+        // made new code
+        // task to bot
+        // protocol - service - vm to bot
+    }
+    
 }
 
 // MARK: - RegistrationViewModel
@@ -72,6 +93,16 @@ class RegistrationViewModel: ObservableObject {
             authError = AuthError(authErrorCode: authErrorCode ?? .userNotFound)
         }
     }
+    
+    @MainActor
+    func verificationEmail() async throws {
+        // made new code
+    }
+    
+    func resetPassword() async throws {
+        // made new code
+    }
+    
 }
 
 extension LoginViewModel: AuthenticationFormProtocol {

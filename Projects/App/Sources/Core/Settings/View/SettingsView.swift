@@ -15,6 +15,7 @@ struct SettingsView: View {
     @State private var changeTheme: Bool = false
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     @StateObject private var notification = NotificationsManager()
+    @StateObject private var settingsViewModel = SettingsViewModel()
     
     private let authService: AuthServiceProtocol
 

@@ -15,6 +15,7 @@ protocol AuthServiceProtocol {
     
     func login(withEmail email: String, password: String) async throws
     func createUser(withEmail email: String, password: String, username: String, fullname: String?) async throws
+    func resetPassword(email: String) async throws
     func signOut() async throws
     func deleteUser() async throws
 }
