@@ -105,6 +105,25 @@ struct IntrosView: View {
                     .scrollDisabled(isKeyboardShowing)
                     /// Custom button Which will be Updated over scroll
                     .overlay(alignment: .topTrailing) {
+                        
+                        CustomLoginButton(buttonTint: .blue) {
+                            HStack(spacing: 10) {
+                                Text("Login")
+                              //  Image(systemName: "chevron.right")
+                            }
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                        } action: {
+                            try? await Task.sleep(for: .seconds(2))
+                            return .failed("Password Incorrect")
+                          //  return .success
+                        }
+                        .buttonStyle(.opacityLess)
+                      
+                        
+                        
+                        
+                        
                         Button(action: {
                             if sheetScrollProgress < 1 {
                                 /// Continue Button
@@ -173,6 +192,10 @@ struct IntrosView: View {
                         // Disable button when form is not valid and the button is in the Login or Get Started state
                         .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? logigVM.formIsValid : registrationVM.formIsValid))
                         .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? logigVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
+                        
+                        
+                        
+                        
                     }
                 })
             })

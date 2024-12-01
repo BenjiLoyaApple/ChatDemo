@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CustomLoginButton<ButtonContent: View>: View {
-    var buttonTint: Color = .white
-    var content: () -> ButtonContent
+public struct CustomLoginButton<ButtonContent: View>: View {
+    public var buttonTint: Color = .white
+    public var content: () -> ButtonContent
     /// Button Action
-    var action: () async -> TaskStatus
+    public var action: () async -> TaskStatus
     /// View Properties
     @State private var isLoading: Bool = false
     @State private var taskStatus: TaskStatus = .idle
@@ -21,7 +21,17 @@ struct CustomLoginButton<ButtonContent: View>: View {
     @State private var showPopup: Bool = false
     @State private var popupMessage: String = ""
     
-    var body: some View {
+    public init(
+            buttonTint: Color = .white,
+            @ViewBuilder content: @escaping () -> ButtonContent,
+            action: @escaping () async -> TaskStatus
+        ) {
+            self.buttonTint = buttonTint
+            self.content = content
+            self.action = action
+        }
+    
+    public var body: some View {
         Button(action: {
             Task {
                 isLoading = true
@@ -85,13 +95,13 @@ struct CustomLoginButton<ButtonContent: View>: View {
 
 /// Custom Opacity Less Button Stule
 extension ButtonStyle where Self == OpacityLessButtonStyle {
-    static var opacityLess: Self {
+    public static var opacityLess: Self {
         Self()
     }
 }
 
-struct OpacityLessButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
+public struct OpacityLessButtonStyle: ButtonStyle {
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
     }
 }
@@ -120,7 +130,7 @@ extension View {
     }
 }
 
-enum TaskStatus: Equatable {
+public enum TaskStatus: Equatable {
     case idle
     case failed(String)
     case success
