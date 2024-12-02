@@ -21,20 +21,22 @@ class LoginViewModel: ObservableObject {
         self.authService = authService
     }
     
+    
     @MainActor
     func login() async throws {
         isAuthenticating = true
+        defer { isAuthenticating = false }
         
         do {
             try await authService.login(withEmail: email, password: password)
-            isAuthenticating = false
         } catch {
             let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
             self.showAlert = true
-            isAuthenticating = false
             self.authError = AuthError(authErrorCode: authError ?? .userNotFound)
+            throw error
         }
     }
+    
     
     @MainActor
     func resetPassword() async throws {
@@ -78,6 +80,8 @@ class RegistrationViewModel: ObservableObject {
     @MainActor
     func createUser() async throws {
         isAuthenticating = true
+        defer { isAuthenticating = false }
+
         do {
             try await authService.createUser(
                 withEmail: email,
@@ -85,12 +89,12 @@ class RegistrationViewModel: ObservableObject {
                 username: username,
                 fullname: fullname
             )
-            isAuthenticating = false
         } catch {
+            // Обрабатываем код ошибки
             let authErrorCode = AuthErrorCode.Code(rawValue: (error as NSError).code)
             showAlert = true
-            isAuthenticating = false
             authError = AuthError(authErrorCode: authErrorCode ?? .userNotFound)
+            throw error
         }
     }
     
