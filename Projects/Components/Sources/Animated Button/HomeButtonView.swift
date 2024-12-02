@@ -9,20 +9,27 @@ import SwiftUI
 
 struct HomeButtonView: View {
     var body: some View {
-        CustomLoginButton(buttonTint: .blue) {
+        CustomLoginButton(
+            buttonTint: AnyShapeStyle(
+                LinearGradient(
+                    colors: [.red, .orange],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+        ) {
             HStack(spacing: 10) {
                 Text("Login")
-              //  Image(systemName: "chevron.right")
             }
             .fontWeight(.bold)
             .foregroundStyle(.white)
         }action: {
             try? await Task.sleep(for: .seconds(2))
             return .failed("Password Incorrect")
-          //  return .success
+//            return .success
+//            return.idle
         }
         .buttonStyle(.opacityLess)
-     //  .preferredColorScheme(.dark)
     }
 }
 

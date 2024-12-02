@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct CustomLoginButton<ButtonContent: View>: View {
-    public var buttonTint: Color = .white
+    public var buttonTint: AnyShapeStyle
     public var content: () -> ButtonContent
     /// Button Action
     public var action: () async -> TaskStatus
@@ -22,14 +22,14 @@ public struct CustomLoginButton<ButtonContent: View>: View {
     @State private var popupMessage: String = ""
     
     public init(
-            buttonTint: Color = .white,
-            @ViewBuilder content: @escaping () -> ButtonContent,
-            action: @escaping () async -> TaskStatus
-        ) {
-            self.buttonTint = buttonTint
-            self.content = content
-            self.action = action
-        }
+        buttonTint: AnyShapeStyle = AnyShapeStyle(.white),
+        @ViewBuilder content: @escaping () -> ButtonContent,
+        action: @escaping () async -> TaskStatus
+    ) {
+        self.buttonTint = buttonTint
+        self.content = content
+        self.action = action
+    }
     
     public var body: some View {
         Button(action: {
@@ -60,15 +60,19 @@ public struct CustomLoginButton<ButtonContent: View>: View {
             }
         }, label: {
             content()
-                .padding(.horizontal, 100)
+                .padding(.horizontal, 20)
                 .padding(.vertical, 12)
                 .opacity(isLoading ? 0 : 1)
                 .lineLimit(1)
                 .frame(width: isLoading ? 50 : nil, height: isLoading ? 50 : nil)
-                .background(Color(taskStatus == .idle ? buttonTint : taskStatus == .success ? .green : .red).shadow(.drop(color: .black.opacity(0.15), radius: 6)), in: .capsule)
+                .background(taskStatus == .idle ? buttonTint : AnyShapeStyle(taskStatus == .success ? .green : .red), in: Capsule())
                 .overlay {
                     if isLoading && taskStatus == .idle {
                         ProgressView()
+                            .tint(.white)
+//                        Image(systemName: "arrow.forward.circle.dotted")
+//                            .font(.title.bold())
+//                            .foregroundStyle(.white)
                     }
                 }
                 .overlay {
