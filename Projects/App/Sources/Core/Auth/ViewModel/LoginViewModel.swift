@@ -21,25 +21,11 @@ class LoginViewModel: ObservableObject {
         self.authService = authService
     }
     
-//    @MainActor
-//    func login() async throws {
-//        isAuthenticating = true
-//        
-//        do {
-//            try await authService.login(withEmail: email, password: password)
-//            isAuthenticating = false
-//        } catch {
-//            let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
-//            self.showAlert = true
-//            isAuthenticating = false
-//            self.authError = AuthError(authErrorCode: authError ?? .userNotFound)
-//        }
-//    }
     
     @MainActor
     func login() async throws {
         isAuthenticating = true
-        defer { isAuthenticating = false } // Гарантированно сбрасываем флаг после выполнения
+        defer { isAuthenticating = false }
         
         do {
             try await authService.login(withEmail: email, password: password)
@@ -47,7 +33,7 @@ class LoginViewModel: ObservableObject {
             let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
             self.showAlert = true
             self.authError = AuthError(authErrorCode: authError ?? .userNotFound)
-            throw error // Гарантированно пробрасываем ошибку
+            throw error
         }
     }
     
@@ -91,29 +77,10 @@ class RegistrationViewModel: ObservableObject {
         self.authService = authService
     }
     
-//    @MainActor
-//    func createUser() async throws {
-//        isAuthenticating = true
-//        do {
-//            try await authService.createUser(
-//                withEmail: email,
-//                password: password,
-//                username: username,
-//                fullname: fullname
-//            )
-//            isAuthenticating = false
-//        } catch {
-//            let authErrorCode = AuthErrorCode.Code(rawValue: (error as NSError).code)
-//            showAlert = true
-//            isAuthenticating = false
-//            authError = AuthError(authErrorCode: authErrorCode ?? .userNotFound)
-//        }
-//    }
-    
     @MainActor
     func createUser() async throws {
         isAuthenticating = true
-        defer { isAuthenticating = false } // Гарантированно сбрасываем флаг после выполнения
+        defer { isAuthenticating = false }
 
         do {
             try await authService.createUser(
@@ -127,7 +94,7 @@ class RegistrationViewModel: ObservableObject {
             let authErrorCode = AuthErrorCode.Code(rawValue: (error as NSError).code)
             showAlert = true
             authError = AuthError(authErrorCode: authErrorCode ?? .userNotFound)
-            throw error // Пробрасываем ошибку дальше
+            throw error
         }
     }
     
