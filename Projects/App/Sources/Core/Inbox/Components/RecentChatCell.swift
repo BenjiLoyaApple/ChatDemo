@@ -53,29 +53,27 @@ struct RecentChatCell<ProfileImageView: View>: View {
                     Menu {
                         ControlGroup {
                             Button {
-                                print("Uno tapped")
+                                print("Pin tapped")
                             } label: {
-                                Label {
-                                    Text("📌 \nPin")
-                                } icon: {
-                                    EmptyView() // Не используем иконку, только текст
-                                }
+                                Image(systemName: "pin")
+                                Text("Pin")
                             }
                             
                             Button {
-                                print("Uno tapped")
+                                print("Share tapped")
                             } label: {
-                                Label {
-                                    Text("📮 \nShare")
-                                } icon: {
-                                    EmptyView() // Не используем иконку, только текст
-                                }
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Share")
                             }
                             
 //                            Button {
-//                                print("Share")
+//                                print("Uno tapped")
 //                            } label: {
-//                                Label("Share", systemImage: "square.and.arrow.up")
+//                                Label {
+//                                    Text("📮 \nShare")
+//                                } icon: {
+//                                    EmptyView() // Не используем иконку, только текст
+//                                }
 //                            }
                             
                             Menu {
@@ -90,13 +88,8 @@ struct RecentChatCell<ProfileImageView: View>: View {
                                 }
                                 
                             } label: {
-                                Label {
-                                    Text("🗑️ \nDelete")
-                                        .lineLimit(1)
-                                        .truncationMode(.tail)
-                                } icon: {
-                                    EmptyView() // Не используем иконку, только текст
-                                }
+                                Image(systemName: "arrow.up.trash")
+                                Text("Delete")
                             }
                         }
                      //   Button("Two") {
