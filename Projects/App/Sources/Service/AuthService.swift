@@ -37,6 +37,10 @@ class AuthService: AuthServiceProtocol, ObservableObject {
         try await provider.createUser(email: email, password: password, username: username, fullname: fullname)
         _userSession = provider.userSession
     }
+    
+    func resetPassword(email: String) async throws {
+        try await Auth.auth().sendPasswordReset(withEmail: email)
+    }
 
     func signOut() async throws {
         try await provider.signOut()
