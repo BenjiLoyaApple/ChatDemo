@@ -52,10 +52,6 @@ class LoginViewModel: ObservableObject {
             print("Failed to send password reset email: \(AuthErrorCode.invalidEmail)")
         }
         
-        
-        // made new code
-        // task to bot
-        // protocol - service - vm to bot
     }
     
 }
