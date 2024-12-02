@@ -5,7 +5,6 @@
 //  Created by Benji Loya on 01.09.2024.
 //
 
-
 import SwiftUI
 import SwiftfulUI
 import Components
@@ -50,14 +49,75 @@ struct RecentChatCell<ProfileImageView: View>: View {
                     
                     Spacer(minLength: 0)
                     
-                    Image(systemName: "ellipsis")
-                        .foregroundStyle(.gray)
-                        .padding(15)
-                        .background(Color.black.opacity(0.001))
-                        .clipShape(Circle())
-                        .asButton(.press) {
-                            actionButtonTapped?()
+                    /// Chat Options
+                    Menu {
+                        ControlGroup {
+                            Button {
+                                print("Pin tapped")
+                            } label: {
+                                Image(systemName: "pin")
+                                Text("Pin")
+                            }
+                            
+                            Button {
+                                print("Share tapped")
+                            } label: {
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Share")
+                            }
+                            
+//                            Button {
+//                                print("Uno tapped")
+//                            } label: {
+//                                Label {
+//                                    Text("📮 \nShare")
+//                                } icon: {
+//                                    EmptyView() // Не используем иконку, только текст
+//                                }
+//                            }
+                            
+                            Menu {
+                                Button(role: .destructive) {
+                                    actionButtonTapped?()
+                                        } label: {
+                                            Label("For me", systemImage: "")
+                                        }
+                                
+                                Button("For me & \(username)") {
+                                    // Ваши действия здесь
+                                }
+                                
+                            } label: {
+                                Image(systemName: "arrow.up.trash")
+                                Text("Delete")
+                            }
                         }
+                     //   Button("Two") {
+                            
+                      //  }
+//                        Menu("Delete Chat") {
+//                            Button(role: .destructive) {
+//                                actionButtonTapped?()
+//                                    } label: {
+//                                        Label("For me", systemImage: "")
+//                                    }
+//                            
+//                            Button("For me & \(username)") {
+//                                // Ваши действия здесь
+//                            }
+//                            
+//                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .foregroundStyle(.gray)
+                            .padding(15)
+                            .background(Color.black.opacity(0.001))
+                            .clipShape(Circle())
+                    }
+                    
+                    
+                    
+                    
                 }
                 
                 Rectangle()
