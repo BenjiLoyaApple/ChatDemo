@@ -113,6 +113,7 @@ struct ProfileView: View {
                 
                 Spacer()
                 
+                /// Profile Image
                 if let croppedImage {
                     Image(uiImage: croppedImage)
                         .resizable()
@@ -130,7 +131,6 @@ struct ProfileView: View {
                             showPicker.toggle()
                         }
                 }
-                
             }
             
             Divider()
@@ -162,13 +162,11 @@ struct ProfileView: View {
                 .stroke(Color(.systemGray4), lineWidth: 0.5)
         }
         .cropImagePicker(
-            options: [.circle, .square, .rectangle, .custom(.init(width: 300, height: 300))],
+            options: [.circle, .custom(.init(width: 300, height: 300))],
             show: $showPicker,
             croppedImage: $croppedImage
         )
     }
-    
-    
 }
 
 extension User {
