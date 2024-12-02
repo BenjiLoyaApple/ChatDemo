@@ -61,11 +61,11 @@ struct RecentChatsView: View {
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
                                 textMessage: recentMessage.caption,
-                                actionButtonTapped: {
-                                    Task { try await viewModel.deleteMessage(recentMessage) }
-                                },
                                 showChatTapped: {
                                     onChatTapped?(user)
+                                },
+                                deleteForMeButtonTapped: {
+                                    Task { try await viewModel.deleteMessage(recentMessage) }
                                 }
                             )
                             .padding(.horizontal, 10)
