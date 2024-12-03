@@ -37,20 +37,12 @@ struct ActiveNowView: View {
                         ForEach(viewModel.users) { user in
                             ActiveCell(
                                 user: user,
-                                profileImage: CircularProfileImageView(user: user, size: .large60),
+                                profileImage: CircularProfileImageView(user: user, size: .large66),
                                 username: user.username,
                                 showChatTapped: {
                                     onChatTapped?(user)
                                 }
                             )
-//                            ActiveCell(
-//                                user: user,
-//                                profileImage: CircularProfileImageView(profile: user, size: .large60),
-//                                username: user.username,
-//                                showChatTapped: {
-//                                    onChatTapped?(user)
-//                                }
-//                            )
                         }
                     }
                 }

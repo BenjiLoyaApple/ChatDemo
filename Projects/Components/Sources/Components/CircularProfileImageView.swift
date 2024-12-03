@@ -11,7 +11,7 @@ import Kingfisher
 
 /// Размеры профиля с предопределенными размерами
 public enum ProfileImageSize {
-    case small14, small20, small24, small28, small34, small40, medium46, medium50, large56, large60
+    case small14, small20, small24, small28, small34, small40, medium46, medium50, large56, large60, large66, large72
     
     public var dimension: CGFloat {
         switch self {
@@ -25,6 +25,8 @@ public enum ProfileImageSize {
         case .medium50: return 50
         case .large56: return 56
         case .large60: return 60
+        case .large66: return 66
+        case .large72: return 72
         }
     }
     
@@ -40,6 +42,8 @@ public enum ProfileImageSize {
         case .medium50: return 25
         case .large56: return 28
         case .large60: return 30
+        case .large66: return 33
+        case .large72: return 36
         }
     }
 }
@@ -132,7 +136,7 @@ public struct CircularProfileImageView: View {
                 profileImageUrl: "https://via.placeholder.com/150",
                 username: "John Doe"
             ),
-            size: .large56
+            size: .large72
         )
         
         // Без изображения (инициалы)
@@ -141,7 +145,7 @@ public struct CircularProfileImageView: View {
                 profileImageUrl: nil,
                 username: "benjiloya"
             ),
-            size: .large56
+            size: .large72
         )
     }
     .padding()

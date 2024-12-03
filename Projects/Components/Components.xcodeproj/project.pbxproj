@@ -27,6 +27,8 @@
 		E471DDF32CFADB0100AE4DFF /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E471DDF02CFADB0100AE4DFF /* CustomLoginButton.swift */; };
 		E471DDF52CFADC4F00AE4DFF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E471DDF42CFADC4F00AE4DFF /* Toast.swift */; };
 		E4C3F54B2CFEBE53008C9AB8 /* ChatOptionsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3F54A2CFEBE53008C9AB8 /* ChatOptionsMenu.swift */; };
+		E4C3F54D2CFECA58008C9AB8 /* CustomProgressIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3F54C2CFECA58008C9AB8 /* CustomProgressIndicatorStyle.swift */; };
+		E4C3F54F2CFECCC8008C9AB8 /* ActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3F54E2CFECCC8008C9AB8 /* ActiveCell.swift */; };
 		EC17E189E6DDBA945B391779 /* MockProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A9C9E5C3B541C5C4D27067 /* MockProfile.swift */; };
 		FD86502E0449E875E373857F /* ProfileRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F505C8EE980FE6AF24C1B /* ProfileRepresentable.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,8 @@
 		E471DDF02CFADB0100AE4DFF /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
 		E471DDF42CFADC4F00AE4DFF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E4C3F54A2CFEBE53008C9AB8 /* ChatOptionsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOptionsMenu.swift; sourceTree = "<group>"; };
+		E4C3F54C2CFECA58008C9AB8 /* CustomProgressIndicatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressIndicatorStyle.swift; sourceTree = "<group>"; };
+		E4C3F54E2CFECCC8008C9AB8 /* ActiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,11 +184,13 @@
 		AF39CAF88019FA0078411311 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E4C3F54C2CFECA58008C9AB8 /* CustomProgressIndicatorStyle.swift */,
 				02148BFFF09E74671CB38A1A /* CircularProfileImageView.swift */,
 				5CB1C1EEADED0FF8E935FBFF /* CustomButton.swift */,
 				380D1D96651F36739BB3A33C /* CustomChatButton.swift */,
 				AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */,
 				E4C3F54A2CFEBE53008C9AB8 /* ChatOptionsMenu.swift */,
+				E4C3F54E2CFECCC8008C9AB8 /* ActiveCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */,
 				E471DDF52CFADC4F00AE4DFF /* Toast.swift in Sources */,
 				7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */,
+				E4C3F54D2CFECA58008C9AB8 /* CustomProgressIndicatorStyle.swift in Sources */,
 				D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */,
 				3FA571843DD5BA21A40E8DB1 /* MorphingSymbolView.swift in Sources */,
 				A1BFD7DEF9065455CE4849E4 /* ShimmerEffect.swift in Sources */,
@@ -300,6 +307,7 @@
 				AE26A6D0384D658DC438A7BD /* RecentChatCell.swift in Sources */,
 				E471DDF22CFADB0100AE4DFF /* HomeButtonView.swift in Sources */,
 				E471DDF32CFADB0100AE4DFF /* CustomLoginButton.swift in Sources */,
+				E4C3F54F2CFECCC8008C9AB8 /* ActiveCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
