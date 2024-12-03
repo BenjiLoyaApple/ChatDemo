@@ -18,13 +18,14 @@ struct RecentChatCell<ProfileImageView: View>: View {
     var showChatTapped: (() -> Void)? = nil
     var profileImageTapped: (() -> Void)? = nil
     
-    // Menu Properties
+    // Chat Menu Options
     var pinButtonTapped: (() -> Void)? = nil
     var shareButtonTapped: (() -> Void)? = nil
     var deleteForMeButtonTapped: (() -> Void)? = nil
     var deleteAllButtonTapped: (() -> Void)? = nil
     var clearButtonTapped: (() -> Void)? = nil
     var notificationButtonTapped: (() -> Void)? = nil
+    var blockUserButtonTapped: (() -> Void)? = nil
     
     var body: some View {
         HStack(spacing: 10) {
@@ -57,74 +58,16 @@ struct RecentChatCell<ProfileImageView: View>: View {
                     Spacer(minLength: 0)
                     
                     //MARK: - Chat Options
-                    Menu {
-                        /// Pin
-                        ControlGroup {
-                            Button {
-                                pinButtonTapped?()
-                            } label: {
-                                Image(systemName: "pin")
-                                Text("Pin")
-                            }
-                            
-                            /// Share
-                            Button {
-                                shareButtonTapped?()
-                            } label: {
-                                Image(systemName: "square.and.arrow.up")
-                                Text("Share")
-                            }
-                            
-                            /// Delete
-                            Menu {
-                                /// For Me
-                                Button(role: .destructive) {
-                                    deleteForMeButtonTapped?()
-                                } label: {
-                                    Label("For me", systemImage: "person")
-                                }
-                                
-                                /// For All Users
-                                Button {
-                                    deleteAllButtonTapped?()
-                                } label: {
-                                    Image(systemName: "person.2")
-                                    Text("For me & \(username)")
-                                }
-                                
-                            } label: {
-                                Image(systemName: "arrow.up.trash")
-                                Text("Delete")
-                            }
-                            
-                        }
-                        
-                        /// Clear Chat
-                        Button {
-                            clearButtonTapped?()
-                        } label: {
-                            Text("Clear chat")
-                            Image(systemName: "eraser.line.dashed")
-                            
-                        }
-                        
-                        /// Notifications
-                        Button {
-                            notificationButtonTapped?()
-                        } label: {
-                            Text("Notifications")
-                            Image(systemName: "bell")
-                        }
-                        
-                        
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .foregroundStyle(.gray)
-                            .padding(15)
-                            .background(Color.black.opacity(0.001))
-                            .clipShape(Circle())
-                    }
-                    
+                    ChatOptionsMenu(
+                        username: username,
+                        pinButtonTapped: pinButtonTapped,
+                        shareButtonTapped: shareButtonTapped,
+                        deleteForMeButtonTapped: deleteForMeButtonTapped,
+                        deleteAllButtonTapped: deleteAllButtonTapped,
+                        clearButtonTapped: clearButtonTapped,
+                        notificationButtonTapped: notificationButtonTapped,
+                        blockUserButtonTapped: blockUserButtonTapped
+                    )
                 }
                 
                 Rectangle()
