@@ -15,13 +15,21 @@ struct RecentChatCell<ProfileImageView: View>: View {
     let username: String
     let timestamp: String
     let textMessage: String?
-    var actionButtonTapped: (() -> Void)? = nil
     var showChatTapped: (() -> Void)? = nil
     var profileImageTapped: (() -> Void)? = nil
     
+    // Chat Menu Options
+    var pinButtonTapped: (() -> Void)? = nil
+    var shareButtonTapped: (() -> Void)? = nil
+    var deleteForMeButtonTapped: (() -> Void)? = nil
+    var deleteAllButtonTapped: (() -> Void)? = nil
+    var clearButtonTapped: (() -> Void)? = nil
+    var notificationButtonTapped: (() -> Void)? = nil
+    var blockUserButtonTapped: (() -> Void)? = nil
+    
     var body: some View {
         HStack(spacing: 10) {
-            // Отображение изображения
+            //MARK: - Profile image
             profileImage
                 .asButton(.press) {
                     profileImageTapped?()
@@ -30,9 +38,9 @@ struct RecentChatCell<ProfileImageView: View>: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 10) {
                     // имя юзера
-                        Text(username)
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
+                    Text(username)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
                     
                     // Дата
                     Text(message.timestamp.timestampString())
@@ -49,75 +57,17 @@ struct RecentChatCell<ProfileImageView: View>: View {
                     
                     Spacer(minLength: 0)
                     
-                    /// Chat Options
-                    Menu {
-                        ControlGroup {
-                            Button {
-                                print("Pin tapped")
-                            } label: {
-                                Image(systemName: "pin")
-                                Text("Pin")
-                            }
-                            
-                            Button {
-                                print("Share tapped")
-                            } label: {
-                                Image(systemName: "square.and.arrow.up")
-                                Text("Share")
-                            }
-                            
-//                            Button {
-//                                print("Uno tapped")
-//                            } label: {
-//                                Label {
-//                                    Text("📮 \nShare")
-//                                } icon: {
-//                                    EmptyView() // Не используем иконку, только текст
-//                                }
-//                            }
-                            
-                            Menu {
-                                Button(role: .destructive) {
-                                    actionButtonTapped?()
-                                        } label: {
-                                            Label("For me", systemImage: "")
-                                        }
-                                
-                                Button("For me & \(username)") {
-                                    // Ваши действия здесь
-                                }
-                                
-                            } label: {
-                                Image(systemName: "arrow.up.trash")
-                                Text("Delete")
-                            }
-                        }
-                     //   Button("Two") {
-                            
-                      //  }
-//                        Menu("Delete Chat") {
-//                            Button(role: .destructive) {
-//                                actionButtonTapped?()
-//                                    } label: {
-//                                        Label("For me", systemImage: "")
-//                                    }
-//                            
-//                            Button("For me & \(username)") {
-//                                // Ваши действия здесь
-//                            }
-//                            
-//                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .foregroundStyle(.gray)
-                            .padding(15)
-                            .background(Color.black.opacity(0.001))
-                            .clipShape(Circle())
-                    }
-                    
-                    
-                    
-                    
+                    //MARK: - Chat Options
+                    ChatOptionsMenu(
+                        username: username,
+                        pinButtonTapped: pinButtonTapped,
+                        shareButtonTapped: shareButtonTapped,
+                        deleteForMeButtonTapped: deleteForMeButtonTapped,
+                        deleteAllButtonTapped: deleteAllButtonTapped,
+                        clearButtonTapped: clearButtonTapped,
+                        notificationButtonTapped: notificationButtonTapped,
+                        blockUserButtonTapped: blockUserButtonTapped
+                    )
                 }
                 
                 Rectangle()
@@ -139,7 +89,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.red.opacity(0.001))
                         .asButton(.opacity) {
-                             showChatTapped?()
+                            showChatTapped?()
                         }
                     }
                 

@@ -37,20 +37,12 @@ struct ActiveNowView: View {
                         ForEach(viewModel.users) { user in
                             ActiveCell(
                                 user: user,
-                                profileImage: CircularProfileImageView(user: user, size: .large60),
+                                profileImage: CircularProfileImageView(user: user, size: .large66),
                                 username: user.username,
                                 showChatTapped: {
                                     onChatTapped?(user)
                                 }
                             )
-//                            ActiveCell(
-//                                user: user,
-//                                profileImage: CircularProfileImageView(profile: user, size: .large60),
-//                                username: user.username,
-//                                showChatTapped: {
-//                                    onChatTapped?(user)
-//                                }
-//                            )
                         }
                     }
                 }
@@ -64,27 +56,8 @@ struct ActiveNowView: View {
     }
 }
 
-// MARK: - Active Cell
-struct ActiveCell<ProfileImageView: View>: View {
-    var user: User
-    let profileImage: ProfileImageView
-    let username: String
-    var showChatTapped: (() -> Void)? = nil
-    
-    var body: some View {
-        VStack {
-            profileImage
-                .asButton(.press) {
-                    showChatTapped?()
-                }
-            Text(username)
-                .font(.footnote)
-                .foregroundColor(.primary.opacity(0.8))
-        }
-    }
-}
-
 // MARK: - Preview with Mock Data
 #Preview {
     ActiveNowView(viewModel: .mockActive)
 }
+

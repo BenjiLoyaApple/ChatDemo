@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Components
 
-class ActiveNowViewModel: ObservableObject {
+class ActiveNowViewModel: ObservableObject, ActiveNowViewModelProtocol {
     @Published var users = [User]()
     @Published var isLoading = false
     

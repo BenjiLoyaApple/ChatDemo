@@ -155,7 +155,7 @@ struct IntrosView: View {
                                         try await loginVM.login()
                                         return .success
                                     } catch {
-                                        return .failed("Ошибка входа: \(error.localizedDescription)")
+                                        return .failed("\(error.localizedDescription)")
                                     }
                                 } else {
                                     // Регистрация
@@ -163,7 +163,7 @@ struct IntrosView: View {
                                         try await registrationVM.createUser()
                                         return .success
                                     } catch {
-                                        return .failed("Ошибка регистрации: \(error.localizedDescription)")
+                                        return .failed("\(error.localizedDescription)")
                                     }
                                 }
                             }

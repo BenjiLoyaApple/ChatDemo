@@ -23,7 +23,7 @@ struct InboxHeader<ProfileImageView: View>: View {
     let profileImage: ProfileImageView
     let username: String
     var profileimageTapped: (() -> Void)? = nil
-    var searchTapped: (() -> Void)? = nil
+    var plusButtonTapped: (() -> Void)? = nil
     var newChatTapped: (() -> Void)? = nil
     
     var body: some View {
@@ -45,12 +45,12 @@ struct InboxHeader<ProfileImageView: View>: View {
                 HStack(spacing: 2) {
                     // Search
                     CustomChatButton(
-                        imageSource: .systemName("magnifyingglass"),
+                        imageSource: .systemName("plus.circle.dashed"),
                         font: .title2,
                         foregroundColor: .primary,
                         padding: 10,
                         onButtonPressed: {
-                            searchTapped?()
+                            plusButtonTapped?()
                         }
                     )
                     
