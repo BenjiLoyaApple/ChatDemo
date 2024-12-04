@@ -133,7 +133,8 @@ public struct CircularProfileImageView: View {
         // С изображением профиля
         CircularProfileImageView(
             user: MockUser(
-                username: "John Doe", 
+                id: "",
+                username: "John Doe",
                 profileImageUrl: "https://via.placeholder.com/150"
             ),
             size: .large72
@@ -142,7 +143,9 @@ public struct CircularProfileImageView: View {
         // Без изображения (инициалы)
         CircularProfileImageView(
             user: MockUser(
-                username: "benjiloya", profileImageUrl: nil
+                id: "",
+                username: "benjiloya",
+                profileImageUrl: nil
             ),
             size: .large72
         )

@@ -9,21 +9,15 @@
 import SwiftUI
 import SwiftfulUI
 
-public struct ActiveNowView<
-    ProfileImageView: View,
-    ViewModel: ActiveNowViewModelProtocol
->: View {
-    @ObservedObject public var viewModel: ViewModel
-    public let profileImage: (ViewModel.UserType) -> ProfileImageView
+public struct ActiveNowView<ViewModel: ActiveNowViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
     public var onChatTapped: ((ViewModel.UserType) -> Void)?
     
     public init(
         viewModel: ViewModel,
-        profileImage: @escaping (ViewModel.UserType) -> ProfileImageView,
         onChatTapped: ((ViewModel.UserType) -> Void)? = nil
     ) {
         self.viewModel = viewModel
-        self.profileImage = profileImage
         self.onChatTapped = onChatTapped
     }
     
@@ -41,21 +35,20 @@ public struct ActiveNowView<
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 25) {
-                    if viewModel.isLoading {
-//                        ForEach(viewModel.users, id: \.id) { user in
-//                            ActiveCell(
-//                                user: user,
-//                                profileImage: profileImage(user),
-//                                username: user.username,
-//                                showChatTapped: {
-//                                    onChatTapped?(user)
-//                                }
-//                            )
-//                        }
+                    if !viewModel.isLoading {
+                        ForEach(0..<10) { _ in
+                           // placeholderActiveNow()
+                        }
                     } else {
-                        ForEach(0..<10, id: \.self) { _ in
-                        //    placeholderActiveNow()
-                            Text("")
+                        ForEach(viewModel.users) { user in
+                            ActiveCell(
+                                user: user,
+                                profileImage: CircularProfileImageView(user: user, size: .large66),
+                                username: user.username,
+                                showChatTapped: {
+                                    onChatTapped?(user)
+                                }
+                            )
                         }
                     }
                 }
@@ -70,6 +63,16 @@ public struct ActiveNowView<
 }
 
 #Preview {
- 
+    let mockUsers = [
+        MockUser(id: "1", username: "Benji Loya"),
+        MockUser(id: "2", username: "Alice Smith"),
+        MockUser(id: "3", username: "John Doe")
+    ]
+    
+    let viewModel = MockActiveNowViewModel(users: mockUsers, isLoading: true)
+    
+    ActiveNowView(viewModel: viewModel) { user in
+        print("Tapped on user: \(user.username)")
+    }
 }
 */

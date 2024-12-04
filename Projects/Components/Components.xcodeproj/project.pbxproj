@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,8 @@
 		C60855AFF49FBB0B17A21A53 /* ActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5DC754314382FD645BF2EB /* ActiveCell.swift */; };
 		CE331E6F38FEB4AF950BDFEA /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10768136A09278D31D285BF8 /* TransparentBlurView.swift */; };
 		D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */; };
+		E46521FD2D0005A500ADE864 /* MockActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46521FC2D0005A500ADE864 /* MockActiveNowViewModel.swift */; };
+		E46521FF2D0005D300ADE864 /* ActiveNowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46521FE2D0005D300ADE864 /* ActiveNowViewModelProtocol.swift */; };
 		F4B84659F3DB04000E12242F /* UserRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B52152551305824501DF9 /* UserRepresentable.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		DD254C9E2686DA9D0DF23B1F /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		DD5DC754314382FD645BF2EB /* ActiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCell.swift; sourceTree = "<group>"; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46521FC2D0005A500ADE864 /* MockActiveNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockActiveNowViewModel.swift; sourceTree = "<group>"; };
+		E46521FE2D0005D300ADE864 /* ActiveNowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowViewModelProtocol.swift; sourceTree = "<group>"; };
 		E5C535612F07F124B4E96328 /* HomeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,7 @@
 			children = (
 				0C86EF2CE8B8CD0F3BD041E2 /* MessageRepresentable.swift */,
 				911B52152551305824501DF9 /* UserRepresentable.swift */,
+				E46521FE2D0005D300ADE864 /* ActiveNowViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			children = (
 				2230291492FD18CEC7212D63 /* MockMessage.swift */,
 				93B7293629F61776020554DE /* MockUser.swift */,
+				E46521FC2D0005A500ADE864 /* MockActiveNowViewModel.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -178,14 +184,13 @@
 		A874B33A7F4C14F599FB8DB3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E46522002D00064800ADE864 /* Active Now */,
 				0AA9439EA871DEE2DEF7DE2E /* Animated Button */,
 				AF39CAF88019FA0078411311 /* Components */,
 				4214F6D09A3422B94E3B0E22 /* Crop */,
 				F157D686C49FCEFC70CA3D34 /* Helpers */,
 				9553960979B043ABFCFD531C /* Mock */,
 				771B3BDE58BCB2DD9F7CE9D8 /* Protocols */,
-				DD5DC754314382FD645BF2EB /* ActiveCell.swift */,
-				A6B0FD8C850E42AECD282A8C /* ActiveNowView.swift */,
 				180060130B49B8B5C5412FFC /* RecentChatCell.swift */,
 			);
 			path = Sources;
@@ -202,6 +207,15 @@
 				AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E46522002D00064800ADE864 /* Active Now */ = {
+			isa = PBXGroup;
+			children = (
+				DD5DC754314382FD645BF2EB /* ActiveCell.swift */,
+				A6B0FD8C850E42AECD282A8C /* ActiveNowView.swift */,
+			);
+			path = "Active Now";
 			sourceTree = "<group>";
 		};
 		F157D686C49FCEFC70CA3D34 /* Helpers */ = {
@@ -251,8 +265,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -291,12 +303,14 @@
 				135AE2E8681D6E590F3BDF08 /* TuistBundle+Components.swift in Sources */,
 				C60855AFF49FBB0B17A21A53 /* ActiveCell.swift in Sources */,
 				3A1D1D2753AE7D17B614752B /* ActiveNowView.swift in Sources */,
+				E46521FD2D0005A500ADE864 /* MockActiveNowViewModel.swift in Sources */,
 				3DA50E0701813FDCDD24367C /* CustomLoginButton.swift in Sources */,
 				100C623B5E340FEE32C80349 /* HomeButtonView.swift in Sources */,
 				5B99FEB426DE7B2B7DB4078B /* ChatOptionsMenu.swift in Sources */,
 				BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */,
 				1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */,
 				7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */,
+				E46521FF2D0005D300ADE864 /* ActiveNowViewModelProtocol.swift in Sources */,
 				585EA91FBD2DC8846B0F2EFA /* CustomProgressIndicatorStyle.swift in Sources */,
 				D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */,
 				826EC8CC43678DFEE593C5F0 /* Crop.swift in Sources */,
@@ -345,10 +359,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

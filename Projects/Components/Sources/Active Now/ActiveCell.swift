@@ -42,7 +42,7 @@ public struct ActiveCell<ProfileImageView: View, UserType: UserRepresentable>: V
 
 // MARK: - Preview
 #Preview {
-    let mockUser = MockUser(username: "Benji Loya")
+    let mockUser = MockUser(id: "1", username: "Benji Loya")
     ActiveCell(
         user: mockUser,
         profileImage: Circle()
