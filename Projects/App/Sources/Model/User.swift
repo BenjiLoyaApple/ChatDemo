@@ -39,6 +39,3 @@ extension User: Equatable {
         return lhs.id == rhs.id
     }
 }
-
-//extension User: UserRepresentable {}
-

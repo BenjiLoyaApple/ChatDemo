@@ -17,7 +17,6 @@ class LinkPreviewViewModel: ObservableObject {
     @Published var image: Image?
         
     init(urlString: String) {
-        
         Task { try await fetchLinkMetadata(urlString: urlString) }
     }
     

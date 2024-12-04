@@ -27,11 +27,10 @@ struct ActiveNowView: View {
             Spacer(minLength: 0)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 25) {
+                LazyHStack(spacing: 14) {
                     if !viewModel.isLoading {
                         ForEach(0..<10) { _ in
                             placeholderActiveNow()
-                                
                         }
                     } else {
                         ForEach(viewModel.users) { user in
@@ -39,6 +38,8 @@ struct ActiveNowView: View {
                                 user: user,
                                 profileImage: CircularProfileImageView(user: user, size: .large66),
                                 username: user.username,
+                                startColor: .red,
+                                endColor: .orange,
                                 showChatTapped: {
                                     onChatTapped?(user)
                                 }
@@ -46,13 +47,13 @@ struct ActiveNowView: View {
                         }
                     }
                 }
+                .padding(.top, 3)
                 .padding(.bottom, 5)
-                .safeAreaPadding(.leading)
+                .safeAreaPadding(.leading, 10)
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 140)
-        .cornerRadius(15)
+        .frame(height: 146)
     }
 }
 

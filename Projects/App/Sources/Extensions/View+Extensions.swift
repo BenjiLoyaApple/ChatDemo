@@ -46,7 +46,7 @@ extension View {
             Image("nullProfile")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 60, height: 60)
+                .frame(width: 72, height: 72)
                 .clipShape(Circle())
                 .overlay(
                     Circle()
