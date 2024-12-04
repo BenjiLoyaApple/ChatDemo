@@ -8,6 +8,7 @@
 import Foundation
 
 public protocol UserRepresentable {
+    var id: String { get }
     var username: String { get }
     var profileImageUrl: String? { get }
 }
