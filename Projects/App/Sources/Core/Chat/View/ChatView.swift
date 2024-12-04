@@ -27,7 +27,7 @@ struct ChatView: View {
         VStack {
             HeaderComponent(backButtonPressed: {
                 router.dismissScreen()
-            }) {
+            }, buttonImageSource: .systemName("chevron.left"))  {
                 HStack(spacing: 15) {
                     CircularProfileImageView(user: user, size: .small34)
                     

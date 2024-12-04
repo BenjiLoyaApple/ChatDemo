@@ -28,11 +28,11 @@ struct SettingsView: View {
         VStack(spacing: 10) {
             HeaderComponent(backButtonPressed: {
                 router.dismissScreen()
-            }) {
+            }, buttonImageSource: .systemName("chevron.left")) {
                 Spacer(minLength: 0)
                 
                 Text("Settings")
-                    .font(.subheadline)
+                    .font(.subheadline.bold())
                     .offset(x: -20)
                 
                 Spacer(minLength: 0)
@@ -145,10 +145,10 @@ struct SettingsView: View {
     
 }
 
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RouterView { _ in
-//            SettingsView(authService: EmailAuthProvider() as! AuthServiceProtocol)
-//        }
-//    }
-//}
+#Preview {
+    RouterView { _ in
+        SettingsView(authService: MockAuthService())
+    }
+}
+
+

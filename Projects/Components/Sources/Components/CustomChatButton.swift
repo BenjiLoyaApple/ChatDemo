@@ -9,8 +9,8 @@ import SwiftUI
 /// Кнопка чата с кастомными параметрами.
 public struct CustomChatButton: View {
     public enum ImageSource {
-        case systemName(String) // Системные иконки
-        case assetName(String)  // Локальные иконки
+        case systemName(String) 
+        case assetName(String)
     }
 
     // MARK: - Параметры кнопки

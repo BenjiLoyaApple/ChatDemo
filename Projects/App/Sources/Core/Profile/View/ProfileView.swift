@@ -15,7 +15,6 @@ struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     
     let user: User
-    
     /// - View Properties
     @State private var showPicker: Bool = false
     @State private var croppedImage: UIImage?
@@ -29,12 +28,12 @@ struct ProfileView: View {
                 Task {
                     try? await viewModel.loadCurrentUser()
                 }
-            }) {
+            }, buttonImageSource: .systemName("chevron.left")) {
                 Spacer(minLength: 0)
                 
                 Text(viewModel.username)
-                    .font(.subheadline)
-                    .offset(x: -20)
+                    .font(.subheadline.bold())
+                    .offset(x: 10)
                 
                 Spacer(minLength: 0)
                 

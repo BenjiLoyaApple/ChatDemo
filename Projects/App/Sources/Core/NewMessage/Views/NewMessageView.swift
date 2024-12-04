@@ -20,12 +20,13 @@ struct NewMessageView: View {
             
             HeaderComponent(backButtonPressed: {
                 dismiss()
-            }) {
+            }, buttonText: "Close",
+               font: .subheadline) {
                 Spacer(minLength: 0)
                 
                 Text("New Message")
-                    .font(.subheadline)
-                    .offset(x: -20)
+                    .font(.subheadline.bold())
+                    .offset(x: -30)
                 
                 Spacer(minLength: 0)
             }
