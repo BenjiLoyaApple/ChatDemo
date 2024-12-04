@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ProfileRepresentable {
-    var profileImageUrl: String? { get }
+public protocol UserRepresentable {
     var username: String { get }
+    var profileImageUrl: String? { get }
 }

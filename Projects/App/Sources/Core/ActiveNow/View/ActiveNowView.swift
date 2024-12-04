@@ -56,27 +56,8 @@ struct ActiveNowView: View {
     }
 }
 
-// MARK: - Active Cell
-struct ActiveCell<ProfileImageView: View>: View {
-    var user: User
-    let profileImage: ProfileImageView
-    let username: String
-    var showChatTapped: (() -> Void)? = nil
-    
-    var body: some View {
-        VStack {
-            profileImage
-                .asButton(.press) {
-                    showChatTapped?()
-                }
-            Text(username)
-                .font(.footnote)
-                .foregroundColor(.primary.opacity(0.8))
-        }
-    }
-}
-
 // MARK: - Preview with Mock Data
 #Preview {
     ActiveNowView(viewModel: .mockActive)
 }
+

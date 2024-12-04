@@ -8,27 +8,15 @@
 import SwiftUI
 import SwiftfulUI
 
-// Простая модель для пользователя
-public struct User: Identifiable {
-    public let id: UUID
-    public let username: String
-    
-    // Пример инициализатора
-    public init(id: UUID = UUID(), username: String) {
-        self.id = id
-        self.username = username
-    }
-}
-
-public struct ActiveCell<ProfileImageView: View>: View {
-    public var user: User 
+public struct ActiveCell<ProfileImageView: View, UserType: UserRepresentable>: View {
+    public var user: UserType
     public let profileImage: ProfileImageView
     public let username: String
     public var showChatTapped: (() -> Void)? = nil
 
     // MARK: - Init
     public init(
-        user: User,
+        user: UserType,
         profileImage: ProfileImageView,
         username: String,
         showChatTapped: (() -> Void)? = nil
@@ -54,12 +42,12 @@ public struct ActiveCell<ProfileImageView: View>: View {
 
 // MARK: - Preview
 #Preview {
-    let mockUser = User(username: "John Doe")
+    let mockUser = MockUser(username: "Benji Loya")
     ActiveCell(
         user: mockUser,
         profileImage: Circle()
             .frame(width: 66, height: 66)
-            .foregroundStyle(.blue),
+            .foregroundStyle(.blue.opacity(0.25).gradient),
         username: mockUser.username
     )
 }

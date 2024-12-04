@@ -73,6 +73,18 @@ struct InboxView: View {
                 }
             })
             
+//            ActiveNowView(
+//                viewModel: vmActiveNow,
+//                profileImage: { user in
+//                    CircularProfileImageView(user: user, size: .large66)
+//                },
+//                onChatTapped: { user in
+//                    router.showScreen(.push) { _ in
+//                        ChatView(user: user)
+//                    }
+//                }
+//            )
+            
             // Resent Chats
             RecentChatsView(
                 viewModel: vmInbox,

@@ -99,11 +99,11 @@ public struct UserInitialsView: View {
 
 /// Компонент для отображения круглой картинки профиля или инициалов
 public struct CircularProfileImageView: View {
-    private let user: ProfileRepresentable?
+    private let user: UserRepresentable?
     private let size: ProfileImageSize
     
     /// Инициализатор
-    public init(user: ProfileRepresentable?, size: ProfileImageSize) {
+    public init(user: UserRepresentable?, size: ProfileImageSize) {
         self.user = user
         self.size = size
     }
@@ -132,18 +132,17 @@ public struct CircularProfileImageView: View {
     VStack(spacing: 20) {
         // С изображением профиля
         CircularProfileImageView(
-            user: MockProfile(
-                profileImageUrl: "https://via.placeholder.com/150",
-                username: "John Doe"
+            user: MockUser(
+                username: "John Doe", 
+                profileImageUrl: "https://via.placeholder.com/150"
             ),
             size: .large72
         )
         
         // Без изображения (инициалы)
         CircularProfileImageView(
-            user: MockProfile(
-                profileImageUrl: nil,
-                username: "benjiloya"
+            user: MockUser(
+                username: "benjiloya", profileImageUrl: nil
             ),
             size: .large72
         )
