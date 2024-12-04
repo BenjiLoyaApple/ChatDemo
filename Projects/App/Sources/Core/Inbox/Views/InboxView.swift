@@ -73,6 +73,19 @@ struct InboxView: View {
                 }
             })
             
+            /// From Module
+//            ActiveNowView(
+//                viewModel: vmActiveNow,
+//                profileImage: { user in
+//                    CircularProfileImageView(user: user, size: .large66)
+//                },
+//                onChatTapped: { user in
+//                    router.showScreen(.push) { _ in
+//                        ChatView(user: user)
+//                    }
+//                }
+//            )
+            
             // Resent Chats
             RecentChatsView(
                 viewModel: vmInbox,
@@ -97,7 +110,8 @@ struct InboxView: View {
                         }
                     }
                 },
-                searchTapped: {
+                plusButtonTapped: {
+                   
                     
                 },
                 newChatTapped: {
@@ -107,25 +121,6 @@ struct InboxView: View {
                     selectedUser = nil
                 }
             )
-//            InboxHeader(
-//                headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(profile: vmInbox.user, size: .small40), username: vmInbox.user?.username ?? "",
-//                profileimageTapped: {
-//                    router.showScreen(.push) { _ in
-//                        if let user = vmInbox.user {
-//                            ProfileView(user: user)
-//                        }
-//                    }
-//                },
-//                searchTapped: {
-//                    
-//                },
-//                newChatTapped: {
-//                    router.showScreen(.fullScreenCover) { _ in
-//                        NewMessageView(selectedUser: $selectedUser)
-//                    }
-//                    selectedUser = nil
-//                }
-//            )
             .task {
               //  vmInbox.
             }

@@ -15,6 +15,7 @@ struct SettingsView: View {
     @State private var changeTheme: Bool = false
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     @StateObject private var notification = NotificationsManager()
+    @StateObject private var settingsViewModel = SettingsViewModel()
     
     private let authService: AuthServiceProtocol
 
@@ -134,7 +135,7 @@ struct SettingsView: View {
                     do {
                         try await authService.signOut()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            router.dismissScreen()
+                            router.dismissScreenStack()
                         }
                     } catch {
                         print("Ошибка при выходе из системы: \(error.localizedDescription)")
@@ -152,7 +153,7 @@ struct SettingsView: View {
                     do {
                         try await authService.deleteUser()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            router.dismissScreen()
+                            router.dismissScreenStack()
                         }
                     } catch {
                         print("Ошибка при удалении аккаунта: \(error.localizedDescription)")
@@ -164,10 +165,10 @@ struct SettingsView: View {
     
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RouterView { _ in
-            SettingsView(authService: EmailAuthProvider() as! AuthServiceProtocol)
-        }
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RouterView { _ in
+//            SettingsView(authService: EmailAuthProvider() as! AuthServiceProtocol)
+//        }
+//    }
+//}

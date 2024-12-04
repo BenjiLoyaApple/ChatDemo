@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import Components
 
-struct User: Identifiable, Codable, Hashable {
+struct User: Identifiable, Codable, Hashable, UserRepresentable {
     @DocumentID var userId: String?
     var username: String
     var fullname: String?
@@ -21,7 +21,7 @@ struct User: Identifiable, Codable, Hashable {
     var lastActive: Timestamp?
     var isOnline: Bool {
             guard let lastActiveDate = lastActive?.dateValue() else {
-                return false // Если lastActive равен nil, считаем пользователя офлайн
+                return false 
             }
             let now = Date()
             let timeInterval = now.timeIntervalSince(lastActiveDate)
@@ -40,4 +40,5 @@ extension User: Equatable {
     }
 }
 
-extension User: ProfileRepresentable {}
+//extension User: UserRepresentable {}
+

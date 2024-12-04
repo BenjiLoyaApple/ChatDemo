@@ -5,16 +5,23 @@
 //  Created by Benji Loya on 09.08.2023.
 //
 
+/*
 import SwiftUI
 import SwiftfulUI
-import Components
 
-// MARK: - ActiveNowView
-struct ActiveNowView: View {
-    @ObservedObject var viewModel: ActiveNowViewModel
-    var onChatTapped: ((User) -> Void)?
+public struct ActiveNowView<ViewModel: ActiveNowViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
+    public var onChatTapped: ((ViewModel.UserType) -> Void)?
     
-    var body: some View {
+    public init(
+        viewModel: ViewModel,
+        onChatTapped: ((ViewModel.UserType) -> Void)? = nil
+    ) {
+        self.viewModel = viewModel
+        self.onChatTapped = onChatTapped
+    }
+    
+    public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Active Now")
                 .font(.system(size: 18))
@@ -30,8 +37,7 @@ struct ActiveNowView: View {
                 LazyHStack(spacing: 25) {
                     if !viewModel.isLoading {
                         ForEach(0..<10) { _ in
-                            placeholderActiveNow()
-                                
+                           // placeholderActiveNow()
                         }
                     } else {
                         ForEach(viewModel.users) { user in
@@ -56,8 +62,17 @@ struct ActiveNowView: View {
     }
 }
 
-// MARK: - Preview with Mock Data
 #Preview {
-    ActiveNowView(viewModel: .mockActive)
+    let mockUsers = [
+        MockUser(id: "1", username: "Benji Loya"),
+        MockUser(id: "2", username: "Alice Smith"),
+        MockUser(id: "3", username: "John Doe")
+    ]
+    
+    let viewModel = MockActiveNowViewModel(users: mockUsers, isLoading: true)
+    
+    ActiveNowView(viewModel: viewModel) { user in
+        print("Tapped on user: \(user.username)")
+    }
 }
-
+*/

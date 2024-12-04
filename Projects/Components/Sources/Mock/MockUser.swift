@@ -1,26 +1,20 @@
 //
-//  MockUser.swift
+//  MockProfile.swift
 //  Components
 //
 //  Created by Benji Loya on 25.11.2024.
 //
 
-/*
 import Foundation
 
-// Моковый пользователь
-public struct MockUser {
-    var userId: String
-    var username: String
-    var fullname: String?
-    var email: String
-    var profileImageUrl: String?
-    var bio: String?
-    var link: String?
+public struct MockUser: Identifiable, UserRepresentable {
+    public var id: String
+    public var username: String
+    public var profileImageUrl: String?
     
-    // Функция для получения имени пользователя
-    public var displayName: String {
-        return username
+    public init(id: String, username: String, profileImageUrl: String? = nil) {
+        self.id = id
+        self.username = username
+        self.profileImageUrl = profileImageUrl
     }
 }
-*/

@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import Combine
+//import Models
 
 protocol AuthServiceProtocol {
     var userSession: FirebaseAuth.User? { get }
@@ -15,6 +16,7 @@ protocol AuthServiceProtocol {
     
     func login(withEmail email: String, password: String) async throws
     func createUser(withEmail email: String, password: String, username: String, fullname: String?) async throws
+    func resetPassword(email: String) async throws
     func signOut() async throws
     func deleteUser() async throws
 }

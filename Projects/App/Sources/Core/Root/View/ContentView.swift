@@ -20,7 +20,7 @@ struct ContentView: View {
             if viewModel.userSession != nil {
                 InboxView()
             } else {
-                IntrosView()
+               IntrosView()
             }
         }
         .preferredColorScheme(userTheme.colorScheme)

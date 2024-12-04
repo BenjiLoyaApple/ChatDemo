@@ -130,7 +130,6 @@
 		CFB18591529C0A977726639C /* FirebaseFirestoreSwiftTarget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8E91C04ADB0003B4F6E227 /* FirebaseFirestoreSwiftTarget.framework */; };
 		D07162BFDCCC26CD1A7C191D /* nanopb_nanopb.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 179F54720897E5E9E6736BF4 /* nanopb_nanopb.bundle */; };
 		D342B3DB8679AE47A756EE7D /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACFCA8E0469117254E12B57 /* CircularProfileImageView.swift */; };
-		D54D391486D3B7B933DFC2C8 /* CustomProgressIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE1C76D93EBEFD5575E583F /* CustomProgressIndicatorStyle.swift */; };
 		D631B65252388A17E859225B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A4FEA361A5469E6D5E404 /* InboxView.swift */; };
 		D6702FD22A0822B4E5B1E6B4 /* Kingfisher_Kingfisher.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */; };
 		D98C8717D08FB8703AC48AFC /* leveldb_leveldb.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7339DAE4FA17708DC06A2F1E /* leveldb_leveldb.bundle */; };
@@ -330,7 +329,6 @@
 		D85C503DE56BFF18BBE73D98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D8F26A6C28B69D73A4BD7741 /* gRPC_opensslWrapper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gRPC_opensslWrapper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD65D5A8DC81A5CDE94C2A81 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		DEE1C76D93EBEFD5575E583F /* CustomProgressIndicatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressIndicatorStyle.swift; sourceTree = "<group>"; };
 		E048DA20891ABE7E4BD15F45 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E0DB94C1475070CC102447EB /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		E3514999B2FA701D10E1DE4C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -875,7 +873,6 @@
 			isa = PBXGroup;
 			children = (
 				AEFC670942293AB7A1586547 /* Color.swift */,
-				DEE1C76D93EBEFD5575E583F /* CustomProgressIndicatorStyle.swift */,
 				3C653CFED80ADE3C86D72C45 /* CustomRefreshView.swift */,
 				AB0482302B1AC495B9A32524 /* Date.swift */,
 				5989C865EA71934C721A49AB /* Extensions.swift */,
@@ -1072,7 +1069,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1610;
 			};
 			buildConfigurationList = E021BC8AA8DFBCD7F3403001 /* Build configuration list for PBXProject "ChatDemo" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -1168,7 +1164,6 @@
 				15A3FF69CBA06F1D557026CE /* SettingsView.swift in Sources */,
 				7C0E1529D4A61293FC501900 /* SettingsViewModel.swift in Sources */,
 				618202A82DF64917C178C35C /* Color.swift in Sources */,
-				D54D391486D3B7B933DFC2C8 /* CustomProgressIndicatorStyle.swift in Sources */,
 				DAB2F58E927527FC99F7660B /* CustomRefreshView.swift in Sources */,
 				21EE1A173E6587B4394D7D19 /* Date.swift in Sources */,
 				3F259C6D67AFF4C0A97FFA90 /* Extensions.swift in Sources */,
@@ -1206,7 +1201,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 62UE764E85;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1303,7 +1297,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1339,7 +1332,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1364,7 +1356,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1400,7 +1391,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1423,7 +1413,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 62UE764E85;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (

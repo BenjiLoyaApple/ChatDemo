@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct CustomProgressIndicatorStyle: ProgressViewStyle {
-    func makeBody(configuration: Configuration) -> some View {
+public struct CustomProgressIndicatorStyle: ProgressViewStyle {
+    public func makeBody(configuration: Configuration) -> some View {
         ZStack {
             Circle()
                 .stroke(Color.white, lineWidth: 2)

@@ -36,7 +36,7 @@ struct ProfileView: View {
             
             Text("Settings")
                 .onTapGesture {
-                    router.showScreen(.fullScreenCover) { _ in
+                    router.showScreen(.push) { _ in
                         SettingsView(authService: DIContainer.shared.authService)
                     }
                 }
