@@ -26,8 +26,17 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-           
-            HeaderView()
+            HeaderComponent(backButtonPressed: {
+                router.dismissScreen()
+            }) {
+                Spacer(minLength: 0)
+                
+                Text("Settings")
+                    .font(.subheadline)
+                    .offset(x: -20)
+                
+                Spacer(minLength: 0)
+            }
             
             OptionsView()
                 .padding(.horizontal)
@@ -42,35 +51,6 @@ struct SettingsView: View {
                 .presentationDetents([.height(410)])
                 .presentationBackground(.clear)
         })
-    }
-    
-    // MARK: - Header
-    @ViewBuilder
-    private func HeaderView() -> some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .center) {
-                Button("Back") {
-                    router.dismissScreen()
-                }
-                .font(.subheadline)
-                .foregroundColor(Color.theme.primaryText)
-                
-                Spacer(minLength: 0)
-                
-                Text("Settings")
-                    .offset(x: -15)
-                
-                Spacer(minLength: 0)
-                
-                
-            }
-            .padding(.horizontal, 15)
-            .padding(.bottom, 5)
-            
-            Divider()
-                .offset(y: 10)
-        }
-        .padding(.vertical)
     }
     
     // MARK: - Options

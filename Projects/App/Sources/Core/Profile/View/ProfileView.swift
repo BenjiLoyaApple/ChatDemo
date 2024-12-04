@@ -22,7 +22,35 @@ struct ProfileView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView()
+       //     HeaderView()
+            
+            HeaderComponent(backButtonPressed: {
+                router.dismissScreen()
+                Task {
+                    try? await viewModel.loadCurrentUser()
+                }
+            }) {
+                Spacer(minLength: 0)
+                
+                Text(viewModel.username)
+                    .font(.subheadline)
+                    .offset(x: -20)
+                
+                Spacer(minLength: 0)
+                
+                CustomChatButton(
+                    text: "Done",
+                    font: .subheadline,
+                    foregroundColor: Color.theme.primaryText,
+                    padding: 5
+                ) {
+                    router.dismissScreen()
+                    Task {
+                        try await viewModel.updateUserData()
+                        try? await viewModel.loadCurrentUser()
+                    }
+                }
+            }
             
             Spacer()
             
@@ -43,54 +71,6 @@ struct ProfileView: View {
         }
         .navigationBarBackButtonHidden()
         .background(Color.theme.darkBlack)
-    }
-    
-    // MARK: - Header
-    @ViewBuilder
-    private func HeaderView() -> some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .center) {
-                CustomChatButton(
-                    imageSource: .systemName("chevron.left"),
-                    font: .title2,
-                    foregroundColor: Color.theme.primaryText,
-                    padding: 5
-                ) {
-                    router.dismissScreen()
-                    Task {
-                        try? await viewModel.loadCurrentUser()
-                    }
-                }
-                
-                
-                Spacer(minLength: 0)
-                
-                Text(viewModel.username)
-                    .offset(x: -5)
-                
-                Spacer(minLength: 0)
-                
-                CustomChatButton(
-                    text: "Done",
-                    font: .subheadline,
-                    foregroundColor: Color.theme.primaryText,
-                    padding: 5
-                ) {
-                    router.dismissScreen()
-                    Task {
-                        try await viewModel.updateUserData()
-                        try? await viewModel.loadCurrentUser()
-                    }
-                }
-                
-            }
-            .padding(.horizontal, 15)
-            
-            Divider()
-                .offset(y: 10)
-                .opacity(0.5)
-        }
-        .padding(.vertical)
     }
     
     // MARK: - User

@@ -52,7 +52,6 @@ public struct ActiveCell<ProfileImageView: View, UserType: UserRepresentable>: V
                 .font(.caption)
                 .foregroundColor(.primary.opacity(0.8))
         }
-        
     }
 }
 

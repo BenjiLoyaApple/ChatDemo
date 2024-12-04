@@ -419,8 +419,8 @@
 		0B1D587D152DC06714766520 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				8AE50FE9D210CBBFC66BC651 /* View */,
 				4C2AA7AE92FBD2E3F423E413 /* ViewModel */,
+				8AE50FE9D210CBBFC66BC651 /* View */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
