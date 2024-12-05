@@ -11,6 +11,36 @@ import SwiftfulRouting
 import Components
 
 struct ProfileView: View {
+    
+    @Environment(\.router) var router
+    
+    var body: some View {
+        GeometryReader {
+            let size = $0.size
+            let safeArea = $0.safeAreaInsets
+            // ProfileView(user: user)
+            ProfileHome(size: size, safeArea: safeArea)
+                .ignoresSafeArea()
+        }
+        .navigationBarBackButtonHidden()
+        .background(Color.theme.darkBlack)
+    }
+}
+
+#Preview {
+    RouterView { _ in
+        ProfileView()
+    }
+}
+
+
+/*
+import SwiftUI
+import PhotosUI
+import SwiftfulRouting
+import Components
+
+struct ProfileView: View {
     @Environment(\.router) var router
     @StateObject var viewModel = ProfileViewModel()
     
@@ -148,22 +178,9 @@ struct ProfileView: View {
     }
 }
 
-extension User {
-    static var mock: User {
-        return User(
-            userId: "mockUserID",
-            username: "benjiloya",
-            fullname: "Benji Loya",
-            email: "mockuser@example.com",
-            profileImageUrl: "https://example.com/mockProfileImage.png",
-            bio: "This is a mock user for preview purposes.",
-            link: "https://apple.com"
-        )
-    }
-}
-
 #Preview {
     RouterView { _ in
         ProfileView(user: .mock)
     }
 }
+*/

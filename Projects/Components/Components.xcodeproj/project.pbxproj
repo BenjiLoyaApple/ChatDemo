@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		5656055864792E44D76F09F6 /* MessageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C86EF2CE8B8CD0F3BD041E2 /* MessageRepresentable.swift */; };
 		585EA91FBD2DC8846B0F2EFA /* CustomProgressIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C3AFF4008CEDED02D1529 /* CustomProgressIndicatorStyle.swift */; };
 		5B99FEB426DE7B2B7DB4078B /* ChatOptionsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6A96D7E65E7E0F8A0B702A /* ChatOptionsMenu.swift */; };
+		5BD6B52BAA92EBBA3E903BBE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCEE8B76EAEEEB29093B3CF /* HeaderView.swift */; };
 		732AAE97EE7C6C7870A3F327 /* ActiveNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510EB1DB425F481DB5DF83A /* ActiveNowView.swift */; };
 		7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D1D96651F36739BB3A33C /* CustomChatButton.swift */; };
 		826EC8CC43678DFEE593C5F0 /* Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0BCAA28A9E1A9A321AB8D /* Crop.swift */; };
@@ -32,7 +33,6 @@
 		CE331E6F38FEB4AF950BDFEA /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10768136A09278D31D285BF8 /* TransparentBlurView.swift */; };
 		D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */; };
 		D556521AFDC033F37F36A954 /* MockActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD37F3C1BB61C37C9BC327 /* MockActiveNowViewModel.swift */; };
-		E492E6832D003389000A2DB6 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E492E6822D003389000A2DB6 /* HeaderView.swift */; };
 		F4B84659F3DB04000E12242F /* UserRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B52152551305824501DF9 /* UserRepresentable.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +69,7 @@
 		8DCF686C80880D7A9FEB6758 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		911B52152551305824501DF9 /* UserRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentable.swift; sourceTree = "<group>"; };
 		93B7293629F61776020554DE /* MockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
+		9CCEE8B76EAEEEB29093B3CF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		AC39659DF4EBCAE411AFD163 /* Components-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Components-Info.plist"; sourceTree = "<group>"; };
 		ACF0BCAA28A9E1A9A321AB8D /* Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crop.swift; sourceTree = "<group>"; };
 		AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD254C9E2686DA9D0DF23B1F /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E492E6822D003389000A2DB6 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E5C535612F07F124B4E96328 /* HomeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonView.swift; sourceTree = "<group>"; };
 		F510EB1DB425F481DB5DF83A /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,7 +215,7 @@
 				5CB1C1EEADED0FF8E935FBFF /* CustomButton.swift */,
 				380D1D96651F36739BB3A33C /* CustomChatButton.swift */,
 				716C3AFF4008CEDED02D1529 /* CustomProgressIndicatorStyle.swift */,
-				E492E6822D003389000A2DB6 /* HeaderView.swift */,
+				9CCEE8B76EAEEEB29093B3CF /* HeaderView.swift */,
 				AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */,
 			);
 			path = Components;
@@ -268,6 +268,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -313,12 +315,12 @@
 				1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */,
 				7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */,
 				585EA91FBD2DC8846B0F2EFA /* CustomProgressIndicatorStyle.swift in Sources */,
+				5BD6B52BAA92EBBA3E903BBE /* HeaderView.swift in Sources */,
 				D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */,
 				826EC8CC43678DFEE593C5F0 /* Crop.swift in Sources */,
 				9FC95F628B7B4C0EFDD80F9A /* CustomImagePicker.swift in Sources */,
 				0D0D865AF85AC60F62A82C15 /* MorphingSymbolView.swift in Sources */,
 				9D86C9DCC5D97418FC55767C /* ShimmerEffect.swift in Sources */,
-				E492E6832D003389000A2DB6 /* HeaderView.swift in Sources */,
 				98EA0F110A942FB96975772C /* Toast.swift in Sources */,
 				CE331E6F38FEB4AF950BDFEA /* TransparentBlurView.swift in Sources */,
 				D556521AFDC033F37F36A954 /* MockActiveNowViewModel.swift in Sources */,
@@ -363,7 +365,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

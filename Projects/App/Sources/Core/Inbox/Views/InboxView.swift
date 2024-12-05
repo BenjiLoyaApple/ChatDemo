@@ -93,7 +93,8 @@ struct InboxView: View {
                 profileimageTapped: {
                     router.showScreen(.push) { _ in
                         if let user = vmInbox.user {
-                            ProfileView(user: user)
+                          //  ProfileView(user: user)
+                            ProfileView()
                         }
                     }
                 },
