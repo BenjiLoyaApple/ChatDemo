@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 import Combine
 
+
 class AuthService: AuthServiceProtocol, ObservableObject {
     private let provider: AuthProviderProtocol
     @Published private var _userSession: FirebaseAuth.User?
@@ -51,11 +52,46 @@ class AuthService: AuthServiceProtocol, ObservableObject {
         try await provider.deleteUser()
         _userSession = nil
     }
+    
+
+    func signInWithGoogle(credential: AuthCredential) async throws {
+        return try await signInExtension(credential: credential)
+    }
+    
+    
+    func signInExtension(credential: AuthCredential) async throws {
+        try await Auth.auth().signIn(with: credential)
+        _userSession = provider.userSession
+    }
+    
+    
+    
+//    func signInWithGoogle(tokens: GoogleSignInResultModel) async throws -> FirebaseAuth.User {
+//            let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+//            return try await signInExtension(credential: credential)
+//    }
+//    
+//    func signInExtension(credential: AuthCredential) async throws -> FirebaseAuth.User {
+//        let authDataResult = try await Auth.auth().signIn(with: credential)
+//        return authDataResult.user
+//    }
+    
 }
 
 
 
 class EmailAuthProvider: AuthProviderProtocol {
+    
+//    func signInWithGoogle(tokens: GoogleSignInResultModel) async throws -> FirebaseAuth.User {
+//            let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+//            return try await signInExtension(credential: credential)
+//    }
+//    
+//    func signInExtension(credential: AuthCredential) async throws -> FirebaseAuth.User {
+//        let authDataResult = try await Auth.auth().signIn(with: credential)
+//        return authDataResult.user
+//    }
+    
     @Published var userSession: FirebaseAuth.User?
     
     init() {

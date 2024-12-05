@@ -54,6 +54,15 @@ class LoginViewModel: ObservableObject {
         
     }
     
+    @MainActor
+    func signInGoogle() async throws {
+        
+        
+//        let helper = SignInGoogleHelper()
+//        let tokens = try await helper.signIn()
+
+    }
+    
 }
 
 // MARK: - RegistrationViewModel

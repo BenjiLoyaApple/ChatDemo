@@ -4,7 +4,7 @@
 //
 //  Created by Benji Loya on 05.12.2024.
 //
-
+/*
 import SwiftUI
 import PhotosUI
 import SwiftfulRouting
@@ -204,3 +204,5 @@ struct Home_Previews: PreviewProvider {
         ProfileView()
     }
 }
+
+*/

@@ -19,6 +19,9 @@ protocol AuthServiceProtocol {
     func resetPassword(email: String) async throws
     func signOut() async throws
     func deleteUser() async throws
+    
+    func signInWithGoogle(credential: AuthCredential) async throws
+    func signInExtension(credential: AuthCredential) async throws
 }
 
 protocol AuthenticationFormProtocol {
@@ -32,6 +35,8 @@ protocol AuthProviderProtocol {
     func createUser(email: String, password: String, username: String, fullname: String?) async throws
     func signOut() async throws
     func deleteUser() async throws
+    
+
 }
 
 enum AuthProviderType {
@@ -55,6 +60,7 @@ class AuthProviderFactory {
 
 
 class MockAuthService: AuthServiceProtocol {
+
     var userSession: FirebaseAuth.User? = nil
     var userSessionPublisher: AnyPublisher<FirebaseAuth.User?, Never> {
         Just(nil).eraseToAnyPublisher()
@@ -78,5 +84,13 @@ class MockAuthService: AuthServiceProtocol {
     
     func deleteUser() async throws {
         print("Mock deleteUser called")
+    }
+    
+    func signInWithGoogle(credential: AuthCredential) async throws {
+        print("signInWithGoogle called")
+    }
+    
+    func signInExtension(credential: AuthCredential) async throws {
+        print("signInExtension called")
     }
 }

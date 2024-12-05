@@ -11,36 +11,6 @@ import SwiftfulRouting
 import Components
 
 struct ProfileView: View {
-    
-    @Environment(\.router) var router
-    
-    var body: some View {
-        GeometryReader {
-            let size = $0.size
-            let safeArea = $0.safeAreaInsets
-            // ProfileView(user: user)
-            ProfileHome(size: size, safeArea: safeArea)
-                .ignoresSafeArea()
-        }
-        .navigationBarBackButtonHidden()
-        .background(Color.theme.darkBlack)
-    }
-}
-
-#Preview {
-    RouterView { _ in
-        ProfileView()
-    }
-}
-
-
-/*
-import SwiftUI
-import PhotosUI
-import SwiftfulRouting
-import Components
-
-struct ProfileView: View {
     @Environment(\.router) var router
     @StateObject var viewModel = ProfileViewModel()
     
@@ -183,4 +153,4 @@ struct ProfileView: View {
         ProfileView(user: .mock)
     }
 }
-*/
+
