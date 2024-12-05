@@ -17,29 +17,39 @@ struct NewMessageView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            header
-            Divider()
-                .opacity(0.5)
             
-        ScrollView {
-            
-            HStack(spacing: 10) {
-                Text("To:")
+            HeaderComponent(backButtonPressed: {
+                dismiss()
+            }, buttonText: "Close",
+               font: .subheadline) {
+                Spacer(minLength: 0)
                 
-                TextField("Search ", text: $viewModel.searchText)
+                Text("New Message")
+                    .font(.subheadline.bold())
+                    .offset(x: -30)
+                
+                Spacer(minLength: 0)
             }
-            .foregroundStyle(.gray.opacity(0.8))
-            .frame(height: 50)
-            .padding(.leading)
-            .background(Color.gray.opacity(0.001))
             
-            Text("Suggested")
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-            
-            LazyVStack {
-                ForEach(viewModel.filteredUsers) { user in
+            ScrollView {
+                
+                HStack(spacing: 10) {
+                    Text("To:")
+                    
+                    TextField("Search ", text: $viewModel.searchText)
+                }
+                .foregroundStyle(.gray.opacity(0.8))
+                .frame(height: 50)
+                .padding(.leading)
+                .background(Color.gray.opacity(0.001))
+                
+                Text("Suggested")
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                
+                LazyVStack {
+                    ForEach(viewModel.filteredUsers) { user in
                         HStack(spacing: 15) {
                             CircularProfileImageView(user: user, size: .medium50)
                             
@@ -57,33 +67,12 @@ struct NewMessageView: View {
                                 ChatView(user: user)
                             }
                         }
-                    .padding(.leading)
+                        .padding(.leading)
+                    }
                 }
             }
         }
-    }
         .background(Color.theme.darkBlack)
-        
-    }
-    
-    // Header
-    private var header: some View {
-        HStack(spacing: 0) {
-            Button {
-                dismiss()
-            } label: {
-                Text("Cancel")
-            }
-            
-            Spacer(minLength: 0)
-        }
-        .foregroundStyle(.primary)
-        .frame(maxWidth: .infinity)
-        .padding(20)
-        .overlay(
-            Text("New Message")
-                .fontWeight(.semibold)
-        )
     }
     
 }

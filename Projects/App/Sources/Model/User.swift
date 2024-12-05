@@ -31,7 +31,6 @@ struct User: Identifiable, Codable, Hashable, UserRepresentable {
     var id: String {
         return userId ?? UUID().uuidString
     }
-    
 }
 
 extension User: Equatable {
@@ -39,6 +38,3 @@ extension User: Equatable {
         return lhs.id == rhs.id
     }
 }
-
-//extension User: UserRepresentable {}
-
