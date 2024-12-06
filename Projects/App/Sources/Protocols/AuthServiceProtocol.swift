@@ -52,3 +52,31 @@ class AuthProviderFactory {
         }
     }
 }
+
+
+class MockAuthService: AuthServiceProtocol {
+    var userSession: FirebaseAuth.User? = nil
+    var userSessionPublisher: AnyPublisher<FirebaseAuth.User?, Never> {
+        Just(nil).eraseToAnyPublisher()
+    }
+    
+    func login(withEmail email: String, password: String) async throws {
+        print("Mock login called")
+    }
+    
+    func createUser(withEmail email: String, password: String, username: String, fullname: String?) async throws {
+        print("Mock createUser called")
+    }
+    
+    func resetPassword(email: String) async throws {
+        print("Mock resetPassword called")
+    }
+    
+    func signOut() async throws {
+        print("Mock signOut called")
+    }
+    
+    func deleteUser() async throws {
+        print("Mock deleteUser called")
+    }
+}

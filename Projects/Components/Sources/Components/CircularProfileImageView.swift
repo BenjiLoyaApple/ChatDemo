@@ -11,7 +11,7 @@ import Kingfisher
 
 /// Размеры профиля с предопределенными размерами
 public enum ProfileImageSize {
-    case small14, small20, small24, small28, small34, small40, medium46, medium50, large56, large60, large66, large72
+    case small14, small20, small24, small28, small34, small40, medium46, medium50, large56, large60, large66, large72, large100
     
     public var dimension: CGFloat {
         switch self {
@@ -27,6 +27,7 @@ public enum ProfileImageSize {
         case .large60: return 60
         case .large66: return 66
         case .large72: return 72
+        case .large100: return 100
         }
     }
     
@@ -44,6 +45,7 @@ public enum ProfileImageSize {
         case .large60: return 30
         case .large66: return 33
         case .large72: return 36
+        case .large100: return 50
         }
     }
 }

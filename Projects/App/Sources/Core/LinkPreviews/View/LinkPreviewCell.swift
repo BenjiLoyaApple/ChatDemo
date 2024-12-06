@@ -56,7 +56,6 @@ struct LinkPreviewCell: View {
 
 #Preview {
     LinkPreviewCell(linkMetaData: DeveloperPreview.shared.linkMetadataWrapper)
-        .previewLayout(.sizeThatFits)
         .padding()
 }
 

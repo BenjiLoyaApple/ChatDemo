@@ -142,3 +142,17 @@ extension InboxViewModel {
         return viewModel
     }
 }
+
+extension User {
+    static var mock: User {
+        return User(
+            userId: "mockUserID",
+            username: "benjiloya",
+            fullname: "Benji Loya",
+            email: "mockuser@example.com",
+            profileImageUrl: "https://example.com/mockProfileImage.png",
+            bio: "This is a mock user for preview purposes.",
+            link: "https://apple.com"
+        )
+    }
+}

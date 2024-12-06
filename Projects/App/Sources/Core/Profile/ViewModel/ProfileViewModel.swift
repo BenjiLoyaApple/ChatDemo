@@ -13,14 +13,11 @@ import Firebase
 
 @MainActor
 class ProfileViewModel: ObservableObject {
-    
-    // MARK: - Properties
-    
+    //Properties
     @Published private(set) var currentUser: User? = nil
     @Published var selectedImage: PhotosPickerItem? {
         didSet { Task { await loadImage(fromItem: selectedImage) } }
     }
-    
     @Published var profileImage: Image?
     @Published var username = ""
     @Published var bio = ""
@@ -31,9 +28,8 @@ class ProfileViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
-        
     init() {
-     //   setupSubscribers()
+        //   setupSubscribers()
         loadUserData()
     }
     
@@ -41,8 +37,6 @@ class ProfileViewModel: ObservableObject {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         self.currentUser = try await UserService.fetchUser(uid: uid)
     }
-  
-    
 }
 
 // MARK: - User Data
@@ -70,25 +64,25 @@ extension ProfileViewModel {
     func updateUserData() async throws {
         guard let user = currentUser else { return }
         var data: [String: Any] = [:] // Changed to [String: Any] for Firestore
-
+        
         // Check for changes in username
         if !username.isEmpty, user.username != username {
             currentUser?.username = username
             data["username"] = username
         }
-
+        
         // Check for changes in bio
         if !bio.isEmpty, user.bio ?? "" != bio {
             currentUser?.bio = bio
             data["bio"] = bio
         }
-
+        
         // Check for changes in link
         if !link.isEmpty, user.link ?? "" != link {
             currentUser?.link = link
             data["link"] = link
         }
-
+        
         // Check for changes in profile image
         if let uiImage = uiImage {
             try await updateProfileImage(uiImage)
@@ -96,7 +90,7 @@ extension ProfileViewModel {
                 data["profileImageUrl"] = profileImageUrl
             }
         }
-
+        
         // Update data in Firestore
         if !data.isEmpty {
             try await FirestoreConstants.UsersCollection.document(user.id).updateData(data)
@@ -135,7 +129,7 @@ extension ProfileViewModel {
             throw error
         }
     }
-    }
+}
 
 extension ProfileViewModel {
     func handleCroppedImage(_ image: UIImage?) async {

@@ -25,7 +25,29 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
-            HeaderView()
+            HeaderComponent(backButtonPressed: {
+                router.dismissScreen()
+            }, buttonImageSource: .systemName("chevron.left"))  {
+                HStack(spacing: 15) {
+                    CircularProfileImageView(user: user, size: .small34)
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(user.username)
+                            .font(.subheadline)
+                            .foregroundStyle(.primary.opacity(0.7))
+                        
+                        if let lastActive = user.lastActive {
+                            Text("Active \(lastActive.timestampString()) ago")
+                                .font(.caption2)
+                                .foregroundStyle(.gray)
+                        } else {
+                            Text("Inactive")
+                                .font(.caption2)
+                                .foregroundStyle(.gray)
+                        }
+                    }
+                }
+            }
             
             ScrollViewReader { proxy in
                 ScrollView {
@@ -66,53 +88,6 @@ struct ChatView: View {
         .onChange(of: viewModel.messages, perform: { _ in
             Task { try await viewModel.updateMessageStatusIfNecessary()}
         })
-    }
-    
-    // MARK: - Header
-    @ViewBuilder
-    private func HeaderView() -> some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .center, spacing: 20) {
-                
-                CustomChatButton(
-                    imageSource: .systemName("chevron.left"),
-                    font: .title2,
-                    foregroundColor: Color.theme.primaryText,
-                    padding: 5
-                ) {
-                    router.dismissScreen()
-                }
-                
-                HStack(spacing: 15) {
-             //       CircularProfileImageView(profile: user, size: .small34)
-                    CircularProfileImageView(user: user, size: .small34)
-                    
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(user.username)
-                            .font(.subheadline)
-                            .foregroundStyle(.primary.opacity(0.7))
-                        
-                        if let lastActive = user.lastActive {
-                            Text("Active \(lastActive.timestampString()) ago")
-                                .font(.caption2)
-                                .foregroundStyle(.gray)
-                        } else {
-                            Text("Inactive")
-                                .font(.caption2)
-                                .foregroundStyle(.gray)
-                        }
-                    }
-                }
-                Spacer(minLength: 0)
-            }
-            .padding(.horizontal, 15)
-            .padding(.bottom, 10)
-            
-            Divider()
-                .offset(y: 8)
-                .opacity(0.4)
-        }
-        .padding(.top, 10)
     }
     
 }
