@@ -76,7 +76,15 @@ struct InboxView: View {
             // Resent Chats
             RecentChatsView(
                 viewModel: vmInbox,
-                onChatTapped: { user in
+                profileImageTapped: { user in
+                    router.showScreen(.push) { _ in
+                        // логика перехода на страницу юзера
+                        if let user = vmInbox.user {
+                            ProfileView()
+                        }
+                    }
+                },
+                chatTapped: { user in
                     router
                         .showScreen(.push) { _ in
                             ChatView(user: user)

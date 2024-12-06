@@ -10,7 +10,8 @@ import Components
 
 struct RecentChatsView: View {
     @ObservedObject var viewModel: InboxViewModel
-    var onChatTapped: ((User) -> Void)?
+    var profileImageTapped: ((User) -> Void)?
+    var chatTapped: ((User) -> Void)?
 
     var body: some View {
         LazyVStack {
@@ -37,8 +38,11 @@ struct RecentChatsView: View {
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
                                 textMessage: recentMessage.caption,
+                                profileImageTapped: {
+                                    profileImageTapped?(user)
+                                },
                                 showChatTapped: {
-                                    onChatTapped?(user)
+                                    chatTapped?(user)
                                 },
                                 deleteForMeButtonTapped: {
                                     Task { try await viewModel.deleteMessage(recentMessage) }

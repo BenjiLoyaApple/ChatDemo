@@ -15,8 +15,8 @@ struct RecentChatCell<ProfileImageView: View>: View {
     let username: String
     let timestamp: String
     let textMessage: String?
-    var showChatTapped: (() -> Void)? = nil
     var profileImageTapped: (() -> Void)? = nil
+    var showChatTapped: (() -> Void)? = nil
     
     // Chat Menu Options
     var pinButtonTapped: (() -> Void)? = nil
