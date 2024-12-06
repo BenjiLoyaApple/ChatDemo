@@ -13,14 +13,20 @@ import Components
 struct ProfileView: View {
     
     @Environment(\.router) var router
+    @StateObject var vmInbox = InboxViewModel()
     
     var body: some View {
         GeometryReader {
             let size = $0.size
             let safeArea = $0.safeAreaInsets
             // ProfileView(user: user)
-            ProfileHome(size: size, safeArea: safeArea)
-                .ignoresSafeArea()
+//            ProfileHome(size: size, safeArea: safeArea)
+//                .ignoresSafeArea()
+            
+            if let user = vmInbox.user {
+                ProfileHome(user: user, size: size, safeArea: safeArea)
+                    .ignoresSafeArea()
+            }
         }
         .navigationBarBackButtonHidden()
         .background(Color.theme.darkBlack)
@@ -45,6 +51,7 @@ struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     
     let user: User
+ 
     /// - View Properties
     @State private var showPicker: Bool = false
     @State private var croppedImage: UIImage?

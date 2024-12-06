@@ -12,6 +12,13 @@ import Components
 
 struct ProfileHome: View {
     @Environment(\.router) var router
+    @StateObject var viewModel = ProfileViewModel()
+    
+    let user: User
+    
+    /// - View Properties
+    @State private var showPicker: Bool = false
+    @State private var croppedImage: UIImage?
     
     var size: CGSize
     var safeArea: EdgeInsets
@@ -21,14 +28,13 @@ struct ProfileHome: View {
     @State private var textHeaderOffset: CGFloat = 0
     var body: some View {
         let isHavingNotch = safeArea.bottom != 0
-        ScrollView(.vertical, showsIndicators: true) {
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 12) {
-                Image("nullProfile")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    /// Adding Blur and Reducing Size based on Scroll Progress
-                    .frame(width: 100 - (75 * scrollProgress), height: 100 - (75 * scrollProgress))
-                    /// Hiding Main View so that the Dynmaic Island Metaball Effect will be Visible
+                //MARK: - Profile Image
+                ProfileImage()
+                /// Adding Blur and Reducing Size based on Scroll Progress
+                    .frame(width: 100 - (50 * scrollProgress), height: 100 - (50 * scrollProgress))
+                /// Hiding Main View so that the Dynmaic Island Metaball Effect will be Visible
                     .opacity(1 - scrollProgress)
                     .blur(radius: scrollProgress * 10, opaque: true)
                     .clipShape(Circle())
@@ -43,26 +49,44 @@ struct ProfileHome: View {
                     }
                 
                 let fixedTop: CGFloat = safeArea.top + 3
-                Text("benjiLoya - IOS DEveloper")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                Text(viewModel.username)
+                    .font(.system(size: 15))
+                    .fontWeight(.semibold)
+                .offset(y: 2)
+                    .foregroundColor(.primary)
                     .padding(.vertical, 15)
+                
                     .background(content: {
                         Rectangle()
                             .fill(colorScheme == .dark ? .black : .white)
                             .frame(width: size.width)
                             .padding(.top, textHeaderOffset < fixedTop ? -safeArea.top : 0)
-                            /// Adding Shadows
+                        /// Adding Shadows
                             .shadow(color: .black.opacity(textHeaderOffset < fixedTop ? 0.1 : 0), radius: 5, x: 0, y: 5)
                     })
-                    /// Stopping at the Top
+                /// Stopping at the Top
                     .offset(y: textHeaderOffset < fixedTop ? -(textHeaderOffset - fixedTop) : 0)
                     .offsetExtractor(coordinateSpace: "SCROLLVIEW") {
                         textHeaderOffset = $0.minY
                     }
                     .zIndex(1000)
                 
+                UserInfo()
+                
+                //MARK: - Settings
+                Text("Settings")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(height: 40)
+                    .onTapGesture {
+                        router.showScreen(.push) { _ in
+                            SettingsView(authService: DIContainer.shared.authService)
+                        }
+                    }
+                    .padding(.leading)
+                
+                // MARK: - Sample
                 SampleRows()
+                
             }
             .frame(maxWidth: .infinity)
         }
@@ -107,48 +131,32 @@ struct ProfileHome: View {
             }
         })
         .overlay(alignment: .top, content: {
-//            HStack {
-//                Button {
-//                    
-//                } label: {
-//                    Image(systemName: "chevron.left")
-//                }
-//
-//                Spacer()
-//                
-//                Button {
-//                    
-//                } label: {
-//                    Text("Edit")
-//                        .foregroundStyle(.primary)
-//                }
-//            }
-            
             HStack {
                 CustomChatButton(
                     imageSource: .systemName("chevron.left"),
                     font: .title3,
                     foregroundColor: Color.theme.primaryText,
-                    padding: 0,
+                    padding: 5,
                     onButtonPressed: {
                         router.dismissScreen()
                     }
                 )
-
+                
                 Spacer()
                 
                 CustomChatButton(
                     text: "Done",
                     font: .subheadline,
                     foregroundColor: Color.theme.primaryText,
-                    padding: 0
-                ) {
-                    router.dismissScreen()
-//                    Task {
-//                        try await viewModel.updateUserData()
-//                        try? await viewModel.loadCurrentUser()
-//                    }
-                }
+                    padding: 5,
+                    onButtonPressed: {
+                        Task {
+                            try await viewModel.updateUserData()
+                            try? await viewModel.loadCurrentUser()
+                        }
+                        router.dismissScreen()
+                    }
+                )
             }
             
             .padding(15)
@@ -170,7 +178,88 @@ struct ProfileHome: View {
     func DynamicIslandCapsule(_ height: CGFloat = 37) -> some View {
         Capsule()
             .fill(.black)
-            .frame(width: 120, height: height)
+            .frame(width: 100, height: height)
+    }
+    
+    //MARK: - Profile Image
+    @ViewBuilder
+    func ProfileImage() -> some View {
+        /// Profile Image
+        if let croppedImage {
+            Image(uiImage: croppedImage)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
+                .onAppear {
+                    Task {
+                        await viewModel.handleCroppedImage(croppedImage)
+                    }
+                }
+        } else {
+            CircularProfileImageView(user: user, size: .large100)
+                .onTapGesture {
+                    showPicker.toggle()
+                }
+        }
+    }
+    
+    //MARK: - User Info
+    @ViewBuilder
+    func UserInfo() -> some View {
+        VStack(alignment: .leading, spacing: 11) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Name")
+                        .fontWeight(.semibold)
+                    
+                    TextField("username", text: $viewModel.username)
+                        .onChange(of: viewModel.username) { _, newValue in
+                            if newValue.count > 20 {
+                                viewModel.username = String(newValue.prefix(20))
+                            }
+                        }
+                }
+                .font(.footnote)
+                
+                Spacer()
+            }
+            
+            Divider()
+            
+            VStack(alignment: .leading) {
+                Text("Bio")
+                    .fontWeight(.semibold)
+                
+                TextField("Enter you bio..", text: $viewModel.bio, axis: .vertical)
+            }
+            .font(.footnote)
+            
+            Divider()
+            
+            VStack(alignment: .leading) {
+                Text("Link")
+                    .fontWeight(.semibold)
+                
+                TextField("Add link...", text: $viewModel.link)
+                    .foregroundStyle(.primary.opacity(0.75))
+            }
+            .font(.footnote)
+            
+            Divider()
+        }
+        .padding()
+        .cornerRadius(15)
+        .overlay {
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color(.systemGray4), lineWidth: 0.5)
+        }
+        .cropImagePicker(
+            options: [.circle, .custom(.init(width: 300, height: 300))],
+            show: $showPicker,
+            croppedImage: $croppedImage
+        )
+        .padding(.horizontal, 15)
+        .padding(.bottom, safeArea.bottom + 15)
     }
     
     /// Sample Row's
@@ -197,6 +286,7 @@ struct ProfileHome: View {
         .padding(.horizontal, 15)
         .padding(.bottom, safeArea.bottom + 15)
     }
+    
 }
 
 struct Home_Previews: PreviewProvider {
