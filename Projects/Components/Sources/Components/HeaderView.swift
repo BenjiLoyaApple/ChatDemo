@@ -45,7 +45,8 @@ public struct HeaderComponent<Content: View>: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 15)
-            .padding(.vertical, 11)
+            .padding(.vertical, 6)
+            .padding(.bottom, 10)
             
             Divider()
                 .opacity(0.6)

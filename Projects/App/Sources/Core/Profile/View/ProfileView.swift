@@ -19,9 +19,6 @@ struct ProfileView: View {
         GeometryReader {
             let size = $0.size
             let safeArea = $0.safeAreaInsets
-            // ProfileView(user: user)
-//            ProfileHome(size: size, safeArea: safeArea)
-//                .ignoresSafeArea()
             
             if let user = vmInbox.user {
                 ProfileHome(user: user, size: size, safeArea: safeArea)

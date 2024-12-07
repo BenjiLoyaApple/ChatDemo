@@ -48,17 +48,17 @@ struct ProfileHome: View {
                         scrollProgress = min(max(progress, 0), 1)
                     }
                 
-                let fixedTop: CGFloat = safeArea.top + 3
+                // User Name
+                let fixedTop: CGFloat = safeArea.top
                 Text(viewModel.username)
-                    .font(.system(size: 15))
+                    .font(.system(size: 16))
                     .fontWeight(.semibold)
-                .offset(y: 2)
                     .foregroundColor(.primary)
-                    .padding(.vertical, 15)
-                
+                    .padding(.bottom, 15)
+                    .padding(.top, 12)
                     .background(content: {
                         Rectangle()
-                            .fill(colorScheme == .dark ? .black : .white)
+                           .fill(Color.theme.darkBlack)
                             .frame(width: size.width)
                             .padding(.top, textHeaderOffset < fixedTop ? -safeArea.top : 0)
                         /// Adding Shadows
@@ -71,18 +71,8 @@ struct ProfileHome: View {
                     }
                     .zIndex(1000)
                 
+                //MARK: - User Info
                 UserInfo()
-                
-                //MARK: - Settings
-                Text("Settings")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .frame(height: 40)
-                    .onTapGesture {
-                        router.showScreen(.push) { _ in
-                            SettingsView(authService: DIContainer.shared.authService)
-                        }
-                    }
-                    .padding(.leading)
                 
                 // MARK: - Sample
                 SampleRows()
@@ -90,6 +80,7 @@ struct ProfileHome: View {
             }
             .frame(maxWidth: .infinity)
         }
+      //  .background(Color.theme.darkBlack)
         .backgroundPreferenceValue(AnchorKey.self, { pref in
             GeometryReader { proxy in
                 if let anchor = pref["HEADER"], isHavingNotch {
@@ -126,7 +117,7 @@ struct ProfileHome: View {
             }
             .overlay(alignment: .top) {
                 Rectangle()
-                    .fill(colorScheme == .dark ? .black : .white)
+                    .fill(Color.theme.darkBlack)
                     .frame(height: 15)
             }
         })
@@ -145,6 +136,18 @@ struct ProfileHome: View {
                 Spacer()
                 
                 CustomChatButton(
+                    imageSource: .systemName("gearshape"),
+                    font: .title3,
+                    foregroundColor: Color.theme.primaryText,
+                    padding: 5,
+                    onButtonPressed: {
+                        router.showScreen(.push) { _ in
+                            SettingsView(authService: DIContainer.shared.authService)
+                        }
+                    }
+                )
+                
+                CustomChatButton(
                     text: "Done",
                     font: .subheadline,
                     foregroundColor: Color.theme.primaryText,
@@ -158,8 +161,9 @@ struct ProfileHome: View {
                     }
                 )
             }
-            
-            .padding(15)
+            .padding(.horizontal, 15)
+            .padding(.bottom, 15)
+            .padding(.top, 5)
             .padding(.top, safeArea.top)
         })
         .coordinateSpace(name: "SCROLLVIEW")

@@ -34,6 +34,7 @@ struct SettingsView: View {
                 Text("Settings")
                     .font(.subheadline.bold())
                     .offset(x: -20)
+                    .padding(.vertical, 8)
                 
                 Spacer(minLength: 0)
             }
