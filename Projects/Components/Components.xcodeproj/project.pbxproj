@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0D0D865AF85AC60F62A82C15 /* MorphingSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD254C9E2686DA9D0DF23B1F /* MorphingSymbolView.swift */; };
-		100C623B5E340FEE32C80349 /* HomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C535612F07F124B4E96328 /* HomeButtonView.swift */; };
+		100C623B5E340FEE32C80349 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C535612F07F124B4E96328 /* LoginButtonView.swift */; };
 		135AE2E8681D6E590F3BDF08 /* TuistBundle+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4536C9B2EC1D089B0C3054 /* TuistBundle+Components.swift */; };
 		1786ADFF28686DEA42EDDB8C /* ActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221282F51F36F53DC45350DA /* ActiveCell.swift */; };
 		1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1C1EEADED0FF8E935FBFF /* CustomButton.swift */; };
@@ -77,7 +77,7 @@
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD254C9E2686DA9D0DF23B1F /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5C535612F07F124B4E96328 /* HomeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonView.swift; sourceTree = "<group>"; };
+		E5C535612F07F124B4E96328 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		F510EB1DB425F481DB5DF83A /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				1BC67549B0E3F9E2D4C884B5 /* CustomLoginButton.swift */,
-				E5C535612F07F124B4E96328 /* HomeButtonView.swift */,
+				E5C535612F07F124B4E96328 /* LoginButtonView.swift */,
 			);
 			path = "Animated Button";
 			sourceTree = "<group>";
@@ -268,8 +268,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -309,7 +307,7 @@
 				1786ADFF28686DEA42EDDB8C /* ActiveCell.swift in Sources */,
 				732AAE97EE7C6C7870A3F327 /* ActiveNowView.swift in Sources */,
 				3DA50E0701813FDCDD24367C /* CustomLoginButton.swift in Sources */,
-				100C623B5E340FEE32C80349 /* HomeButtonView.swift in Sources */,
+				100C623B5E340FEE32C80349 /* LoginButtonView.swift in Sources */,
 				5B99FEB426DE7B2B7DB4078B /* ChatOptionsMenu.swift in Sources */,
 				BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */,
 				1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */,
@@ -365,10 +363,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

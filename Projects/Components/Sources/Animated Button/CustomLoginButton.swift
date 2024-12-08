@@ -141,5 +141,5 @@ public enum TaskStatus: Equatable {
 }
 
 #Preview {
-    HomeButtonView()
+    LoginButtonView()
 }

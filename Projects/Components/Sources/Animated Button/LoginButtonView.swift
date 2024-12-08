@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeButtonView: View {
+struct LoginButtonView: View {
     var body: some View {
         CustomLoginButton(
             buttonTint: AnyShapeStyle(
@@ -34,5 +34,5 @@ struct HomeButtonView: View {
 }
 
 #Preview {
-    HomeButtonView()
+    LoginButtonView()
 }
