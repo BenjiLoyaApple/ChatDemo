@@ -19,16 +19,14 @@ struct SettingsView: View {
     
     private let authService: AuthServiceProtocol
 
-        // Инициализатор с внедрением зависимости
-        init(authService: AuthServiceProtocol) {
-            self.authService = authService
-        }
+    init(authService: AuthServiceProtocol) {
+        self.authService = authService
+    }
     
     var body: some View {
-        VStack(spacing: 10) {
-            HeaderComponent(backButtonPressed: {
-                router.dismissScreen()
-            }, buttonImageSource: .systemName("chevron.left")) {
+        VStack( spacing: 10) {
+            HeaderComponent(backButtonPressed: { router.dismissScreen() },buttonImageSource: .systemName("chevron.left")) {
+                
                 Spacer(minLength: 0)
                 
                 Text("Settings and activity")
@@ -40,12 +38,11 @@ struct SettingsView: View {
             }
             
             OptionsView()
-            
         }
         .navigationBarBackButtonHidden()
         .background(Color.theme.darkBlack)
         .preferredColorScheme(userTheme.colorScheme)
-        .sheet(isPresented: $changeTheme, content: {
+        .sheet(isPresented: $changeTheme,content: {
             ThemeChangeView(scheme: scheme)
                 .presentationDetents([.height(410)])
                 .presentationBackground(.clear)
@@ -57,211 +54,122 @@ struct SettingsView: View {
     private func OptionsView() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 10) {
-                
                 //MARK: - How to use ChatDemo
-                Section {
-                    //Saved
-                    CustomButton(
-                        imageName: "bookmark",
-                        title: "Saved",
-                        imageName2: "chevron.right"
-                    ) {
-                        print("Privacy tapped")
-                    }
-                    
-                    //Archive
-                    CustomButton(
-                        imageName: "clock.arrow.trianglehead.counterclockwise.rotate.90",
-                        title: "Archive",
-                        imageName2: "chevron.right"
-                    ) {
-                        print("Privacy tapped")
-                    }
-                    
-                    //Your activity
-                    CustomButton(
-                        imageName: "chart.xyaxis.line",
-                        title: "Your activity",
-                        imageName2: "chevron.right"
-                    ) {
-                        print("Privacy tapped")
-                    }
-                    
-                    //Notifications
-                    CustomButton(
-                        imageName: "bell",
-                        title: "Notifications"
-                    ) {
-                        Task {
-                            await notification.request()
+                SectionView(title: "How to use ChatDemo",items: [
+                        SectionItem(
+                            icon: "bookmark",
+                            title: "Saved",
+                            trailingIcon: "chevron.right") {
+                            print("Saved tapped")
+                        },
+                        SectionItem(
+                            icon: "clock.arrow.trianglehead.counterclockwise.rotate.90",
+                            title: "Archive",
+                            trailingIcon: "chevron.right") {
+                            print("Archive tapped")
+                        },
+                        SectionItem(
+                            icon: "chart.xyaxis.line",
+                            title: "Your activity",
+                            trailingIcon: "chevron.right") {
+                            print("Your activity tapped")
+                        },
+                        SectionItem(
+                            icon: "bell",
+                            title: "Notifications",
+                            isDisabled: notification.hasPermission) {
+                            Task { await notification.request()}
+                        },
+                        SectionItem(
+                            icon: "clock",
+                            title: "Time management",
+                            trailingIcon: "chevron.right") {
+                            print("Time management tapped")
                         }
-                    }
-                    .disabled(notification.hasPermission)
-                    .task {
-                        await notification.getAuthStatus()
-                    }
-                    
-                    //Time management
-                    CustomButton(
-                        imageName: "clock",
-                        title: "Time management",
-                        imageName2: "chevron.right"
-                    ) {
-                        print("Privacy tapped")
-                    }
-                } header: {
-                    HStack {
-                        Text("How to use ChatDemo")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.gray)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 12)
-                    .padding(.vertical, 10)
-                    .padding(.bottom, 4)
-                }
+                    ])
                 
-                Rectangle()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 4)
-                    .foregroundStyle(.gray.opacity(0.1))
+                DividerView()
                 
                 //MARK: - Your app and media
-                Section {
-                    CustomButton(
-                        imageName: "character.square",
-                        title: "Language",
-                        imageName2: "chevron.right"
-                    ) {
-                        print("About tapped")
-                    }
-                    
-                    CustomButton(
-                        imageName: "moon",
-                        title: "Theme"
-                    ) {
-                        changeTheme.toggle()
-                    }
-                    
-                } header: {
-                    HStack {
-                        Text("Your app and media")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.gray)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 12)
-                }
+                SectionView(title: "Your app and media",items: [
+                        SectionItem(
+                            icon: "character.square",
+                            title: "Language",
+                            trailingIcon: "chevron.right") {
+                            print("Language tapped")
+                        },
+                        SectionItem(
+                            icon: "moon",
+                            title: "Theme") {
+                            changeTheme.toggle()
+                        }
+                    ])
                 
-                Rectangle()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 4)
-                    .foregroundStyle(.gray.opacity(0.1))
-                
-                
-                
+                DividerView()
                 
                 //MARK: - More info and support
-                Section {
-                    CustomButton(
-                        imageName: "questionmark.circle",
-                        title: "Help"
-                    ) {
-                        print("About tapped")
-                    }
-                    
-                    CustomButton(
-                        imageName: "exclamationmark.shield",
-                        title: "Privacy Center"
-                    ) {
-                        print("About tapped")
-                    }
-                    
-                    CustomButton(
-                        imageName: "person",
-                        title: "Account Status"
-                    ) {
-                        print("About tapped")
-                    }
-                    
-                    CustomButton(
-                        imageName: "info.circle",
-                        title: "About"
-                    ) {
-                        print("About tapped")
-                    }
-                    
-                } header: {
-                    HStack {
-                        Text("More info and support")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.gray)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 12)
-                }
+                SectionView(title: "More info and support",items: [
+                        SectionItem(
+                            icon: "questionmark.circle",
+                            title: "Help",
+                            trailingIcon: "chevron.right") {
+                            print("Help tapped")
+                        },
+                        SectionItem(
+                            icon: "exclamationmark.shield",
+                            title: "Privacy Center",
+                            trailingIcon: "chevron.right") {
+                            print("Privacy Center tapped")
+                        },
+                        SectionItem(
+                            icon: "person",
+                            title: "Account Status",
+                            trailingIcon: "chevron.right") {
+                            print("Account Status tapped")
+                        },
+                        SectionItem(
+                            icon: "info.circle",
+                            title: "About",
+                            trailingIcon: "chevron.right") {
+                            print("About tapped")
+                        }
+                    ])
                 
-                Rectangle()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 4)
-                    .foregroundStyle(.gray.opacity(0.1))
+                DividerView()
                 
-                
-                
-                //MARK: - Log Out
-                Section {
-                    CustomButton(
-                        title: "Log Out"
-                    ) {
-                        Task {
-                            do {
-                                try await authService.signOut()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    router.dismissScreenStack()
+                //MARK: - Login
+                SectionView(title: "Login",items: [
+                        SectionItem(
+                            title: "Log Out") {
+                            Task {
+                                do {
+                                    try await authService.signOut()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                            router.dismissScreenStack()}
+                                } catch {
+                                    print("Ошибка при выходе из системы: \(error.localizedDescription)")
                                 }
-                            } catch {
-                                print("Ошибка при выходе из системы: \(error.localizedDescription)")
+                            }
+                        },
+                        SectionItem(
+                            title: "Delete Account",
+                            textForegroundColor: .red
+                        ) {
+                            Task {
+                                do {
+                                    try await authService.deleteUser()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                            router.dismissScreenStack()}
+                                } catch {
+                                    print("Ошибка при удалении аккаунта: \(error.localizedDescription)")
+                                }
                             }
                         }
-                    }
-                    
-                    CustomButton(
-                        title: "Delete Account",
-                        imageForegroundColor: .red,
-                        textForegroundColor: .red
-                    ) {
-                        Task {
-                            do {
-                                try await authService.deleteUser()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    router.dismissScreenStack()
-                                }
-                            } catch {
-                                print("Ошибка при удалении аккаунта: \(error.localizedDescription)")
-                            }
-                        }
-                    }
-                } header: {
-                    HStack {
-                        Text("Login")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.gray)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 12)
-                }
-                
-                
-                
+                    ]
+                )
             }
         }
     }
-    
-    
 }
 
 #Preview {
@@ -269,29 +177,3 @@ struct SettingsView: View {
         SettingsView(authService: MockAuthService())
     }
 }
-
-
-/*
- //MARK: - Section name
- Section {
-    
-     
- } header: {
-     HStack {
-         Text("Sectionname")
-             .font(.footnote)
-             .fontWeight(.semibold)
-             .foregroundStyle(.gray)
-     }
-     .frame(maxWidth: .infinity, alignment: .leading)
-     .padding(.leading, 12)
-     .padding(.vertical, 10)
-     .padding(.bottom, 4)
- }
- 
- Rectangle()
-     .frame(maxWidth: .infinity)
-     .frame(height: 4)
-     .foregroundStyle(.gray.opacity(0.1))
- 
- */

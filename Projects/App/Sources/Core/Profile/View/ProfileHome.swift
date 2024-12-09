@@ -293,7 +293,7 @@ struct ProfileHome: View {
     
 }
 
-struct Home_Previews: PreviewProvider {
+struct ProfileHome_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
     }
