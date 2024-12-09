@@ -34,9 +34,9 @@
          }
      }
 
-     private func setupUser1() {
-         user = UserService.shared.currentUser
-     }
+//     private func setupUser1() {
+//         user = UserService.shared.currentUser
+//     }
      
      private func setupUser() async {
          user = try? await UserService.shared.fetchCurrentUser()

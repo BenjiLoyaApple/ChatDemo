@@ -14,7 +14,6 @@ struct ProfileView: View {
     
     @Environment(\.router) var router
     @StateObject var vmInbox = InboxViewModel()
-    
     var body: some View {
         GeometryReader {
             let size = $0.size

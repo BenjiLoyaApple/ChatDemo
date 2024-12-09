@@ -22,7 +22,7 @@ struct SettingsView: View {
     init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
-    
+        
     var body: some View {
         VStack( spacing: 10) {
             HeaderComponent(backButtonPressed: { router.dismissScreen() },buttonImageSource: .systemName("chevron.left")) {
@@ -60,7 +60,11 @@ struct SettingsView: View {
                             icon: "bookmark",
                             title: "Saved",
                             trailingIcon: "chevron.right") {
-                            print("Saved tapped")
+                                router.showScreen(.push) { _ in
+                                    SavedView()
+                                        .navigationBarBackButtonHidden()
+                                        .background(Color.theme.darkBlack)
+                                }
                         },
                         SectionItem(
                             icon: "clock.arrow.trianglehead.counterclockwise.rotate.90",
@@ -89,19 +93,90 @@ struct SettingsView: View {
                     ])
                 
                 DividerView()
-                
+              
                 //MARK: - Your app and media
                 SectionView(title: "Your app and media",items: [
                         SectionItem(
                             icon: "character.square",
                             title: "Language",
                             trailingIcon: "chevron.right") {
-                            print("Language tapped")
+                                router.showScreen(.push) { _ in
+                                    LanguageView()
+                                        .navigationBarBackButtonHidden()
+                                        .background(Color.theme.darkBlack)
+                                }
                         },
                         SectionItem(
                             icon: "moon",
                             title: "Theme") {
                             changeTheme.toggle()
+                        }
+                    ])
+                
+                DividerView()
+                
+#if DEBUG
+                //MARK: - Who can see yor content
+                SectionView(title: "Who can see yor content",items: [
+                        SectionItem(
+                            icon: "lock",
+                            title: "Account Privacy",
+                            trailingIcon: "chevron.right") {
+                            print("Help tapped")
+                        },
+                        SectionItem(
+                            icon: "star.circle",
+                            title: "Close friends",
+                            trailingIcon: "chevron.right") {
+                            print("Privacy Center tapped")
+                        },
+                        SectionItem(
+                            icon: "square.grid.2x2",
+                            title: "Crossposting",
+                            trailingIcon: "chevron.right") {
+                            print("Account Status tapped")
+                        },
+                        SectionItem(
+                            icon: "nosign",
+                            title: "Blocked",
+                            trailingIcon: "chevron.right") {
+                            print("About tapped")
+                        },
+                        SectionItem(
+                            icon: "circle.bottomrighthalf.checkered",
+                            title: "Hide story and live",
+                            trailingIcon: "chevron.right") {
+                            print("Account Status tapped")
+                        }
+                    ])
+                
+                DividerView()
+                
+                //MARK: - What you see
+                SectionView(title: "What you see",items: [
+                        SectionItem(
+                            icon: "star",
+                            title: "Favorites",
+                            trailingIcon: "chevron.right") {
+                            print("Help tapped")
+                        },
+                        SectionItem(
+                            icon: "bell.slash",
+                            title: "Muted accounts",
+                            trailingIcon: "chevron.right") {
+                            print("Privacy Center tapped")
+                        },
+                        SectionItem(
+                            icon: "play.square.stack",
+                            title: "Suggested content",
+                            trailingIcon: "chevron.right") {
+                            print("Account Status tapped")
+                        },
+                        SectionItem(
+                            icon: "heart.slash",
+                            title: "Like and share counts",
+                            trailingIcon: "chevron.right") {
+                            print("About tapped")
                         }
                     ])
                 
@@ -136,6 +211,7 @@ struct SettingsView: View {
                     ])
                 
                 DividerView()
+#endif
                 
                 //MARK: - Login
                 SectionView(title: "Login",items: [
@@ -153,8 +229,7 @@ struct SettingsView: View {
                         },
                         SectionItem(
                             title: "Delete Account",
-                            textForegroundColor: .red
-                        ) {
+                            textForegroundColor: .red) {
                             Task {
                                 do {
                                     try await authService.deleteUser()
@@ -165,8 +240,7 @@ struct SettingsView: View {
                                 }
                             }
                         }
-                    ]
-                )
+                    ])
             }
         }
     }
@@ -177,3 +251,79 @@ struct SettingsView: View {
         SettingsView(authService: MockAuthService())
     }
 }
+
+// MARK: - SavedView
+struct SavedView: View {
+    @Environment(\.router) var router
+    
+    var body: some View {
+        VStack {
+            HeaderComponent(backButtonPressed: { router.dismissScreen() },buttonImageSource: .systemName("chevron.left")) {
+                
+                Spacer(minLength: 0)
+                
+                Text("Saved")
+                    .font(.subheadline.bold())
+                    .offset(x: -20)
+                    .padding(.vertical, 8)
+                
+                Spacer(minLength: 0)
+            }
+            
+            Spacer(minLength: 0)
+            
+        }
+    }
+}
+
+// MARK: - LanguageView
+struct LanguageView: View {
+    @Environment(\.router) var router
+    
+    var body: some View {
+        VStack {
+            HeaderComponent(backButtonPressed: { router.dismissScreen() },buttonImageSource: .systemName("chevron.left")) {
+                
+                Spacer(minLength: 0)
+                
+                Text("Language")
+                    .font(.subheadline.bold())
+                    .offset(x: -20)
+                    .padding(.vertical, 8)
+                
+                Spacer(minLength: 0)
+            }
+            
+            Spacer(minLength: 0)
+            
+        }
+    }
+}
+
+
+
+/*
+let debugViewEnvs: [BuildEnvironment] = [.dev]
+
+if debugViewEnvs.contains(where: { GlobalSettings.environment == $0 }) {
+   
+    SectionView(title: "Debug Only Section", items: [
+        SectionItem(
+            icon: "hammer",
+            title: "Debug Option 1",
+            trailingIcon: "chevron.right"
+        ) {
+            print("Debug Option 1 tapped")
+        },
+        SectionItem(
+            icon: "wrench",
+            title: "Debug Option 2",
+            trailingIcon: "chevron.right"
+        ) {
+            print("Debug Option 2 tapped")
+        }
+    ])
+
+    DividerView()
+}
+*/

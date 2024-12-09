@@ -147,6 +147,7 @@
 		E00EDB2BC211E2E886AAFA45 /* FirebaseAppCheckInterop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B26C54E505E7FB5BFDAD9B /* FirebaseAppCheckInterop.framework */; };
 		E030CDCC9B50E79A5BE8CA3C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273956535013361340123E9 /* UserService.swift */; };
 		E0D75FD64A754FFC78E06544 /* gRPC_grpcWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 16033BFBACE6749691EF4F8F /* gRPC_grpcWrapper.bundle */; };
+		E408B2DC2D06A1FE00486979 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408B2DB2D06A1FE00486979 /* GlobalSettings.swift */; };
 		E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E5F9D5ABEE8EFC5976E04 /* MessageServiceProtocol.swift */; };
 		E542FC034EFD776B5414BFB9 /* GoogleUtilities_Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78281A9C0799E266964689F1 /* GoogleUtilities_Reachability.framework */; };
 		E617CA566C12CF2792973851 /* abseil_abslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = A1EE0EA0ABCEC3D3803FE4D3 /* abseil_abslWrapper.bundle */; };
@@ -337,6 +338,7 @@
 		E048DA20891ABE7E4BD15F45 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E0DB94C1475070CC102447EB /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		E3514999B2FA701D10E1DE4C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		E408B2DB2D06A1FE00486979 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2390DCC0D3A7F6A187F2FAA /* FirebaseFirestoreTarget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreTarget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F456C5EF49CA1C074374CBAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
@@ -964,6 +966,7 @@
 		DDAAC252395BD6232DF68905 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E408B2DB2D06A1FE00486979 /* GlobalSettings.swift */,
 				6C7512D3A4D9A02DEBF96352 /* SettingsOptions.swift */,
 			);
 			path = Model;
@@ -1156,6 +1159,7 @@
 				9061E6A18E94A2F9C77FE4CA /* Page.swift in Sources */,
 				20AF1AB07F27C8EE22F53E44 /* IntrosView.swift in Sources */,
 				41EDD50E54B18A252AABB4DA /* LoginViewModel.swift in Sources */,
+				E408B2DC2D06A1FE00486979 /* GlobalSettings.swift in Sources */,
 				C5F5E9ACE4F1DD4CE72B9552 /* RegisterViewModel.swift in Sources */,
 				205CE476412F48FA416078A2 /* ChatBubble.swift in Sources */,
 				7783C97D811BDA284A885363 /* ChatMessgeCell.swift in Sources */,
@@ -1221,6 +1225,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 62UE764E85;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1433,6 +1438,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 62UE764E85;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (

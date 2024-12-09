@@ -27,7 +27,7 @@ public struct HeaderComponent<Content: View>: View {
         self.font = font
         self.content = content()
     }
-
+    
     public var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 10) {
