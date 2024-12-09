@@ -1220,8 +1220,10 @@
 		461DAD9D3003FAB2EDB5E7E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_CONFIG = prod;
 				APP_NAME = ChatDemo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "https://www.apple.com";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1274,6 +1276,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LOG_LEVEL = error;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -1322,6 +1325,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_CONFIG = dev;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1381,6 +1385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_CONFIG = prod;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1433,8 +1438,10 @@
 		FC82D9F31FC5B33F884C8B24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_CONFIG = dev;
 				APP_NAME = ChatDemo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "https://www.google.com";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1487,6 +1494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LOG_LEVEL = debug;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",

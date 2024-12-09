@@ -213,6 +213,32 @@ struct SettingsView: View {
                 DividerView()
 #endif
                 
+                let debugViewEnvs: [BuildEnvironment] = [.dev]
+
+                if debugViewEnvs.contains(where: { GlobalSettings.environment == $0 }) {
+                   
+                    SectionView(title: "Debug Only Section", items: [
+                        SectionItem(
+                            icon: "hammer",
+                            title: "Debug Option 1",
+                            trailingIcon: "chevron.right"
+                        ) {
+                            print("Debug Option 1 tapped")
+                        },
+                        SectionItem(
+                            icon: "wrench",
+                            title: "Debug Option 2",
+                            trailingIcon: "chevron.right"
+                        ) {
+                            print("Debug Option 2 tapped")
+                        }
+                    ])
+
+                    DividerView()
+                }
+                
+                
+                
                 //MARK: - Login
                 SectionView(title: "Login",items: [
                         SectionItem(
