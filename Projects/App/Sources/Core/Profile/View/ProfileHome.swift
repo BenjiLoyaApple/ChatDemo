@@ -4,7 +4,6 @@
 //
 //  Created by Benji Loya on 05.12.2024.
 //
-
 import SwiftUI
 import PhotosUI
 import SwiftfulRouting
@@ -86,7 +85,7 @@ struct ProfileHome: View {
                 if let anchor = pref["HEADER"], isHavingNotch {
                     let frameRect = proxy[anchor]
                     let isHavingDynamicIsland = safeArea.top > 51
-                    let capsuleHeight = isHavingDynamicIsland ? 37 : (safeArea.top - 15)
+                    let capsuleHeight = isHavingDynamicIsland ? 36 : (safeArea.top - 15)
                     
                     Canvas { out, size in
                         out.addFilter(.alphaThreshold(min: 0.5))
@@ -293,7 +292,7 @@ struct ProfileHome: View {
     
 }
 
-struct Home_Previews: PreviewProvider {
+struct ProfileHome_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
     }
