@@ -27,7 +27,7 @@ public struct HeaderComponent<Content: View>: View {
         self.font = font
         self.content = content()
     }
-
+    
     public var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 10) {
@@ -45,7 +45,8 @@ public struct HeaderComponent<Content: View>: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 15)
-            .padding(.vertical, 11)
+            .padding(.vertical, 6)
+            .padding(.bottom, 10)
             
             Divider()
                 .opacity(0.6)

@@ -67,8 +67,7 @@ struct InboxView: View {
             ActiveNowView(
                 viewModel: vmActiveNow,
                 onChatTapped: { user in
-                    router
-                        .showScreen(.push) { _ in
+                    router.showScreen(.push) { _ in
                             ChatView(user: user)
                 }
             })
