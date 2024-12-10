@@ -52,7 +52,6 @@ public struct CustomButton: View {
                 
                 if let title = title {
                     Text(title)
-                       // .font(.callout
                         .font(.system(size: 16))
                         .foregroundColor(textForegroundColor)
                 }
@@ -72,11 +71,11 @@ public struct CustomButton: View {
             .padding(.vertical, 6)
             .padding(.horizontal, 12)
             .background(
-                Color.black.opacity(0.001) // Увеличиваем область нажатия
+                Color.black.opacity(0.001)
             )
-            .contentShape(Rectangle()) // Обеспечиваем корректное нажатие
+            .contentShape(Rectangle())
         }
-        .buttonStyle(.plain) // Убираем дефолтный стиль кнопки
+        .buttonStyle(.plain)
     }
 }
 
