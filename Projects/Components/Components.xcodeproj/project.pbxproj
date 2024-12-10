@@ -216,10 +216,10 @@
 				02148BFFF09E74671CB38A1A /* CircularProfileImageView.swift */,
 				5CB1C1EEADED0FF8E935FBFF /* CustomButton.swift */,
 				380D1D96651F36739BB3A33C /* CustomChatButton.swift */,
+				E4AA386D2D080BDC00E03B9C /* CustomErrorView.swift */,
 				716C3AFF4008CEDED02D1529 /* CustomProgressIndicatorStyle.swift */,
 				9CCEE8B76EAEEEB29093B3CF /* HeaderView.swift */,
 				AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */,
-				E4AA386D2D080BDC00E03B9C /* CustomErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
