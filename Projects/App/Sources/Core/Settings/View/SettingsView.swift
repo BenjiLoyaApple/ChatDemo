@@ -8,17 +8,21 @@
 import SwiftUI
 import SwiftfulRouting
 import Components
+import LocalAuthentication
 
 struct SettingsView: View {
     @Environment(\.router) var router
     @Environment(\.colorScheme) private var scheme
     @State private var changeTheme: Bool = false
-    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    
     @StateObject private var notification = NotificationsManager()
     @StateObject private var settingsViewModel = SettingsViewModel()
     
     private let authService: AuthServiceProtocol
 
+    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    @AppStorage("isFaceIDEnabled") private var isFaceIDEnabled: Bool = false
+    
     init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
@@ -118,6 +122,16 @@ struct SettingsView: View {
 #if DEBUG
                 //MARK: - Who can see yor content
                 SectionView(title: "Who can see yor content",items: [
+                    SectionItem(
+                        icon: "faceid",
+                        title: "Fase ID",
+                        trailingIcon: "chevron.right") {
+                            router.showScreen(.push) { _ in
+                                FaceIdView()
+                                    .navigationBarBackButtonHidden()
+                                    .background(Color.theme.darkBlack)
+                            }
+                    },
                         SectionItem(
                             icon: "lock",
                             title: "Account Privacy",
@@ -214,7 +228,6 @@ struct SettingsView: View {
 #endif
                 
                 let debugViewEnvs: [BuildEnvironment] = [.dev]
-
                 if debugViewEnvs.contains(where: { GlobalSettings.environment == $0 }) {
                    
                     SectionView(title: "Debug Only Section", items: [
@@ -274,8 +287,56 @@ struct SettingsView: View {
 
 #Preview {
     RouterView { _ in
-        SettingsView(authService: MockAuthService())
+      //  SettingsView(authService: MockAuthService())
+        FaceIdView()
     }
+}
+
+// MARK: - Face ID
+struct FaceIdView: View {
+    @Environment(\.router) var router
+    
+    @State var islocked = false
+    @State var text = "LOCKED"
+    
+    var body: some View {
+        VStack {
+            HeaderComponent(backButtonPressed: { router.dismissScreen() }, buttonImageSource: .systemName("chevron.left")) {
+                Spacer()
+                
+                Text("Face ID")
+                    .font(.subheadline.bold())
+                    .offset(x: -20)
+                    .padding(.vertical, 8)
+                
+                Spacer()
+            }
+            
+            VStack {
+                Text(text)
+                    .bold()
+                    .padding()
+                
+                Button("Authenticate") {
+                    authenticate()
+                }
+            }
+            
+            Spacer()
+            
+        }
+    }
+    
+    func authenticate() {
+        FaceIDManager.authenticate(reason: "Please authenticate yourself to unlock your places.") { success, errorMessage in
+            if success {
+                text = "UNLOCKED"
+            } else {
+                text = errorMessage ?? "An unknown error occurred"
+            }
+        }
+    }
+    
 }
 
 // MARK: - SavedView
