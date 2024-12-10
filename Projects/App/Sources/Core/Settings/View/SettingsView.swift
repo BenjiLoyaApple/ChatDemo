@@ -100,6 +100,22 @@ struct SettingsView: View {
                 //MARK: - Your app and media
                 SectionView(title: "Your app and media",items: [
                     SectionItem(
+                        icon: "faceid",
+                        title: "Fase ID",
+                        trailingIcon: "chevron.right") {
+                            router.showScreen(.push) { _ in
+                                FaceIdView()
+                            }
+                        },
+                    SectionItem(
+                        icon: "person.and.background.dotted",
+                        title: "Photos Access",
+                        trailingIcon: "chevron.right") {
+                            router.showScreen(.push) { _ in
+                                PhotosGalleryView()
+                            }
+                        },
+                    SectionItem(
                         icon: "character.square",
                         title: "Language",
                         trailingIcon: "chevron.right") {
@@ -121,14 +137,6 @@ struct SettingsView: View {
 #if DEBUG
                 //MARK: - Who can see yor content
                 SectionView(title: "Who can see yor content",items: [
-                    SectionItem(
-                        icon: "faceid",
-                        title: "Fase ID",
-                        trailingIcon: "chevron.right") {
-                            router.showScreen(.push) { _ in
-                                FaceIdView()
-                            }
-                        },
                     SectionItem(
                         icon: "lock",
                         title: "Account Privacy",

@@ -151,6 +151,7 @@
 		E4AA38682D06F0DB00E03B9C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA38672D06F0DB00E03B9C /* UserInfoView.swift */; };
 		E4AA386A2D06F8E200E03B9C /* FaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA38692D06F8E200E03B9C /* FaceID.swift */; };
 		E4AA386C2D07F21500E03B9C /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA386B2D07F21500E03B9C /* FaceIDManager.swift */; };
+		E4AA38702D082DCE00E03B9C /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA386F2D082DCE00E03B9C /* Photos.swift */; };
 		E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E5F9D5ABEE8EFC5976E04 /* MessageServiceProtocol.swift */; };
 		E542FC034EFD776B5414BFB9 /* GoogleUtilities_Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78281A9C0799E266964689F1 /* GoogleUtilities_Reachability.framework */; };
 		E617CA566C12CF2792973851 /* abseil_abslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = A1EE0EA0ABCEC3D3803FE4D3 /* abseil_abslWrapper.bundle */; };
@@ -345,6 +346,7 @@
 		E4AA38672D06F0DB00E03B9C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		E4AA38692D06F8E200E03B9C /* FaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.swift; sourceTree = "<group>"; };
 		E4AA386B2D07F21500E03B9C /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
+		E4AA386F2D082DCE00E03B9C /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2390DCC0D3A7F6A187F2FAA /* FirebaseFirestoreTarget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreTarget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F456C5EF49CA1C074374CBAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 			children = (
 				E4AA38692D06F8E200E03B9C /* FaceID.swift */,
 				E4AA386B2D07F21500E03B9C /* FaceIDManager.swift */,
+				E4AA386F2D082DCE00E03B9C /* Photos.swift */,
 				AEFC670942293AB7A1586547 /* Color.swift */,
 				3C653CFED80ADE3C86D72C45 /* CustomRefreshView.swift */,
 				AB0482302B1AC495B9A32524 /* Date.swift */,
@@ -1182,6 +1185,7 @@
 				3E0CDBB9DA50D5C7D6FD32A5 /* RecentChatCell.swift in Sources */,
 				2F12710738076F0C8F404228 /* InboxViewModel.swift in Sources */,
 				D631B65252388A17E859225B /* InboxView.swift in Sources */,
+				E4AA38702D082DCE00E03B9C /* Photos.swift in Sources */,
 				3937BE99437B592E1B0FD2F2 /* ResentChatView.swift in Sources */,
 				CE2371A4868977BBAF4E7FC1 /* LinkPreviewCell.swift in Sources */,
 				0059DF82A0B0B84AC019299E /* LPLinkView.swift in Sources */,
