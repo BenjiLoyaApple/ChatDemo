@@ -19,6 +19,8 @@ struct ProfileHome: View {
     @State private var showPicker: Bool = false
     @State private var croppedImage: UIImage?
     
+    @State private var shine: Bool = false
+    
     var size: CGSize
     var safeArea: EdgeInsets
     /// View Properties
@@ -152,11 +154,14 @@ struct ProfileHome: View {
                     foregroundColor: Color.theme.primaryText,
                     padding: 5,
                     onButtonPressed: {
+                        shine.toggle()
                         Task {
                             try await viewModel.updateUserData()
                             try? await viewModel.loadCurrentUser()
                         }
-                        router.dismissScreen()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            router.dismissScreen()
+                        }
                     }
                 )
             }
@@ -203,6 +208,7 @@ struct ProfileHome: View {
                 .onTapGesture {
                     showPicker.toggle()
                 }
+                .shine(shine, duration: 0.8, rightToLeft: true)
         }
     }
     

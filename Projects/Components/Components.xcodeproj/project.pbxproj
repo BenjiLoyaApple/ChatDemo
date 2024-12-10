@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,7 @@
 		D491FCF505F32ED6456BF495 /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */; };
 		D556521AFDC033F37F36A954 /* MockActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD37F3C1BB61C37C9BC327 /* MockActiveNowViewModel.swift */; };
 		D7ADCCD04EA67CBC97EF927C /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E475BFE7548A891EBA42F /* LoginButtonView.swift */; };
+		E4AA386E2D080BDC00E03B9C /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA386D2D080BDC00E03B9C /* CustomErrorView.swift */; };
 		F4B84659F3DB04000E12242F /* UserRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B52152551305824501DF9 /* UserRepresentable.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD254C9E2686DA9D0DF23B1F /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4AA386D2D080BDC00E03B9C /* CustomErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorView.swift; sourceTree = "<group>"; };
 		F510EB1DB425F481DB5DF83A /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +219,7 @@
 				716C3AFF4008CEDED02D1529 /* CustomProgressIndicatorStyle.swift */,
 				9CCEE8B76EAEEEB29093B3CF /* HeaderView.swift */,
 				AF6A4CC6387D0CA2A176AFA1 /* MessageImageView.swift */,
+				E4AA386D2D080BDC00E03B9C /* CustomErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,8 +271,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E0FF8E57324138936FF4A49E /* Build configuration list for PBXProject "Components" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -323,6 +324,7 @@
 				9D86C9DCC5D97418FC55767C /* ShimmerEffect.swift in Sources */,
 				98EA0F110A942FB96975772C /* Toast.swift in Sources */,
 				CE331E6F38FEB4AF950BDFEA /* TransparentBlurView.swift in Sources */,
+				E4AA386E2D080BDC00E03B9C /* CustomErrorView.swift in Sources */,
 				D556521AFDC033F37F36A954 /* MockActiveNowViewModel.swift in Sources */,
 				B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */,
 				87DB9124AE6A62081142222F /* MockUser.swift in Sources */,
@@ -365,10 +367,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
