@@ -6,50 +6,74 @@
 //
 
 import SwiftUI
-import LocalAuthentication
+import Components
 
-struct FaceID: View {
+// MARK: - Face ID
+struct FaceIdView: View {
+    @Environment(\.router) var router
     
-    @State var islocked = false
-    @State var text = "LOCKED"
+    @AppStorage("isFaceID") private var isFaceIDEnabled: Bool = false
+    
+    @State private var text: String = ""
     
     var body: some View {
-        VStack{
-            Text(text)
-                .bold()
-                .padding()
-            
-            Button("Authenticate") {
-                authenticate()
+        VStack {
+            HeaderComponent(backButtonPressed: { router.dismissScreen() }, buttonImageSource: .systemName("chevron.left")) {
+                Spacer()
+                
+                Text("Face ID")
+                    .font(.subheadline.bold())
+                    .offset(x: -20)
+                    .padding(.vertical, 8)
+                
+                Spacer()
             }
+            
+            VStack(alignment: .leading, spacing: 0) {
+                
+                Text("Enable Face ID to secure your app or ensure privacy when accessing certain features.")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                    .padding(.bottom)
+                    .padding(.top, 4)
+                
+                Toggle("Face ID", isOn: $isFaceIDEnabled)
+                    .onChange(of: isFaceIDEnabled) { _, _ in
+                        updateText()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            FaceIDManager.authenticateIfNeeded(isFaceIDEnabled: isFaceIDEnabled) { success, errorMessage in
+                                if success {
+                                    text = "Face ID authentication succeeded."
+                                } else {
+                                    text = errorMessage ?? "Face ID authentication failed."
+                                }
+                            }
+                        }
+                    }
+                
+                Text(text)
+                    .font(.footnote)
+                    .foregroundStyle(.gray.opacity(0.8))
+                    .padding(.top, 2)
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            
+            Spacer()
         }
+        .onAppear {
+            updateText()
+        }
+        .navigationBarBackButtonHidden()
+        .background(Color.theme.darkBlack)
     }
     
-    func authenticate() {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Please authenticate yourself to unlock your places."
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                if success {
-                    //self.islocked = true
-                    text = "UNLOCKED"
-                } else {
-                    //error
-                    text = "There was a problem"
-                }
-            }
-        } else {
-            //no biometrics
-            text = "Phone does not have Biometrics"
-        }
+    private func updateText() {
+        text = "Face ID is \(isFaceIDEnabled ? "enabled" : "disabled")"
     }
 }
 
-struct FaceID_Previews: PreviewProvider {
-    static var previews: some View {
-        FaceID()
-    }
+#Preview {
+    FaceIdView()
 }

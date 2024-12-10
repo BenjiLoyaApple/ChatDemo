@@ -9,23 +9,28 @@ import SwiftUI
 import LocalAuthentication
 
 class FaceIDManager {
-    static func authenticate(reason: String, completion: @escaping (Bool, String?) -> Void) {
+    static func authenticateIfNeeded(isFaceIDEnabled: Bool, completion: @escaping (Bool, String?) -> Void) {
+        guard isFaceIDEnabled else {
+            completion(true, nil)
+            return
+        }
+        
         let context = LAContext()
         var error: NSError?
 
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate to access the app.") { success, authenticationError in
                 DispatchQueue.main.async {
                     if success {
                         completion(true, nil)
                     } else {
-                        completion(false, "Authentication failed. Please try again.")
+                        completion(false, authenticationError?.localizedDescription ?? "Authentication failed.")
                     }
                 }
             }
         } else {
             DispatchQueue.main.async {
-                completion(false, "Biometrics not available on this device.")
+                completion(false, "Biometric authentication is not available.")
             }
         }
     }
