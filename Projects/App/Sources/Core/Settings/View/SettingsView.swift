@@ -101,7 +101,7 @@ struct SettingsView: View {
                 SectionView(title: "Your app and media",items: [
                     SectionItem(
                         icon: "faceid",
-                        title: "Fase ID",
+                        title: "Faсe ID",
                         trailingIcon: "chevron.right") {
                             router.showScreen(.push) { _ in
                                 FaceIdView()

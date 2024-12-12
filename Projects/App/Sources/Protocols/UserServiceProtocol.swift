@@ -7,7 +7,6 @@
 
 import Foundation
 import Firebase
-//import Models
 
 protocol UserServiceProtocol {
     var currentUser: User? { get set }

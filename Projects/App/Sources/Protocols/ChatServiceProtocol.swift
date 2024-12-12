@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//import Models
 
 protocol ChatServiceProtocol {
     var chatPartner: User { get }

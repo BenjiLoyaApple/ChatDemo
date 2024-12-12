@@ -267,7 +267,6 @@ extension View{
     }
 }
 
-
 // MARK: Offset Preference Key
 struct OffsetKey: PreferenceKey{
     static var defaultValue: CGFloat = 0
@@ -276,3 +275,25 @@ struct OffsetKey: PreferenceKey{
         value = nextValue()
     }
 }
+
+
+//MARK: - USE IN VIEW
+/*
+ 
+ CustomRefreshView(showsIndicator: false) {
+     // MARK: Sample VIEW
+     VStack(spacing: 15) {
+         RoundedRectangle(cornerRadius: 15, style: .continuous)
+             .fill(.red.gradient)
+             .frame(height: 100)
+         
+         RoundedRectangle(cornerRadius: 15, style: .continuous)
+             .fill(.blue.gradient)
+             .frame(height: 100)
+     }
+     .padding(15)
+ } onRefresh: {
+     // MARK: Your Action
+ }
+ 
+ */
