@@ -59,16 +59,6 @@ struct MessageInputView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .font(.subheadline)
                     
-//                    if !messageText.isEmpty {
-//                        Button(action: {
-//                            messageText = ""
-//                        }) {
-//                            Image(systemName: "xmark.circle.fill")
-//                                .foregroundColor(.gray.opacity(0.8))
-//                                .padding(.trailing, 16)
-//                        }
-//                    }
-                    
                 }
             }
 
@@ -92,16 +82,15 @@ struct MessageInputView: View {
                         foregroundColor: .primary,
                         padding: 5,
                         onButtonPressed: {
-                            
+                            /// action
                         }
                     )
                 }
                 
-                
                 /// Sent message button
                 Button {
                     if messageText.isEmpty && viewModel.messageImage == nil {
-                        // Открываем фото пикер
+                        // Открываем фото камеру
                       //  showPhotoPicker.toggle()
                     } else {
                         // Отправляем сообщение
@@ -115,7 +104,7 @@ struct MessageInputView: View {
                             .font(.title2)
                             .foregroundStyle(Color.primary)
                             .padding(10)
-                            .contentTransition(.symbolEffect(.automatic)) // Добавлен плавный переход
+                            .contentTransition(.symbolEffect(.automatic))
                     }
             .animation(.bouncy, value: messageText.isEmpty && viewModel.messageImage == nil)
             }
@@ -153,3 +142,17 @@ struct MessageInputView: View {
         viewModel: ChatViewModel(service: DIContainer.shared.createChatService(chatPartner: .mock))
     )
 }
+
+
+// Clear Text
+/*
+if !messageText.isEmpty {
+    Button(action: {
+        messageText = ""
+    }) {
+        Image(systemName: "xmark.circle.fill")
+            .foregroundColor(.gray.opacity(0.8))
+            .padding(.trailing, 60)
+    }
+}
+*/

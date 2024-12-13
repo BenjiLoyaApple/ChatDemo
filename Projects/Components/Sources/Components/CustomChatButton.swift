@@ -18,6 +18,7 @@ public struct CustomChatButton: View {
     private let imageSource: ImageSource?
     private let text: String?
     private let font: Font
+    private let fontWeight: Font.Weight?
     private let foregroundColor: Color
     private let padding: CGFloat
     private let frame: CGSize?
@@ -28,6 +29,7 @@ public struct CustomChatButton: View {
         imageSource: ImageSource? = nil,
         text: String? = nil,
         font: Font = .title3,
+        fontWeight: Font.Weight? = .medium,
         foregroundColor: Color = .primary,
         padding: CGFloat = 10,
         frame: CGSize? = nil,
@@ -36,6 +38,7 @@ public struct CustomChatButton: View {
         self.imageSource = imageSource
         self.text = text
         self.font = font
+        self.fontWeight = fontWeight
         self.foregroundColor = foregroundColor
         self.padding = padding
         self.frame = frame
@@ -55,6 +58,7 @@ public struct CustomChatButton: View {
                 if let text = text, !text.isEmpty {
                     Text(text)
                         .font(font)
+                        .fontWeight(fontWeight)
                         .foregroundColor(foregroundColor)
                 }
             }
@@ -72,6 +76,7 @@ public struct CustomChatButton: View {
         case .systemName(let name):
             Image(systemName: name)
                 .font(font)
+                .fontWeight(fontWeight)
                 .foregroundColor(foregroundColor)
                 .symbolEffect(.bounce, options: .nonRepeating, value: animateSymbol)
         case .assetName(let name):
@@ -97,6 +102,7 @@ public struct CustomChatButton: View {
         CustomChatButton(
             imageSource: .systemName("moon"),
             font: .title,
+            fontWeight: .bold,
             foregroundColor: .teal,
             padding: 20
         )

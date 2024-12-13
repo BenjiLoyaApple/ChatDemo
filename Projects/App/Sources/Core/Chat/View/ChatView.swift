@@ -46,6 +46,45 @@ struct ChatView: View {
                                 .foregroundStyle(.gray)
                         }
                     }
+                    
+                    Spacer()
+                    
+                    // Chat Options
+                    HStack(spacing: 10) {
+                        CustomChatButton(
+                            imageSource: .systemName("phone"),
+                            text: "",
+                            font: .title3,
+                            fontWeight: .semibold,
+                            foregroundColor: .primary,
+                            padding: 5,
+                            onButtonPressed: {
+                                /// action
+                            })
+                        
+                        CustomChatButton(
+                            imageSource: .systemName("video"),
+                            text: "",
+                            font: .title3,
+                            fontWeight: .semibold,
+                            foregroundColor: .primary,
+                            padding: 5,
+                            onButtonPressed: {
+                                /// action
+                            })
+                        
+                        CustomChatButton(
+                            imageSource: .systemName("tag"),
+                            text: "",
+                            font: .title3,
+                            fontWeight: .semibold,
+                            foregroundColor: .primary,
+                            padding: 5,
+                            onButtonPressed: {
+                                /// action
+                            })
+                    }
+                    .padding(.trailing, 10)
                 }
             }
             
