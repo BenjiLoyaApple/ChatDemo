@@ -13,6 +13,7 @@ public struct CustomChatButton: View {
         case assetName(String)
     }
 
+    @State private var animateSymbol: Bool = false
     // MARK: - Параметры кнопки
     private let imageSource: ImageSource?
     private let text: String?
@@ -43,7 +44,10 @@ public struct CustomChatButton: View {
 
     // MARK: - Тело кнопки
     public var body: some View {
-        Button(action: onButtonPressed) {
+        Button(action: {
+                animateSymbol.toggle()
+                onButtonPressed()
+            }) {
             HStack(spacing: 8) {
                 if let imageSource = imageSource {
                     createImage(for: imageSource)
@@ -69,6 +73,7 @@ public struct CustomChatButton: View {
             Image(systemName: name)
                 .font(font)
                 .foregroundColor(foregroundColor)
+                .symbolEffect(.bounce, options: .nonRepeating, value: animateSymbol)
         case .assetName(let name):
             Image(name)
                 .resizable()

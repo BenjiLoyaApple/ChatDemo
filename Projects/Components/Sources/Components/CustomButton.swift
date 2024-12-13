@@ -10,6 +10,7 @@ import SwiftUI
 /// Кастомная кнопка с иконкой и текстом.
 public struct CustomButton: View {
     
+    @State private var animateSymbol: Bool = false
     // MARK: - Параметры кнопки
     private let imageName: String?
     private let title: LocalizedStringKey?
@@ -41,13 +42,16 @@ public struct CustomButton: View {
     
     // MARK: - Тело кнопки
     public var body: some View {
-        Button(action: onButtonPressed) {
+        Button(action: {
+                animateSymbol.toggle()
+                onButtonPressed()
+            }) {
             HStack(spacing: 15) {
                 if let imageName = imageName {
                     Image(systemName: imageName)
-//                        .font(.headline)
                         .font(.system(size: 21))
                         .foregroundColor(imageForegroundColor)
+                        .symbolEffect(.bounce, options: .nonRepeating, value: animateSymbol)
                 }
                 
                 if let title = title {

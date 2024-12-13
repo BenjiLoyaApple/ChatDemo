@@ -15,7 +15,7 @@ struct ChatView: View {
     @State private var isInitialLoad = false
     @StateObject var viewModel: ChatViewModel
     private let user: User
-    private var thread: Thread?
+ //   private var thread: Thread?
     
     init(user: User) {
             self.user = user
