@@ -15,6 +15,7 @@ struct MessageInputView: View {
 
     @State private var showPhotoPicker: Bool = false
     
+    @State private var messageImage: UIImage? = nil
     var body: some View {
         ZStack(alignment: .trailing) {
             
@@ -96,6 +97,8 @@ struct MessageInputView: View {
                     )
                 }
                 
+                
+                /// Sent message button
                 Button {
                     if messageText.isEmpty && viewModel.messageImage == nil {
                         // Открываем фото пикер
@@ -107,21 +110,14 @@ struct MessageInputView: View {
                             messageText = ""
                         }
                     }
-                    
-                } label: {
-                    MorphingSymbolView(
-                        symbol: messageText.isEmpty && viewModel.messageImage == nil ? "circle.square" : "paperplane.fill",
-                        config: .init(
-                            font: .title2,
-                            frame: .init(width: 50, height: 50),
-                            radius: 2,
-                            foregroundColor: .primary,
-                            keyFrameDuration: 0.3,
-                            symbolAnimation: .smooth(duration: 0.3, extraBounce: 0)
-                        )
-                    )
-                    .clipShape(.circle)
-                }
+            } label: {
+                Image(systemName: messageText.isEmpty && viewModel.messageImage == nil ? "circle.square" : "paperplane.fill")
+                            .font(.title2)
+                            .foregroundStyle(Color.primary)
+                            .padding(10)
+                            .contentTransition(.symbolEffect(.automatic)) // Добавлен плавный переход
+                    }
+            .animation(.bouncy, value: messageText.isEmpty && viewModel.messageImage == nil)
             }
             .padding(.trailing, 10)
         }
