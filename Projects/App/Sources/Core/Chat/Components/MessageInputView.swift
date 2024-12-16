@@ -15,6 +15,7 @@ struct MessageInputView: View {
 
     @State private var showPhotoPicker: Bool = false
     
+    @State private var messageImage: UIImage? = nil
     var body: some View {
         ZStack(alignment: .trailing) {
             
@@ -58,22 +59,13 @@ struct MessageInputView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .font(.subheadline)
                     
-//                    if !messageText.isEmpty {
-//                        Button(action: {
-//                            messageText = ""
-//                        }) {
-//                            Image(systemName: "xmark.circle.fill")
-//                                .foregroundColor(.gray.opacity(0.8))
-//                                .padding(.trailing, 16)
-//                        }
-//                    }
-                    
                 }
             }
 
             HStack(spacing: 0) {
+#if DEBUG
                 if messageText.isEmpty && viewModel.messageImage == nil {
-                    
+
                     CustomChatButton(
                         imageSource: .assetName("gallery"),
                         font: .system(size: 10),
@@ -83,7 +75,7 @@ struct MessageInputView: View {
                             showPhotoPicker.toggle()
                         }
                     )
-                    
+
                     CustomChatButton(
                         imageSource: .systemName("mic"),
                         text: "",
@@ -91,15 +83,17 @@ struct MessageInputView: View {
                         foregroundColor: .primary,
                         padding: 5,
                         onButtonPressed: {
-                            
+                            /// action
                         }
                     )
                 }
+#endif
                 
+                /// Sent message button
                 Button {
                     if messageText.isEmpty && viewModel.messageImage == nil {
-                        // Открываем фото пикер
-                      //  showPhotoPicker.toggle()
+                        // Открываем фото камеру
+                        showPhotoPicker.toggle()
                     } else {
                         // Отправляем сообщение
                         Task {
@@ -107,21 +101,14 @@ struct MessageInputView: View {
                             messageText = ""
                         }
                     }
-                    
-                } label: {
-                    MorphingSymbolView(
-                        symbol: messageText.isEmpty && viewModel.messageImage == nil ? "circle.square" : "paperplane.fill",
-                        config: .init(
-                            font: .title2,
-                            frame: .init(width: 50, height: 50),
-                            radius: 2,
-                            foregroundColor: .primary,
-                            keyFrameDuration: 0.3,
-                            symbolAnimation: .smooth(duration: 0.3, extraBounce: 0)
-                        )
-                    )
-                    .clipShape(.circle)
-                }
+            } label: {
+                Image(systemName: messageText.isEmpty && viewModel.messageImage == nil ? "circle.square" : "paperplane.fill")
+                            .font(.title2)
+                            .foregroundStyle(Color.primary)
+                            .padding(10)
+                            .contentTransition(.symbolEffect(.automatic))
+                    }
+            .animation(.bouncy, value: messageText.isEmpty && viewModel.messageImage == nil)
             }
             .padding(.trailing, 10)
         }
@@ -157,3 +144,17 @@ struct MessageInputView: View {
         viewModel: ChatViewModel(service: DIContainer.shared.createChatService(chatPartner: .mock))
     )
 }
+
+
+// Clear Text
+/*
+if !messageText.isEmpty {
+    Button(action: {
+        messageText = ""
+    }) {
+        Image(systemName: "xmark.circle.fill")
+            .foregroundColor(.gray.opacity(0.8))
+            .padding(.trailing, 60)
+    }
+}
+*/

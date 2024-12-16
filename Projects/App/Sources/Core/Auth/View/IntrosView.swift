@@ -107,9 +107,6 @@ struct IntrosView: View {
                     /// Custom button Which will be Updated over scroll
                     .overlay(alignment: .topTrailing) {
                       
-                       
-                        
-                        
                         CustomLoginButton(
                             buttonTint: AnyShapeStyle(
                                 LinearGradient(
@@ -301,7 +298,7 @@ struct IntrosView: View {
     @ViewBuilder
     func OnBoarding(_ size: CGSize) -> some View {
         VStack(alignment: .leading, spacing: 12, content: {
-            Text("Where developers\ngrow together")
+            Text("Chat, share, and grow\nwith your crew")
                 .font(.largeTitle.bold())
                 .lineLimit(2)
             
@@ -324,15 +321,15 @@ struct IntrosView: View {
     }
     
     var attributedSubTitle: AttributedString {
-        let string = "Join now and connect with fellow developers instantly"
+        let string = "Hop in and start connecting with your people right now."
         var attString = AttributedString(stringLiteral: string)
         
-        if let range = attString.range(of: "connect") {
+        if let range = attString.range(of: "connecting") {
             attString[range].foregroundColor = Color.theme.darkWhite
             attString[range].font = .callout.bold()
         }
         
-        if let range = attString.range(of: "developers") {
+        if let range = attString.range(of: "right now") {
             attString[range].foregroundColor = Color.theme.darkWhite
             attString[range].font = .callout.bold()
         }
@@ -496,85 +493,8 @@ struct IntrosView: View {
             sheetHeight = sheetFirstPageHeight + (diff * progress)
         }
     }
-    
 }
 
 #Preview {
     IntrosView()
 }
-
-
-
-
-/*
- 
-                         Button(action: {
-                             if sheetScrollProgress < 1 {
-                                 /// Continue Button
-                                 ///  Moving to the next page (Using ScrollView Reader
-                                 withAnimation(.snappy) {
-                                     proxy.scrollTo("Second Page", anchor: .leading)
-                                 }
-                             } else {
-                                 if alreadyHavingAccount {
-                                     // Логин
-                                     Task {
-                                         do {
-                                             try await loginVM.login()
-                                         } catch {
-                                             print("Ошибка входа: \(error.localizedDescription)")
-                                         }
-                                     }
-                                 } else {
-                                     // Регистрация
-                                     Task {
-                                         do {
-                                             try await registrationVM.createUser()
-                                         } catch {
-                                             print("Ошибка регистрации: \(error.localizedDescription)")
-                                         }
-                                     }
-                                 }
-                             }
-                         }, label: {
-                             Text("Continue")
-                                 .fontWeight(.semibold)
-                                 .opacity(1 - sheetScrollProgress)
-                             /// Adding Some Extra Width for Second Page
-                                 .frame(width: 120 + (sheetScrollProgress * (alreadyHavingAccount ? 0 : 50)))
-                                 .overlay(content: {
-                                     /// Next Page Text
-                                     HStack(spacing: 8) {
-                                         Text(alreadyHavingAccount ? "Login" : "Get Starting")
- 
- 
-                                         Image(systemName: "arrow.right")
-                                     }
-                                     .fontWeight(.semibold)
-                                     .opacity(sheetScrollProgress)
-                                     .opacity(registrationVM.isAuthenticating || loginVM.isAuthenticating ? 0 : 1)
-                                     .overlay {
-                                         if registrationVM.isAuthenticating || loginVM.isAuthenticating {
-                                             ProgressView()
-                                                 .tint(Color.theme.primaryBackground)
-                                         }
-                                     }
-                                 })
-                                 .padding(.vertical, 12)
-                                 .foregroundStyle(.white)
-                                 .background(
-                                     .linearGradient(
-                                         colors: [.red, .orange],
-                                         startPoint: .topLeading,
-                                         endPoint: .bottomTrailing),
-                                     in: .capsule)
-                         })
-                         .padding(15)
-                         .offset(y: sheetHeight - 100)
-                         /// Moving Button Near to the Next View
-                         .offset(y: sheetScrollProgress * -120)
-                         // Disable button when form is not valid and the button is in the Login or Get Started state
-                         .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid))
-                         .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
- 
- */

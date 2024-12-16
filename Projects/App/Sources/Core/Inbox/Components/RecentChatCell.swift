@@ -32,7 +32,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
             //MARK: - Profile image
             profileImage
                 .asButton(.press) {
-                    profileImageTapped?()
+                 //   profileImageTapped?()
                 }
             
             VStack(alignment: .leading, spacing: 0) {
@@ -71,7 +71,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                 }
                 
                 Rectangle()
-                    .frame(width: 250, height:38)
+                    .frame(width: 260, height: 38)
                     .foregroundStyle(.black.opacity(0.001))
                     .overlay {
                         // Текст сообщения
@@ -87,7 +87,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.red.opacity(0.001))
+                        .background(Color.black.opacity(0.001))
                         .asButton(.opacity) {
                             showChatTapped?()
                         }

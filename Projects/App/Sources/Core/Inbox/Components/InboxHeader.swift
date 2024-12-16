@@ -43,6 +43,7 @@ struct InboxHeader<ProfileImageView: View>: View {
                 Spacer(minLength: 0)
                 
                 HStack(spacing: 2) {
+#if DEBUG
                     // Search
                     CustomChatButton(
                         imageSource: .systemName("plus.circle.dashed"),
@@ -53,6 +54,7 @@ struct InboxHeader<ProfileImageView: View>: View {
                             plusButtonTapped?()
                         }
                     )
+#endif
                     
                     CustomChatButton(
                         imageSource: .assetName("pen"),

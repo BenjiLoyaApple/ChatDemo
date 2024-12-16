@@ -14,22 +14,22 @@ enum Page: String, CaseIterable {
     case page4 = "globe.americas.fill"
     
     var title: String {
-         switch self {
-         case .page1: "Welcome to chat"
-         case .page2: "Connect with friends"
-         case .page3: "Share Your Ideas"
-         case .page4: "Build Your Network"
-         }
-     }
-     
-     var subTitle: String {
-         switch self {
-         case .page1: "We know how hard it is to be a developer. It\ndoesn’t have to be..."
-         case .page2: "Personalized news feed, dev communities and\nsearch, much better than what’s out there."
-         case .page3: "Post your own ideas and get feedback\n from others"
-         case .page4: "The world's best chat platform\nfor staying up to date"
-         }
-     }
+        switch self {
+        case .page1: return "Hey there! Your new chat space"
+        case .page2: return "Stay connected anywhere"
+        case .page3: return "Share freely, live worry-free"
+        case .page4: return "Discover new friends worldwide"
+        }
+    }
+
+    var subTitle: String {
+        switch self {
+        case .page1: return "Chats, friends, and cool communities — all in one place."
+        case .page2: return "Messages, calls, and live updates — everything you need is here."
+        case .page3: return "Share thoughts, photos, and videos with your friends in seconds."
+        case .page4: return "Join communities and stay on top of all the latest trends."
+        }
+    }
     
     var index: CGFloat {
         switch self {

@@ -89,7 +89,6 @@ struct InboxView: View {
                             ChatView(user: user)
                 }
             })
-            
         }
         .background(Color.theme.darkBlack)
         .coordinateSpace(name: "SCROLL")
@@ -107,7 +106,6 @@ struct InboxView: View {
                 },
                 plusButtonTapped: {
                    
-                    
                 },
                 newChatTapped: {
                     router.showScreen(.fullScreenCover) { _ in
