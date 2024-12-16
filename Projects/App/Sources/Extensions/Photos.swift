@@ -34,20 +34,20 @@ struct PhotosGalleryView: View {
                     .padding(.bottom)
                     .padding(.top, 4)
                 
-                Button {
-                    checkPhotoLibraryPermission { status in
-                        photoPermissionStatus = status
-                    }
-                } label: {
-                    Text("Check or Request Access")
-                        .tint(.primary)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .padding(.vertical, 10)
-                        .background(Color.black.opacity(0.001))
-                }
+//                Button {
+//                    checkPhotoLibraryPermission { status in
+//                        photoPermissionStatus = status
+//                    }
+//                } label: {
+//                    Text("Check or Request Access")
+//                        .tint(.primary)
+//                        .font(.subheadline)
+//                        .fontWeight(.medium)
+//                        .padding(.vertical, 10)
+//                        .background(Color.black.opacity(0.001))
+//                }
                 
-                if photoPermissionStatus == "Access granted" || photoPermissionStatus == "Access limited" {
+                if photoPermissionStatus == "Full Access" || photoPermissionStatus == "Limited Access" {
                     
                 Divider()
                     .opacity(0.5)
@@ -75,7 +75,7 @@ struct PhotosGalleryView: View {
         }
         .onAppear {
             // Проверяем статус доступа при загрузке
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 checkPhotoLibraryPermission { status in
                     photoPermissionStatus = status
                 }
@@ -104,23 +104,23 @@ struct PhotosGalleryView: View {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .authorized:
-            completion("Full Access")
+            completion("Full Access") // Полный доступ
         case .denied, .restricted:
-            completion("Limited Access")
+            completion("No Access") // Нет доступа
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization { newStatus in
                 DispatchQueue.main.async {
                     if newStatus == .authorized {
-                        completion("Access granted")
+                        completion("Full Access") // Полный доступ
                     } else {
-                        completion("Access denied")
+                        completion("No Access") // Нет доступа
                     }
                 }
             }
         case .limited:
-            completion("Access limited")
+            completion("Limited Access") // Ограниченный доступ
         @unknown default:
-            completion("Unknown status")
+            completion("Unknown Status") // Неизвестный статус
         }
     }
     

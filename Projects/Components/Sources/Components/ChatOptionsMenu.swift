@@ -43,6 +43,7 @@ public struct ChatOptionsMenu: View {
         Menu {
             /// Pin
             ControlGroup {
+#if DEBUG
                 Button {
                     pinButtonTapped?()
                 } label: {
@@ -57,7 +58,7 @@ public struct ChatOptionsMenu: View {
                     Image(systemName: "square.and.arrow.up")
                     Text("Share")
                 }
-                
+#endif
                 /// Delete
                 Menu {
                     /// For Me
@@ -66,7 +67,7 @@ public struct ChatOptionsMenu: View {
                     } label: {
                         Label("For me", systemImage: "person")
                     }
-                    
+#if DEBUG
                     /// For All Users
                     Button {
                         deleteAllButtonTapped?()
@@ -74,13 +75,14 @@ public struct ChatOptionsMenu: View {
                         Image(systemName: "person.2")
                         Text("For me & \(username ?? "")")
                     }
-                    
+#endif
                 } label: {
                     Image(systemName: "arrow.up.trash")
                     Text("Delete")
                 }
+
             }
-            
+#if DEBUG
             /// Clear Chat
             Button {
                 clearButtonTapped?()
@@ -88,7 +90,7 @@ public struct ChatOptionsMenu: View {
                 Text("Clear chat")
                 Image(systemName: "eraser.line.dashed")
             }
-            
+
             /// Notifications
             Button {
                 notificationButtonTapped?()
@@ -104,10 +106,11 @@ public struct ChatOptionsMenu: View {
                 Text("Block user")
                 Image(systemName: "hand.raised")
             }
+#endif
         } label: {
             CustomChatButton(
                 imageSource: .systemName("ellipsis"),
-                font: .title3,
+                font: .subheadline,
                 foregroundColor: .gray,
                 padding: 15
             )

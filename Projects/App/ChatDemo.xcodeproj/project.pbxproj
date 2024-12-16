@@ -347,6 +347,7 @@
 		E4AA38692D06F8E200E03B9C /* FaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.swift; sourceTree = "<group>"; };
 		E4AA386B2D07F21500E03B9C /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		E4AA386F2D082DCE00E03B9C /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		E4AA38B92D0A86C400E03B9C /* ChatDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatDemo.entitlements; sourceTree = "<group>"; };
 		F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2390DCC0D3A7F6A187F2FAA /* FirebaseFirestoreTarget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreTarget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F456C5EF49CA1C074374CBAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
@@ -867,6 +868,7 @@
 		CA66E494355551228BE35890 = {
 			isa = PBXGroup;
 			children = (
+				E4AA38B92D0A86C400E03B9C /* ChatDemo.entitlements */,
 				E8E2F00DF577B606AAF2BC85 /* Project */,
 				D99C5050155F3A206FBBE99E /* Products */,
 				243EE5D657E1903BCFAA73D5 /* Frameworks */,
@@ -1240,6 +1242,7 @@
 				APP_NAME = ChatDemo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BASE_URL = "https://www.apple.com";
+				CODE_SIGN_ENTITLEMENTS = ChatDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1458,6 +1461,7 @@
 				APP_NAME = ChatDemo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BASE_URL = "https://www.google.com";
+				CODE_SIGN_ENTITLEMENTS = ChatDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

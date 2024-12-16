@@ -15,7 +15,7 @@ struct ChatView: View {
     @State private var isInitialLoad = false
     @StateObject var viewModel: ChatViewModel
     private let user: User
-    private var thread: Thread?
+ //   private var thread: Thread?
     
     init(user: User) {
             self.user = user
@@ -46,6 +46,48 @@ struct ChatView: View {
                                 .foregroundStyle(.gray)
                         }
                     }
+                    
+                    Spacer()
+                    
+#if DEBUG
+                    // Chat Options
+                    HStack(spacing: 10) {
+                        CustomChatButton(
+                            imageSource: .systemName("phone"),
+                            text: "",
+                            font: .title3,
+                            fontWeight: .semibold,
+                            foregroundColor: .primary,
+                            padding: 5,
+                            onButtonPressed: {
+                                /// action
+                            })
+                        
+                        CustomChatButton(
+                            imageSource: .systemName("video"),
+                            text: "",
+                            font: .title3,
+                            fontWeight: .semibold,
+                            foregroundColor: .primary,
+                            padding: 5,
+                            onButtonPressed: {
+                                /// action
+                            })
+                        
+                        CustomChatButton(
+                            imageSource: .systemName("tag"),
+                            text: "",
+                            font: .title3,
+                            fontWeight: .semibold,
+                            foregroundColor: .primary,
+                            padding: 5,
+                            onButtonPressed: {
+                                /// action
+                            })
+                    }
+                    .padding(.trailing, 10)
+ #endif
+                    
                 }
             }
             
