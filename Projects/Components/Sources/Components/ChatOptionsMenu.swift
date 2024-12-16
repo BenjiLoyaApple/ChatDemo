@@ -107,7 +107,7 @@ public struct ChatOptionsMenu: View {
         } label: {
             CustomChatButton(
                 imageSource: .systemName("ellipsis"),
-                font: .title3,
+                font: .subheadline,
                 foregroundColor: .gray,
                 padding: 15
             )

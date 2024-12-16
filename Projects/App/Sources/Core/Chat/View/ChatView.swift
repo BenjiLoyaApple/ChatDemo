@@ -49,6 +49,7 @@ struct ChatView: View {
                     
                     Spacer()
                     
+#if DEBUG
                     // Chat Options
                     HStack(spacing: 10) {
                         CustomChatButton(
@@ -85,6 +86,8 @@ struct ChatView: View {
                             })
                     }
                     .padding(.trailing, 10)
+ #endif
+                    
                 }
             }
             

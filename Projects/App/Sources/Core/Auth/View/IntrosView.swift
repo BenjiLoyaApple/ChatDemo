@@ -301,7 +301,7 @@ struct IntrosView: View {
     @ViewBuilder
     func OnBoarding(_ size: CGSize) -> some View {
         VStack(alignment: .leading, spacing: 12, content: {
-            Text("Where developers\ngrow together")
+            Text("Chat, share, and grow\nwith your crew")
                 .font(.largeTitle.bold())
                 .lineLimit(2)
             
@@ -324,15 +324,15 @@ struct IntrosView: View {
     }
     
     var attributedSubTitle: AttributedString {
-        let string = "Join now and connect with fellow developers instantly"
+        let string = "Hop in and start connecting with your people right now."
         var attString = AttributedString(stringLiteral: string)
         
-        if let range = attString.range(of: "connect") {
+        if let range = attString.range(of: "connecting") {
             attString[range].foregroundColor = Color.theme.darkWhite
             attString[range].font = .callout.bold()
         }
         
-        if let range = attString.range(of: "developers") {
+        if let range = attString.range(of: "right now") {
             attString[range].foregroundColor = Color.theme.darkWhite
             attString[range].font = .callout.bold()
         }
