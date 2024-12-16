@@ -58,6 +58,7 @@ struct SettingsView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 10) {
                 //MARK: - How to use ChatDemo
+#if DEBUG
                 SectionView(title: "How to use ChatDemo",items: [
                     SectionItem(
                         icon: "bookmark",
@@ -82,10 +83,14 @@ struct SettingsView: View {
                             print("Your activity tapped")
                         },
                     SectionItem(
-                        icon: "bell",
-                        title: "Notifications",
-                        isDisabled: notification.hasPermission) {
-                            Task { await notification.request()}
+                        icon: "character.square",
+                        title: "Language",
+                        trailingIcon: "chevron.right") {
+                            router.showScreen(.push) { _ in
+                                LanguageView()
+                                    .navigationBarBackButtonHidden()
+                                    .background(Color.theme.darkBlack)
+                            }
                         },
                     SectionItem(
                         icon: "clock",
@@ -96,9 +101,15 @@ struct SettingsView: View {
                 ])
                 
                 DividerView()
-                
+#endif
                 //MARK: - Your app and media
                 SectionView(title: "Your app and media",items: [
+                    SectionItem(
+                        icon: "bell",
+                        title: "Notifications",
+                        isDisabled: notification.hasPermission) {
+                            Task { await notification.request()}
+                        },
                     SectionItem(
                         icon: "faceid",
                         title: "Faсe ID",
@@ -113,16 +124,6 @@ struct SettingsView: View {
                         trailingIcon: "chevron.right") {
                             router.showScreen(.push) { _ in
                                 PhotosGalleryView()
-                            }
-                        },
-                    SectionItem(
-                        icon: "character.square",
-                        title: "Language",
-                        trailingIcon: "chevron.right") {
-                            router.showScreen(.push) { _ in
-                                LanguageView()
-                                    .navigationBarBackButtonHidden()
-                                    .background(Color.theme.darkBlack)
                             }
                         },
                     SectionItem(
@@ -254,7 +255,6 @@ struct SettingsView: View {
                     
                     DividerView()
                 }
-                
                 
                 
                 //MARK: - Login

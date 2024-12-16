@@ -63,8 +63,9 @@ struct MessageInputView: View {
             }
 
             HStack(spacing: 0) {
+#if DEBUG
                 if messageText.isEmpty && viewModel.messageImage == nil {
-                    
+
                     CustomChatButton(
                         imageSource: .assetName("gallery"),
                         font: .system(size: 10),
@@ -74,7 +75,7 @@ struct MessageInputView: View {
                             showPhotoPicker.toggle()
                         }
                     )
-                    
+
                     CustomChatButton(
                         imageSource: .systemName("mic"),
                         text: "",
@@ -86,12 +87,13 @@ struct MessageInputView: View {
                         }
                     )
                 }
+#endif
                 
                 /// Sent message button
                 Button {
                     if messageText.isEmpty && viewModel.messageImage == nil {
                         // Открываем фото камеру
-                      //  showPhotoPicker.toggle()
+                        showPhotoPicker.toggle()
                     } else {
                         // Отправляем сообщение
                         Task {

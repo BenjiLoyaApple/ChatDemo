@@ -32,7 +32,7 @@ struct RecentChatCell<ProfileImageView: View>: View {
             //MARK: - Profile image
             profileImage
                 .asButton(.press) {
-                    profileImageTapped?()
+                 //   profileImageTapped?()
                 }
             
             VStack(alignment: .leading, spacing: 0) {
