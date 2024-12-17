@@ -123,7 +123,7 @@ struct SettingsView: View {
                         title: "Photos Access",
                         trailingIcon: "chevron.right") {
                             router.showScreen(.push) { _ in
-                                PhotosGalleryView()
+                                PhotoPermissionView()
                             }
                         },
                     SectionItem(

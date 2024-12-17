@@ -12,6 +12,7 @@ import Components
 struct InboxView: View {
     @Environment(\.router) var router
     
+    @StateObject private var permissionManager = PhotoPermissionManager()
     @StateObject var vmActiveNow = ActiveNowViewModel()
     @StateObject var vmInbox = InboxViewModel()
     @State private var selectedUser: User?
@@ -116,6 +117,11 @@ struct InboxView: View {
             )
             .task {
               //  vmInbox.
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                permissionManager.checkPhotoLibraryPermission()
             }
         }
         // MARK: Due To Safe Area

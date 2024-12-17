@@ -29,7 +29,8 @@ DerivedData/
 *.xcworkspace/xcuserdata
 
 # Исключаем только временные и настройки, но оставляем важные файлы конфигурации проекта
-
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 *.xcworkspace
 !*.xcworkspace/contents.xcworkspacedata

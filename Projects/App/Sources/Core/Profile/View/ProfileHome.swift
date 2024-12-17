@@ -76,7 +76,7 @@ struct ProfileHome: View {
                 UserInfo()
                 
                 // MARK: - Sample
-                SampleRows()
+         //       SampleRows()
                 
             }
             .frame(maxWidth: .infinity)
@@ -263,7 +263,7 @@ struct ProfileHome: View {
                 .stroke(Color(.systemGray4), lineWidth: 0.5)
         }
         .cropImagePicker(
-            options: [.circle, .custom(.init(width: 300, height: 300))],
+         //   options: [.circle],
             show: $showPicker,
             croppedImage: $croppedImage
         )
