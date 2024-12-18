@@ -127,6 +127,14 @@ struct SettingsView: View {
                             }
                         },
                     SectionItem(
+                        icon: "info.circle",
+                        title: "Device info",
+                        trailingIcon: "chevron.right") {
+                            router.showScreen(.push) { _ in
+                                DeviceInfoView()
+                            }
+                        },
+                    SectionItem(
                         icon: "moon",
                         title: "Theme") {
                             changeTheme.toggle()
