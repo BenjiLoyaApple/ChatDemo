@@ -72,7 +72,7 @@ public extension Project {
         
         return Project(
             name: name,
-            settings: .settings(configurations: environment.baseConfigurations),
+          //  settings: .settings(configurations: environment.baseConfigurations),
             targets: targets
         )
     }

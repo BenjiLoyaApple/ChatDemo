@@ -6,22 +6,22 @@ public struct ProjectEnvironment {
     public let marketingVersion: String
     public let currentProjectVersion: String
     public let baseSetting: SettingsDictionary
-    public let baseConfigurations: [Configuration]
+  //  public let baseConfigurations: [Configuration]
 
     public init(
         name: String,
         deploymentTargets: String,
         marketingVersion: String,
         currentProjectVersion: String,
-        baseSetting: SettingsDictionary,
-        baseConfigurations: [Configuration]
+        baseSetting: SettingsDictionary
+    //    baseConfigurations: [Configuration]
     ) {
         self.name = name
         self.deploymentTargets = deploymentTargets
         self.marketingVersion = marketingVersion
         self.currentProjectVersion = currentProjectVersion
         self.baseSetting = baseSetting
-        self.baseConfigurations = baseConfigurations
+     //   self.baseConfigurations = baseConfigurations
     }
 }
 
@@ -35,11 +35,11 @@ public extension ProjectEnvironment {
             baseSetting: SettingsDictionary()
                 .debugInformationFormat(DebugInformationFormat.dwarfWithDsym)
                 .otherLinkerFlags(["-ObjC"])
-                .bitcodeEnabled(false),
-            baseConfigurations: [
-                .debug(name: .debug),
-                .release(name: .release)
-            ]
+                .bitcodeEnabled(false)
+//            baseConfigurations: [
+//                .debug(name: .debug),
+//                .release(name: .release)
+//            ]
         )
     }
 }
