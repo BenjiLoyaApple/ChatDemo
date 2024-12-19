@@ -351,6 +351,7 @@
 		425AF809DB45DE37329074BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_CONFIG = dev;
 				APP_NAME = Whisp;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -505,6 +506,7 @@
 		C9B55A0B2A962E71F1BDE591 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_CONFIG = prod;
 				APP_NAME = Whisp;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;

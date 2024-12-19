@@ -18,5 +18,6 @@ let project = Project.createProject(
         .SPM.SwiftfulUI,
         .SPM.SwiftfulRouting
     ],
-    environment: ProjectEnvironment.defaultEnv 
+    includeSchemes: true,
+    environment: ProjectEnvironment.defaultEnv
 )

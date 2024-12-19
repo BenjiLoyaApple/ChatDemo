@@ -11,5 +11,6 @@ let project = Project.createProject(
         .SPM.Kingfisher
     ],
     includeTests: false,
+    includeSchemes: false,
     environment: ProjectEnvironment.defaultEnv
 )
