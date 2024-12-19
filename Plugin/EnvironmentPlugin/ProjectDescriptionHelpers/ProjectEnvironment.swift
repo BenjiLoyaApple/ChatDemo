@@ -28,7 +28,7 @@ public struct ProjectEnvironment {
 public extension ProjectEnvironment {
     static var defaultEnv: ProjectEnvironment {
         return ProjectEnvironment(
-            name: "Whisp",
+            name: "GossipApp",
             deploymentTargets: "17.0",
             marketingVersion: "1.0.0",
             currentProjectVersion: "1",
