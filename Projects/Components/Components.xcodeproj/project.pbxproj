@@ -353,6 +353,7 @@
 			buildSettings = {
 				APP_CONFIG = dev;
 				APP_NAME = Whisp;
+				BASE_URL = "https://dev.api.com";
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -369,6 +370,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LOG_LEVEL = debug;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Components;
@@ -508,6 +510,7 @@
 			buildSettings = {
 				APP_CONFIG = prod;
 				APP_NAME = Whisp;
+				BASE_URL = "https://prod.api.com";
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -524,6 +527,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LOG_LEVEL = release;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Components;

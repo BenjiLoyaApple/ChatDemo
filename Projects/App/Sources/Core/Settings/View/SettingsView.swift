@@ -265,8 +265,6 @@ struct SettingsView: View {
                     DividerView()
                 }
                 
-                
-                
                 //MARK: - Login
                 SectionView(title: "Login",items: [
                     SectionItem(

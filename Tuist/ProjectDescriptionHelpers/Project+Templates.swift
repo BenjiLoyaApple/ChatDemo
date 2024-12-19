@@ -11,28 +11,31 @@ public extension Project {
         resources: ResourceFileElements = ["Resources/**"],
         dependencies: [TargetDependency] = [],
         includeTests: Bool = false,
-        includeSchemes: Bool = true, // Новый параметр
+        includeSchemes: Bool = false, 
         additionalSettings: SettingsDictionary = [:],
         environment: ProjectEnvironment
     ) -> Project {
         let debugSettings: SettingsDictionary = [
-                   "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
-                   "OTHER_LDFLAGS": ["-ObjC"],
-                   "APP_CONFIG": .string("dev") // Устанавливаем APP_CONFIG для Debug
-               ]
-               
-               let releaseSettings: SettingsDictionary = [
-                   "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule",
-                   "OTHER_LDFLAGS": ["-ObjC"],
-                   "APP_CONFIG": .string("prod") // Устанавливаем APP_CONFIG для Release
-               ]
+            "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
+            "OTHER_LDFLAGS": ["-ObjC"],
+            "APP_CONFIG": .string("dev"),
+            "BASE_URL": .string("https://dev.api.com"),
+            "LOG_LEVEL": .string("debug")
+        ]
+        
+        let releaseSettings: SettingsDictionary = [
+            "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule",
+            "OTHER_LDFLAGS": ["-ObjC"],
+            "APP_CONFIG": .string("prod"),
+            "BASE_URL": .string("https://prod.api.com"),
+            "LOG_LEVEL": .string("release")
+        ]
         
         let settingsWithEnv = environment.baseSetting.merging([
             "MARKETING_VERSION": .string(environment.marketingVersion),
             "CURRENT_PROJECT_VERSION": .string(environment.currentProjectVersion),
             "IPHONEOS_DEPLOYMENT_TARGET": .string(environment.deploymentTargets),
             "APP_NAME": .string(environment.name)
-       //     "APP_CONFIG": .string(environment.name.contains("Prod") ? "prod" : "dev")
         ], uniquingKeysWith: { $1 })
         
         var targets: [Target] = [
