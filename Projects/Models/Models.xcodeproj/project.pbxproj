@@ -191,7 +191,7 @@
 		371CBA972AC499AEBF20FEA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APP_NAME = ChatDemo;
+				APP_NAME = Whisp;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -229,7 +229,7 @@
 		A859CDB072989C16C907A7DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APP_NAME = ChatDemo;
+				APP_NAME = Whisp;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

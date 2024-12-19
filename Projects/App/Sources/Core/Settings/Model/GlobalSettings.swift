@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/*
 enum BuildEnvironment: String {
     case dev
   //  case qa
@@ -63,3 +63,4 @@ extension GlobalSettings {
         logLevelEnvironmentVariable ?? logLevelBuildConfigSettings
     }
 }
+*/
