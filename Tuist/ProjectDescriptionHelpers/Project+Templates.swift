@@ -2,7 +2,6 @@ import ProjectDescription
 import EnvironmentPlugin
 
 public extension Project {
-    // MARK: - Шаблон для создания приложения или фреймворка с использованием ProjectEnvironment
     static func createProject(
         name: String,
         bundleId: String,
@@ -12,17 +11,24 @@ public extension Project {
         resources: ResourceFileElements = ["Resources/**"],
         dependencies: [TargetDependency] = [],
         includeTests: Bool = false,
+        includeSchemes: Bool = false, 
         additionalSettings: SettingsDictionary = [:],
         environment: ProjectEnvironment
     ) -> Project {
         let debugSettings: SettingsDictionary = [
             "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
-            "OTHER_LDFLAGS": ["-ObjC"]
+            "OTHER_LDFLAGS": ["-ObjC"],
+            "APP_CONFIG": .string("dev"),
+            "BASE_URL": .string("https://dev.api.com"),
+            "LOG_LEVEL": .string("debug")
         ]
         
         let releaseSettings: SettingsDictionary = [
             "SWIFT_OPTIMIZATION_LEVEL": "-Owholemodule",
-            "OTHER_LDFLAGS": ["-ObjC"]
+            "OTHER_LDFLAGS": ["-ObjC"],
+            "APP_CONFIG": .string("prod"),
+            "BASE_URL": .string("https://prod.api.com"),
+            "LOG_LEVEL": .string("release")
         ]
         
         let settingsWithEnv = environment.baseSetting.merging([
@@ -55,7 +61,6 @@ public extension Project {
             )
         ]
         
-        // Если нужно, добавляем тесты
         if includeTests {
             targets.append(
                 .target(
@@ -70,10 +75,32 @@ public extension Project {
             )
         }
         
+        // Создаем схемы только при условии includeSchemes == true
+        let schemes: [Scheme] = includeSchemes ? [
+                   .scheme(
+                       name: "\(name)-Debug",
+                       shared: true,
+                       buildAction: .buildAction(targets: [.target(name)]),
+                       runAction: .runAction(configuration: "Debug"),
+                       archiveAction: .archiveAction(configuration: "Debug"),
+                       profileAction: .profileAction(configuration: "Debug"),
+                       analyzeAction: .analyzeAction(configuration: "Debug")
+                   ),
+                   .scheme(
+                       name: "\(name)-Release",
+                       shared: true,
+                       buildAction: .buildAction(targets: [.target(name)]),
+                       runAction: .runAction(configuration: "Release"),
+                       archiveAction: .archiveAction(configuration: "Release"),
+                       profileAction: .profileAction(configuration: "Release"),
+                       analyzeAction: .analyzeAction(configuration: "Release")
+                   )
+               ] : []
+        
         return Project(
             name: name,
-            settings: .settings(configurations: environment.baseConfigurations),
-            targets: targets
+            targets: targets,
+            schemes: schemes
         )
     }
 }

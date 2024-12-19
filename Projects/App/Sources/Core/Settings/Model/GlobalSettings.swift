@@ -7,11 +7,10 @@
 
 import Foundation
 
-
 enum BuildEnvironment: String {
     case dev
-  //  case qa
-  //  case staging
+//    case qa
+//    case staging
     case prod
 }
 
@@ -44,7 +43,7 @@ enum GlobalSettings {
 //MARK: - Environment Variables
 extension GlobalSettings {
     static var forcceSubscribedState: Bool {
-        let key = "FORSE_SUBSCRIBE"
+        let key = "FORCE_SUBSCRIBE"
         guard ProcessInfo.processInfo.environment.contains(where: { $0.key == key }) else { return false }
         return ProcessInfo.processInfo.environment[key] == "true"
     }
@@ -63,3 +62,4 @@ extension GlobalSettings {
         logLevelEnvironmentVariable ?? logLevelBuildConfigSettings
     }
 }
+
