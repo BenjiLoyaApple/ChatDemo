@@ -120,7 +120,7 @@ struct InboxView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
                 permissionManager.checkPhotoLibraryPermission()
             }
         }

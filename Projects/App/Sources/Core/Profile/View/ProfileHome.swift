@@ -76,11 +76,14 @@ struct ProfileHome: View {
                 UserInfo()
                 
                 // MARK: - Sample
+#if DEBUG
                 SampleRows()
+#endif
                 
             }
             .frame(maxWidth: .infinity)
         }
+        .scrollDismissesKeyboard(.interactively)
       //  .background(Color.theme.darkBlack)
         .backgroundPreferenceValue(AnchorKey.self, { pref in
             GeometryReader { proxy in
