@@ -104,47 +104,57 @@ public struct CropView: View{
     @GestureState private var isInteracting: Bool = false
     
     public var body: some View{
-        NavigationStack{
+        VStack {
+            HStack(spacing: 10) {
+                CustomChatButton(
+                    imageSource: .systemName("xmark"),
+                    font: .subheadline,
+                    fontWeight: .semibold,
+                    foregroundColor: .primary,
+                    padding: 10,
+                    onButtonPressed: {
+                        dismiss()
+                    }
+                )
+                
+                Spacer(minLength: 0)
+                
+                Text("Crop Image")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                
+                Spacer(minLength: 0)
+                
+                CustomChatButton(
+                    imageSource: .systemName("checkmark"),
+                    font: .subheadline,
+                    fontWeight: .semibold,
+                    foregroundColor: .primary,
+                    padding: 10,
+                    onButtonPressed: {
+                        /// Converting View to Image (Native iOS 16+)
+                        let renderer = ImageRenderer(content: ImageView(true))
+                        renderer.proposedSize = .init(crop.size())
+                        if let image = renderer.uiImage{
+                            onCrop(image,true)
+                        }else{
+                            onCrop(nil,false)
+                        }
+                        dismiss()
+                    }
+                )
+            }
+            .padding(.horizontal)
+            
+            Divider()
+                .opacity(0.5)
+            
+            Spacer(minLength: 0)
+            
             ImageView()
-                .navigationTitle("Crop Profile image")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(.visible, for: .navigationBar)
-                .toolbarBackground(Color.black, for: .navigationBar)
-                .toolbarColorScheme(.dark, for: .navigationBar)
-                .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .background {
-                    Color.black
-                        .ignoresSafeArea()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            /// Converting View to Image (Native iOS 16+)
-                            let renderer = ImageRenderer(content: ImageView(true))
-                            renderer.proposedSize = .init(crop.size())
-                            if let image = renderer.uiImage{
-                                onCrop(image,true)
-                            }else{
-                                onCrop(nil,false)
-                            }
-                            dismiss()
-                        } label: {
-                            Image(systemName: "checkmark")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                        }
-                    }
-                }
+            
+            Spacer(minLength: 0)
+            
         }
     }
     
@@ -243,6 +253,10 @@ public struct CropView: View{
         )
         .frame(cropSize)
         .cornerRadius(crop == .circle ? cropSize.height / 2 : 0)
+        .overlay(
+            Circle()
+                .stroke(Color.gray.opacity(0.25), lineWidth: 0.5)
+        )
     }
     
     /// - Grids
@@ -252,7 +266,7 @@ public struct CropView: View{
             HStack{
                 ForEach(1...2,id: \.self){_ in
                     Rectangle()
-                        .fill(.white.opacity(0.25))
+                        .fill(.gray.opacity(0.25))
                         .frame(width: 1)
                         .frame(maxWidth: .infinity)
                 }
@@ -261,7 +275,7 @@ public struct CropView: View{
             VStack{
                 ForEach(1...2,id: \.self){_ in
                     Rectangle()
-                        .fill(.white.opacity(0.25))
+                        .fill(.gray.opacity(0.25))
                         .frame(height: 1)
                         .frame(maxHeight: .infinity)
                 }
@@ -272,7 +286,7 @@ public struct CropView: View{
 
 struct CustomImagePicker_Previews: PreviewProvider {
     static var previews: some View {
-        CropView(crop: .square, image: UIImage(named: "Sample Pic")) { _, _ in
+        CropView(crop: .square, image: UIImage(named: "nullProfile")) { _, _ in
             
         }
     }

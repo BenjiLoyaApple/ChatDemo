@@ -104,7 +104,10 @@ public struct CustomChatButton: View {
             font: .title,
             fontWeight: .bold,
             foregroundColor: .teal,
-            padding: 20
+            padding: 20,
+            onButtonPressed: {
+                print("Moon pressed!")
+            }
         )
         
         CustomChatButton(
