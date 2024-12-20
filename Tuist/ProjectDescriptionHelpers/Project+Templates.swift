@@ -34,7 +34,7 @@ public extension Project {
         let settingsWithEnv = environment.baseSetting.merging([
             "MARKETING_VERSION": .string(environment.marketingVersion),
             "CURRENT_PROJECT_VERSION": .string(environment.currentProjectVersion),
-            "IPHONEOS_DEPLOYMENT_TARGET": .string(environment.deploymentTargets),
+        //    "IPHONEOS_DEPLOYMENT_TARGET": .string(environment.deploymentTargets),
             "APP_NAME": .string(environment.name)
         ], uniquingKeysWith: { $1 })
         
