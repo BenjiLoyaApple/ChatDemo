@@ -456,6 +456,7 @@ struct IntrosView: View {
                 .textScale(.secondary)
                 .padding(.bottom, alreadyHavingAccount ? 0 : 15)
                 
+                /*
                 if !alreadyHavingAccount {
                     /// Markup Text
                     Text("By signing up, you're agreeing to our **[Terms & Condition](https:apple.com)** and **[Privacy Policy](https:apple.com)**")
@@ -466,6 +467,7 @@ struct IntrosView: View {
                         .foregroundStyle(.gray)
                         .transition(.offset(y: 100))
                 }
+                */
             }
             .padding(.bottom, 15)
             .padding(.horizontal, 20)
