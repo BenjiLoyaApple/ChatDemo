@@ -9,8 +9,10 @@ import SwiftUI
 
 struct EULAView: View {
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("isEULAagreed") private var isEULAagreed: Bool = false
+   // @AppStorage("isEULAagreed") var isEULAagreed: Bool = false
 
+    @Binding var isEULAagreed: Bool
+    
     var body: some View {
         VStack {
             // Прокручиваемый текст EULA
@@ -59,6 +61,6 @@ struct EULAView: View {
 
 struct EULAView_Previews: PreviewProvider {
     static var previews: some View {
-        EULAView()
+        EULAView(isEULAagreed: .constant(false))
     }
 }

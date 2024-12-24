@@ -479,7 +479,7 @@ struct IntrosView1: View {
             .multilineTextAlignment(.center)
             .frame(width: size.width)
             .fullScreenCover(isPresented: $showEULA) {
-                    EULAView()
+                EULAView(isEULAagreed: $isEULAagreed)
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

@@ -9,18 +9,18 @@ import SwiftUI
 import Components
 
 struct IntrosView: View {
-
+    // MARK: Animation Properties
+    @State private var showWalkThroughScreens: Bool = false
+    @State private var currentIndex: Int = 0
+    @State private var showHomeView: Bool = false
+    @Namespace private var animation
+    
     /// EULA
     @AppStorage("isEULAagreed") private var isEULAagreed: Bool = false
-        @State private var showEULA: Bool = false
+    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
-    @AppStorage("isAuthenticated") private var isAuthenticated: Bool = false
-    
-    // MARK: Animation Properties
-    @State var showWalkThroughScreens: Bool = false
-    @State var currentIndex: Int = 0
-    @State var showHomeView: Bool = false
-    @Namespace var animation
+    @State private var showEULA: Bool = false
+    @State private var showLoginSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -94,20 +94,21 @@ struct IntrosView: View {
                     .padding(.horizontal,15)
                     .scaleEffect(isLast ? 1 : 0.001)
                     .frame(height: isLast ? nil : 0)
-                    .opacity(isLast ? 1 : 0)
+                    .opacity(isLast ? (isEULAagreed ? 1 : 0.4) : 0)
                 }
                 .frame(width: isLast ? size.width / 1.5 : 55, height: isLast ? 50 : 55)
-                .foregroundColor(.red)
                 .background {
                     RoundedRectangle(cornerRadius: isLast ? 10 : 30, style: isLast ? .continuous : .circular)
                         .fill(Color.theme.darkWhite)
                 }
                 .onTapGesture {
-                    if currentIndex == intros.count{
+                    if currentIndex == intros.count {
                         // Signup Action
-                        showHomeView = true
-                        isAuthenticated = true
-                    }else{
+                        if isEULAagreed {
+                              showHomeView = true
+                              isAuthenticated = true
+                        }
+                    } else {
                         // MARK: Updating Index
                         currentIndex += 1
                     }
@@ -121,27 +122,56 @@ struct IntrosView: View {
                 let isLast = currentIndex == intros.count
                 
                 HStack(spacing: 5) {
-                    Text("Already have an account?")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                    
-                    CustomChatButton(
-                        text: "Login",
-                        font: .system(size: 14),
-                        fontWeight: .semibold,
-                        foregroundColor: .primary,
-                        padding: 10,
-                        onButtonPressed: {
-                            // action
-                        }
-                    )
+                    /// Markup Text
+                    Text(attributedSubTitle)
+                        .font(.caption)
+                    /// Markup Content will be Red
+                        .tint(Color.theme.darkWhite)
+                    /// Others will be Gray
+                        .foregroundStyle(.gray)
+                        .transition(.offset(y: 100))
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.vertical, -15)
                 .offset(y: isLast ? -12 : 100)
                 .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5), value: isLast)
+                .onTapGesture {
+                    showEULA.toggle()
+                }
             })
             .offset(y: showWalkThroughScreens ? 0 : size.height)
+            .fullScreenCover(isPresented: $showEULA) {
+                EULAView(isEULAagreed: $isEULAagreed)
+            }
+            .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        if isEULAagreed {
+                            print("EULA agreed, showing EULA...")
+                            withAnimation {
+                                showEULA = true
+                            }
+                        }
+                    }
+            }
+            
         }
+    }
+    
+    var attributedSubTitle: AttributedString {
+        let string = "By signing up, you're agreeing to our \nTerms & Condition and Privacy Policy"
+        var attString = AttributedString(stringLiteral: string)
+        
+        if let range = attString.range(of: "Terms & Condition") {
+            attString[range].foregroundColor = Color.theme.darkWhite
+            attString[range].font = .caption.bold()
+        }
+        
+        if let range = attString.range(of: "Privacy Policy") {
+            attString[range].foregroundColor = Color.theme.darkWhite
+            attString[range].font = .caption.bold()
+        }
+        
+        return attString
     }
     
     // MARK: Indicator View
