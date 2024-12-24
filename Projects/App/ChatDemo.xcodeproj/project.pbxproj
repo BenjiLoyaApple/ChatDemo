@@ -137,6 +137,7 @@
 		CE2371A4868977BBAF4E7FC1 /* LinkPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79D6F54920A09FDFAD2F5FD /* LinkPreviewCell.swift */; };
 		CF7D6FB7EA5E2B118CD46C14 /* grpcpp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02FCDD6254CBD0C11B7FF9CC /* grpcpp.xcframework */; };
 		CFB18591529C0A977726639C /* FirebaseFirestoreSwiftTarget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8E91C04ADB0003B4F6E227 /* FirebaseFirestoreSwiftTarget.framework */; };
+		D0701E0A02A41986C822E3C5 /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF207CA399AE4D825531C1 /* EULAView.swift */; };
 		D07162BFDCCC26CD1A7C191D /* nanopb_nanopb.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 179F54720897E5E9E6736BF4 /* nanopb_nanopb.bundle */; };
 		D342B3DB8679AE47A756EE7D /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACFCA8E0469117254E12B57 /* CircularProfileImageView.swift */; };
 		D631B65252388A17E859225B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A4FEA361A5469E6D5E404 /* InboxView.swift */; };
@@ -153,6 +154,8 @@
 		E00EDB2BC211E2E886AAFA45 /* FirebaseAppCheckInterop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B26C54E505E7FB5BFDAD9B /* FirebaseAppCheckInterop.framework */; };
 		E030CDCC9B50E79A5BE8CA3C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273956535013361340123E9 /* UserService.swift */; };
 		E0D75FD64A754FFC78E06544 /* gRPC_grpcWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 16033BFBACE6749691EF4F8F /* gRPC_grpcWrapper.bundle */; };
+		E49181842D1A63F000B4DE57 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181832D1A63F000B4DE57 /* Intro.swift */; };
+		E49181862D1A762900B4DE57 /* IntrosView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181852D1A762900B4DE57 /* IntrosView1.swift */; };
 		E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E5F9D5ABEE8EFC5976E04 /* MessageServiceProtocol.swift */; };
 		E542FC034EFD776B5414BFB9 /* GoogleUtilities_Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78281A9C0799E266964689F1 /* GoogleUtilities_Reachability.framework */; };
 		E617CA566C12CF2792973851 /* abseil_abslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = A1EE0EA0ABCEC3D3803FE4D3 /* abseil_abslWrapper.bundle */; };
@@ -311,6 +314,7 @@
 		A41D9FB2FEA7410DA46DF2A6 /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E673C3C4912698D0A276B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8C0DBA0DB113E8503820245 /* Firebase_FirebaseCoreExtension.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseCoreExtension.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8CF207CA399AE4D825531C1 /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
 		A998DD0280A50F4BA2783975 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AB0482302B1AC495B9A32524 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		AC21422EB6CDFA7B03DCF274 /* abslWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = abslWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,6 +351,8 @@
 		E048DA20891ABE7E4BD15F45 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E0DB94C1475070CC102447EB /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		E3514999B2FA701D10E1DE4C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		E49181832D1A63F000B4DE57 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		E49181852D1A762900B4DE57 /* IntrosView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrosView1.swift; sourceTree = "<group>"; };
 		E5E40801D4E6BF3F56B6E771 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		EDF4D729B007B8B467DEAF7B /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -828,7 +834,9 @@
 		B5D819518752B451527751F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A8CF207CA399AE4D825531C1 /* EULAView.swift */,
 				C1A635F5AE7B2805BD9C4694 /* IntrosView.swift */,
+				E49181852D1A762900B4DE57 /* IntrosView1.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1019,6 +1027,7 @@
 			children = (
 				F9042DE486B08BE7D30B9762 /* AuthError.swift */,
 				272A56B4DD1CC486FDA89065 /* Page.swift */,
+				E49181832D1A63F000B4DE57 /* Intro.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1107,6 +1116,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1620;
 			};
 			buildConfigurationList = E021BC8AA8DFBCD7F3403001 /* Build configuration list for PBXProject "ChatDemo" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -1167,6 +1177,7 @@
 				61B0BE23A1EEED6A7DA9B92D /* TuistAssets+ChatDemo.swift in Sources */,
 				547810C4960A36BB18787BFF /* TuistBundle+ChatDemo.swift in Sources */,
 				7F71842D9DED83D45AEE6F55 /* TuistPlists+ChatDemo.swift in Sources */,
+				E49181842D1A63F000B4DE57 /* Intro.swift in Sources */,
 				7914A8300BE72B591060876A /* ChatAppApp.swift in Sources */,
 				D342B3DB8679AE47A756EE7D /* CircularProfileImageView.swift in Sources */,
 				6E49EE8C8E8B5A4E2219FCED /* ActiveNowView.swift in Sources */,
@@ -1175,6 +1186,7 @@
 				58ED9D629DC6F2C4BA894A3B /* OffsetKeyLogin.swift in Sources */,
 				90E2A8E1BC17840E25DB622C /* AuthError.swift in Sources */,
 				9061E6A18E94A2F9C77FE4CA /* Page.swift in Sources */,
+				D0701E0A02A41986C822E3C5 /* EULAView.swift in Sources */,
 				20AF1AB07F27C8EE22F53E44 /* IntrosView.swift in Sources */,
 				41EDD50E54B18A252AABB4DA /* LoginViewModel.swift in Sources */,
 				C5F5E9ACE4F1DD4CE72B9552 /* RegisterViewModel.swift in Sources */,
@@ -1211,6 +1223,7 @@
 				21EE1A173E6587B4394D7D19 /* Date.swift in Sources */,
 				277DB9CF2A089D144DAE0E2B /* DeviceInfo.swift in Sources */,
 				3F259C6D67AFF4C0A97FFA90 /* Extensions.swift in Sources */,
+				E49181862D1A762900B4DE57 /* IntrosView1.swift in Sources */,
 				85D2434E36A417A39C48F9EB /* FaceID.swift in Sources */,
 				A43D3794EBEC349522394226 /* FaceIDManager.swift in Sources */,
 				AF9BDDD146051F8780E047FE /* Photos.swift in Sources */,
@@ -1347,6 +1360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1382,6 +1396,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1406,6 +1421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1441,6 +1457,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

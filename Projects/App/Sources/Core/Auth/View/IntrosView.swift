@@ -27,324 +27,468 @@ struct IntrosView: View {
     @State private var sheetScrollProgress: CGFloat = .zero
     /// Other Properties
     @State private var isKeyboardShowing: Bool = false
+    
+    /// EULA
+    @AppStorage("isEULAagreed") private var isEULAagreed: Bool = false
+        @State private var showEULA: Bool = false
+    
+    
+    
+    
+    @AppStorage("isAuthenticated") private var isAuthenticated: Bool = false
+    
+    @State private var showLoginSheet: Bool = false
+    
+    // MARK: Animation Properties
+    @State var showWalkThroughScreens: Bool = false
+    @State var currentIndex: Int = 0
+    @State var showHomeView: Bool = false
+    @Namespace var animation
     var body: some View {
+        ZStack {
+            if showHomeView {
+                // Home
+                InboxView()
+                .transition(.move(edge: .trailing))
+            } else {
+                ZStack {
+                    Color(Color.theme.darkBlack)
+                        .ignoresSafeArea()
+                    
+                    IntroScreen()
+                    
+                    WalkThroughScreens()
+                    
+                    NavBar()
+                }
+                .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.85, blendDuration: 0.85), value: showWalkThroughScreens)
+                .transition(.move(edge: .leading))
+            }
+        }
+        .animation(.easeInOut(duration: 0.35), value: showHomeView)
+    }
+    
+    // MARK: WalkThrough Screens
+    @ViewBuilder
+    func WalkThroughScreens() -> some View {
+        let isLast = currentIndex == intros.count
+        
         GeometryReader {
             let size = $0.size
             
-            VStack {
-                Spacer(minLength: 0)
+            ZStack{
+                // MARK: Walk Through Screens
+                ForEach(intros.indices,id: \.self){index in
+                    ScreenView(size: size, index: index)
+                }
                 
-                MorphingSymbolView(
-                    symbol: activePage.rawValue,
-                    config: .init(
-                        font: .system(size: 150, weight: .bold),
-                        frame: .init(width: 250, height: 200),
-                        radius: 30,
-                        foregroundColor: .white
-                    )
-                )
-                
-                TextContent(size: size)
-                
-                Spacer(minLength: 0)
-                
-                IndicatorView()
-                    .padding(.bottom)
-                
-                ContinueButton()
+                WelcomeView(size: size, index: intros.count)
             }
-            .frame(maxWidth: .infinity)
-            .overlay(alignment: .top) {
-                HeaderView()
-            }
-        }
-        .background {
-            Rectangle()
-                .fill(.black.gradient)
-                .ignoresSafeArea()
-        }
-        .alert(isPresented: Binding<Bool>(
-            get: { loginVM.showAlert || registrationVM.showAlert },
-            set: { newValue in
-                loginVM.showAlert = newValue
-                registrationVM.showAlert = newValue
-            }
-        )) {
-            let errorMessage = loginVM.authError?.localizedDescription
-                            ?? registrationVM.authError?.localizedDescription
-                            ?? "An unknown error occurred."
-            return Alert(title: Text("Error"), message: Text(errorMessage))
-        }
-        
-        .sheet(isPresented: $showSheet, onDismiss: {
-            /// Resetting Properties
-            sheetHeight = .zero
-            sheetFirstPageHeight = .zero
-            sheetSecondPageHeight = .zero
-            sheetScrollProgress = .zero
-        }, content: {
-            /// Sheet View
-            GeometryReader(content: { geometry in
-                let size = geometry.size
-                
-                ScrollViewReader(content: { proxy in
-                    ScrollView(.horizontal) {
-                        HStack(alignment: .top, spacing: 0) {
-                            OnBoarding(size)
-                                .id("First Page")
-                            
-                            LoginView(size)
-                                .id("Second Page")
-                        }
-                        /// For Paging Needs to be Enabled
-                        .scrollTargetLayout()
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
+            .overlay(alignment: .bottom, content: {
+                Indicators()
+                    .opacity(isLast ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.35), value: isLast)
+                    .offset(y: -180)
+            })
+            // MARK: Next Button
+            .overlay(alignment: .bottom) {
+                // MARK: Converting Next Button Into SignUP Button
+                ZStack {
+                    Image(systemName: "chevron.right")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.theme.darkBlack)
+                        .scaleEffect(!isLast ? 1 : 0.001)
+                        .opacity(!isLast ? 1 : 0)
+                    
+                    HStack {
+                        Text("Sign Up")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity,alignment: .leading)
+                        
+                        Image(systemName: "arrow.right")
+                            .font(.title3)
+                            .fontWeight(.semibold)
                     }
-                    /// Enabling Paging ScrollView
-                    .scrollTargetBehavior(.paging)
-                    .scrollIndicators(.hidden)
-                    /// Disabling ScrollView when Keyboard is Visible
-                    .scrollDisabled(isKeyboardShowing)
-                    /// Custom button Which will be Updated over scroll
-                    .overlay(alignment: .topTrailing) {
-                      
-                        CustomLoginButton(
-                            buttonTint: AnyShapeStyle(
-                                LinearGradient(
-                                    colors: [.red, .orange],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
+                    .foregroundStyle(Color.theme.darkBlack)
+                    .padding(.horizontal,15)
+                    .scaleEffect(isLast ? 1 : 0.001)
+                    .frame(height: isLast ? nil : 0)
+                    .opacity(isLast ? 1 : 0)
+                }
+                .frame(width: isLast ? size.width / 1.5 : 55, height: isLast ? 50 : 55)
+                .foregroundColor(.red)
+                .background {
+                    RoundedRectangle(cornerRadius: isLast ? 10 : 30, style: isLast ? .continuous : .circular)
+                        .fill(Color.theme.darkWhite)
+                }
+                .onTapGesture {
+                    if currentIndex == intros.count{
+                        // Signup Action
+                        showHomeView = true
+                  //      isAuthenticated = true
+                    }else{
+                        // MARK: Updating Index
+                        currentIndex += 1
+                    }
+                }
+                .offset(y: isLast ? -40 : -90)
+                // Animation
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5), value: isLast)
+            }
+            .overlay(alignment: .bottom, content: {
+                // MARK: Bottom Sign In Button
+                let isLast = currentIndex == intros.count
+                
+                HStack(spacing: 5) {
+                    Text("Already have an account?")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                    
+                    CustomChatButton(
+                        text: "Login",
+                        font: .system(size: 14),
+                        fontWeight: .semibold,
+                        foregroundColor: .primary,
+                        padding: 10,
+                        onButtonPressed: {
+                        //    showLoginSheet.toggle()
+                            showSheet.toggle()
+                        }
+                    )
+                }
+                .padding(.vertical, -15)
+                .offset(y: isLast ? -12 : 100)
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5), value: isLast)
+            })
+            .offset(y: showWalkThroughScreens ? 0 : size.height)
+        }
+    }
+    
+    // MARK: Indicator View
+    // Forgot to add in the YT Video
+    @ViewBuilder
+    func Indicators() -> some View {
+        HStack(spacing: 8) {
+            ForEach(intros.indices,id: \.self) { index in
+                Circle()
+                    .fill(.gray.opacity(0.2))
+                    .frame(width: 8, height: 8)
+                    .overlay {
+                        if currentIndex == index{
+                            Circle()
+                                .fill(Color.theme.darkWhite)
+                                .frame(width: 8, height: 8)
+                                .matchedGeometryEffect(id: "INDICATOR", in: animation)
+                        }
+                    }
+            }
+        }
+        .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7), value: currentIndex)
+    }
+    
+    @ViewBuilder
+    func ScreenView(size: CGSize,index: Int) -> some View {
+        let intro = intros[index]
+        
+        VStack(spacing: 10) {
+            Text(intro.title)
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+                // MARK: Applying Offset For Each Screen's
+                .offset(x: -size.width * CGFloat(currentIndex - index))
+                // MARK: Adding Animation
+                // MARK: Adding Delay to Elements based On Index
+                // My Delay Starts From Top
+                // You can also modify code to start delay from Bottom
+                // Delay:
+                // 0.2, 0.1, 0
+                // Adding Extra 0.2 For Current Index
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0.2 : 0).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+            
+            Text(intro.subtitle)
+                .font(.system(size: 15))
+                .fontWeight(.regular)
+                .foregroundStyle(.primary.opacity(0.7))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal,30)
+                .offset(x: -size.width * CGFloat(currentIndex - index))
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+            
+            
+//            MorphingSymbolView(
+//                symbol: intro.systemImageName,
+//                config: .init(
+//                    font: .system(size: 150, weight: .bold),
+//                    frame: .init(width: 250, height: 200),
+//                    radius: 30,
+//                    foregroundColor: .primary
+//                )
+//            )
+            
+            Image(intro.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 250,alignment: .top)
+                .padding(.horizontal,20)
+                .offset(x: -size.width * CGFloat(currentIndex - index))
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+            
+            
+        }
+        .offset(y: -30)
+    }
+    
+    // MARK: Welcome Screen
+    @ViewBuilder
+    func WelcomeView(size: CGSize,index: Int)->some View {
+        VStack(spacing: 10) {
+            Image("Welcome")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 250,alignment: .top)
+                .padding(.horizontal,20)
+                .offset(x: -size.width * CGFloat(currentIndex - index))
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.1 : 0), value: currentIndex)
+            
+          //  Text("Chat, share, and grow with your crew.")
+            Text("Welcome")
+                .font(.system(size: 24))
+                .fontWeight(.bold)
+                .offset(x: -size.width * CGFloat(currentIndex - index))
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1).delay(currentIndex == index ? 0.1 : 0), value: currentIndex)
+            
+            Text("Hop in and start connecting with your people right now.")
+                .font(.system(size: 14))
+                .foregroundStyle(.primary.opacity(0.7))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal,30)
+                .offset(x: -size.width * CGFloat(currentIndex - index))
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0.2 : 0).delay(currentIndex == index ? 0.1 : 0), value: currentIndex)
+        }
+        .offset(y: -30)
+        .sheet(isPresented: $showLoginSheet) {
+          //  LoginView()
+        }
+    }
+    
+    // MARK: Nav Bar
+    @ViewBuilder
+    func NavBar()->some View {
+        let isLast = currentIndex == intros.count
+        
+        HStack {
+            CustomChatButton(
+                imageSource: .systemName("chevron.left"),
+                font: .subheadline,
+                fontWeight: .semibold,
+                foregroundColor: Color.theme.darkWhite,
+                padding: 10,
+                onButtonPressed: {
+                    // If Greater Than Zero Then Eliminating Index
+                    if currentIndex > 0{
+                        currentIndex -= 1
+                    }else{
+                        showWalkThroughScreens.toggle()
+                    }
+                }
+            )
+
+            Spacer()
+            
+            CustomChatButton(
+                text: "Skip",
+                font: .subheadline,
+                fontWeight: .semibold,
+                foregroundColor: Color.theme.darkWhite,
+                padding: 10,
+                onButtonPressed: {
+                    currentIndex = intros.count
+                }
+            )
+            .opacity(isLast ? 0 : 1)
+            .animation(.easeInOut, value: isLast)
+            
+        }
+        .padding(.horizontal,15)
+        .padding(.top,10)
+        .frame(maxHeight: .infinity,alignment: .top)
+        .offset(y: showWalkThroughScreens ? 0 : -120)
+    }
+    
+    @ViewBuilder
+    func IntroScreen() -> some View {
+        GeometryReader {
+            let size = $0.size
+            
+            VStack(spacing: 10) {
+                Image("Intro")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: size.width, height: size.height / 2)
+                
+                Text("Hello")
+                    .font(.system(size: 24))
+                    .fontWeight(.bold)
+                    .padding(.top,55)
+                
+                Text(dummyText)
+                    .font(.system(size: 14))
+                    .foregroundStyle(.primary.opacity(0.7))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal,30)
+                
+                Text("Let's Begin")
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.theme.darkBlack)
+                    .padding(.horizontal,40)
+                    .padding(.vertical,14)
+                    .background {
+                        Capsule()
+                            .fill(Color.theme.darkWhite)
+                    }
+                    .onTapGesture {
+                        showWalkThroughScreens.toggle()
+                    }
+                    .shadow(color: .gray.opacity(0.15), radius: 10)
+                    .padding(.top,30)
+            }
+            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+            // MARK: Moving Up When Clicked
+            .offset(y: showWalkThroughScreens ? -size.height : 0)
+            
+            .sheet(isPresented: $showSheet, onDismiss: {
+                /// Resetting Properties
+                sheetHeight = .zero
+                sheetFirstPageHeight = .zero
+                sheetSecondPageHeight = .zero
+                sheetScrollProgress = .zero
+            }, content: {
+                /// Sheet View
+                GeometryReader(content: { geometry in
+                    let size = geometry.size
+                    
+                    ScrollViewReader(content: { proxy in
+                        ScrollView(.horizontal) {
+                            HStack(alignment: .top, spacing: 0) {
+                                OnBoarding(size)
+                                    .id("First Page")
+                                
+                                LoginView(size)
+                                    .id("Second Page")
+                            }
+                            /// For Paging Needs to be Enabled
+                            .scrollTargetLayout()
+                        }
+                        /// Enabling Paging ScrollView
+                        .scrollTargetBehavior(.paging)
+                        .scrollIndicators(.hidden)
+                        /// Disabling ScrollView when Keyboard is Visible
+                        .scrollDisabled(isKeyboardShowing)
+                        /// Custom button Which will be Updated over scroll
+                        .overlay(alignment: .topTrailing) {
+                          
+                            CustomLoginButton(
+                                buttonTint: AnyShapeStyle(
+                                    LinearGradient(
+                                        colors: [.red, .orange],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
                                 )
-                            )
-                        ) {
-                            Text("Continue")
-                                .fontWeight(.semibold)
-                                .opacity(1 - sheetScrollProgress)
-                                /// Adding Some Extra Width for Second Page
-                                .frame(width: 120 + (sheetScrollProgress * (alreadyHavingAccount ? 0 : 50)))
-                                .overlay(content: {
-                                    HStack(spacing: 8) {
-                                        Text(alreadyHavingAccount ? "Login" : "Get Starting")
-                                        Image(systemName: "arrow.right")
-                                    }
+                            ) {
+                                Text("Continue")
                                     .fontWeight(.semibold)
-                                    .opacity(sheetScrollProgress)
-                                    .opacity(registrationVM.isAuthenticating || loginVM.isAuthenticating ? 0 : 1)
-                                    .overlay {
-                                        if registrationVM.isAuthenticating || loginVM.isAuthenticating {
-                                            ProgressView()
-                                                .tint(Color.theme.primaryBackground)
+                                    .opacity(1 - sheetScrollProgress)
+                                    /// Adding Some Extra Width for Second Page
+                                    .frame(width: 120 + (sheetScrollProgress * (alreadyHavingAccount ? 0 : 50)))
+                                    .overlay(content: {
+                                        HStack(spacing: 8) {
+                                            Text(alreadyHavingAccount ? "Login" : "Get Starting")
+                                            Image(systemName: "arrow.right")
                                         }
+                                        .fontWeight(.semibold)
+                                        .opacity(sheetScrollProgress)
+                                        .opacity(registrationVM.isAuthenticating || loginVM.isAuthenticating ? 0 : 1)
+                                        .overlay {
+                                            if registrationVM.isAuthenticating || loginVM.isAuthenticating {
+                                                ProgressView()
+                                                    .tint(Color.theme.primaryBackground)
+                                            }
+                                        }
+                                    })
+                                    .foregroundStyle(.white)
+                            } action: {
+                                if sheetScrollProgress < 1 {
+                                    /// Continue Button
+                                    /// Moving to the next page (Using ScrollView Reader)
+                                    withAnimation(.snappy) {
+                                        proxy.scrollTo("Second Page", anchor: .leading)
                                     }
-                                })
-                                .foregroundStyle(.white)
-                        } action: {
-                            if sheetScrollProgress < 1 {
-                                /// Continue Button
-                                /// Moving to the next page (Using ScrollView Reader)
-                                withAnimation(.snappy) {
-                                    proxy.scrollTo("Second Page", anchor: .leading)
-                                }
-                                return .idle
-                            } else {
-                                if alreadyHavingAccount {
-                                    // Логин
-                                    do {
-                                        try await loginVM.login()
-                                        return .success
-                                    } catch {
-                                        return .failed("\(error.localizedDescription)")
-                                    }
+                                    return .idle
                                 } else {
-                                    // Регистрация
-                                    do {
-                                        try await registrationVM.createUser()
-                                        return .success
-                                    } catch {
-                                        return .failed("\(error.localizedDescription)")
+                                    if alreadyHavingAccount {
+                                        // Логин
+                                        do {
+                                            try await loginVM.login()
+                                            return .success
+                                        } catch {
+                                            return .failed("\(error.localizedDescription)")
+                                        }
+                                    } else {
+                                        // Регистрация
+                                        do {
+                                            try await registrationVM.createUser()
+                                            return .success
+                                        } catch {
+                                            return .failed("\(error.localizedDescription)")
+                                        }
                                     }
                                 }
                             }
+                            .buttonStyle(.opacityLess)
+                            .offset(y: sheetHeight - 100)
+                            /// Moving Button Near to the Next View
+                            .offset(y: sheetScrollProgress * -120)
+                            // Disable button when form is not valid and the button is in the Login or Get Started state
+                            .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid))
+                            .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
+                            .padding(.trailing)
+                            
                         }
-                        .buttonStyle(.opacityLess)
-                        .offset(y: sheetHeight - 100)
-                        /// Moving Button Near to the Next View
-                        .offset(y: sheetScrollProgress * -120)
-                        // Disable button when form is not valid and the button is in the Login or Get Started state
-                        .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid))
-                        .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? loginVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
-                        .padding(.trailing)
-                        
-                    }
+                    })
+                })
+                /// Presentation Customization
+                .presentationCornerRadius(30)
+                /// Presemtation Detents
+                .presentationDetents(sheetHeight == .zero ? [.medium] : [.height(sheetHeight)])
+                /// Disabling swipe to Dismiss
+                .interactiveDismissDisabled()
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification), perform: { _ in
+                    isKeyboardShowing = true
+                })
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification), perform: { _ in
+                    isKeyboardShowing = false
                 })
             })
-            /// Presentation Customization
-            .presentationCornerRadius(30)
-            /// Presemtation Detents
-            .presentationDetents(sheetHeight == .zero ? [.medium] : [.height(sheetHeight)])
-            /// Disabling swipe to Dismiss
-            .interactiveDismissDisabled()
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification), perform: { _ in
-                isKeyboardShowing = true
-            })
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification), perform: { _ in
-                isKeyboardShowing = false
-            })
-        })
-           
-    }
-    
-    //MARK: - onBoarding
-    /// Header View
-    @ViewBuilder
-    private func HeaderView() -> some View {
-        HStack {
-            Button {
-                activePage = activePage.previousPage
-            } label: {
-                Image(systemName: "chevron.left")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .containerShape(.rect)
-            }
-            .opacity(activePage != .page1 ? 1 : 0)
             
-            Spacer(minLength: 0)
-            
-            Button("Skip") {
-                activePage = .page4
-            }
-            .fontWeight(.semibold)
-            .opacity(activePage != .page4 ? 1 : 0)
-        }
-        .foregroundStyle(.white)
-        .animation(.snappy(duration: 0.33, extraBounce: 0), value: activePage)
-        .padding(15)
-        .padding(.horizontal, 10)
-    }
-    
-    /// Text Content
-    @ViewBuilder
-    private func TextContent(size: CGSize) -> some View {
-        VStack(spacing: 8) {
-            HStack(alignment: .top, spacing: 0) {
-                ForEach(Page.allCases, id: \.rawValue) { page in
-                    Text(page.title)
-                        .foregroundStyle(.white)
-                        .lineLimit(1)
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .kerning(1.1)
-                        .frame(width: size.width)
-                }
-            }
-            /// Sliding Left/Right based on the active Page
-            .offset(x: -activePage.index * size.width)
-            .animation(.smooth(duration: 0.7, extraBounce: 0.1), value: activePage)
-            
-            HStack(alignment: .top, spacing: 0) {
-                ForEach(Page.allCases, id: \.rawValue) { page in
-                    Text(page.subTitle)
-                        .font(.callout)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.gray)
-                        .frame(width: size.width)
-                }
-            }
-            /// Sliding Left/Right based on the active Page
-            .offset(x: -activePage.index * size.width)
-            /// Adding a little delay
-            .animation(.smooth(duration: 0.9, extraBounce: 0.1), value: activePage)
             
         }
-        .padding(.top, 15)
-        .frame(width: size.width, alignment: .leading)
+        .ignoresSafeArea()
     }
     
-    /// Indicator View
-    @ViewBuilder
-    private func IndicatorView() -> some View {
-        HStack(spacing: 6) {
-            ForEach(Page.allCases, id: \.rawValue) { page in
-                Capsule()
-                    .fill(.white.opacity(activePage == page ? 1 : 0.4))
-                    .frame(width: activePage == page ? 25 : 8, height: 8)
-            }
-        }
-    }
     
-    /// Continue Button
-    @ViewBuilder
-    private func ContinueButton() -> some View {
-        Button {
-            if activePage == .page4 {
-                showSheet = true // Show the login sheet
-            } else {
-                activePage = activePage.nextPage
-            }
-        } label: {
-            Text(activePage == .page4 ? "Start" : "Continue")
-                .contentTransition(.identity)
-                .foregroundStyle(.black)
-                .padding(.vertical, 15)
-                .frame(maxWidth: activePage == .page4 ? 220 : 180)
-                .background(.white, in: .capsule)
-        }
-        .padding(.bottom, 15)
-        .animation(.smooth(duration: 0.5, extraBounce: 0), value: activePage)
-    }
-    
-    //MARK: - Sheet View
-    /// First View (Onboarding)
+    /// First View (Sheet)
     @ViewBuilder
     func OnBoarding(_ size: CGSize) -> some View {
-        VStack(alignment: .leading, spacing: 12, content: {
-            Text("Chat, share, and grow\nwith your crew")
-                .font(.largeTitle.bold())
-                .lineLimit(2)
-            
-            /// Custom Attributed Subtitle
-            Text(attributedSubTitle)
-                .font(.callout)
-                .foregroundStyle(.gray)
-        })
-        .padding(15)
-        .padding(.horizontal, 10)
-        .padding(.top, 15)
-        .padding(.bottom, 130)
-        .frame(width: size.width, alignment: .leading)
-        /// Finding the view's Height
-        .heightChangePreference { height in
-            sheetFirstPageHeight = height
-            /// Since the Sheet Height will be same as the First/Initial Page Height
-            sheetHeight = height
-        }
-    }
-    
-    var attributedSubTitle: AttributedString {
-        let string = "Hop in and start connecting with your people right now."
-        var attString = AttributedString(stringLiteral: string)
-        
-        if let range = attString.range(of: "connecting") {
-            attString[range].foregroundColor = Color.theme.darkWhite
-            attString[range].font = .callout.bold()
-        }
-        
-        if let range = attString.range(of: "right now") {
-            attString[range].foregroundColor = Color.theme.darkWhite
-            attString[range].font = .callout.bold()
-        }
-        
-        return attString
-    }
-    
-    /// Login View ()
-    @ViewBuilder
-    func LoginView(_ size: CGSize) -> some View {
         VStack(alignment: .leading, spacing: 12) {
+            
             Text(alreadyHavingAccount ? "Login" : "Create an Account")
                 .font(.largeTitle.bold())
             
-            if alreadyHavingAccount {
                 /// Login
                 CustomTF(hint: "Email Adress", text: $loginVM.email, icon: "envelope")
                     .padding(10)
@@ -353,8 +497,6 @@ struct IntrosView: View {
                     .padding(10)
                 
                 Button {
-                    // по-хорошему надо будет добавить проверку на "@", но сделаю позже
-                    
                     if loginVM.email.isEmpty {
                         Toast.shared.present(
                             title: "Please enter your email",
@@ -404,7 +546,27 @@ struct IntrosView: View {
                 }
                 .disabled(resetPasswordButtonDisabled)
                 
-            } else {
+           
+        }
+        .padding(15)
+        .padding(.horizontal, 10)
+        .padding(.top, 15)
+        .padding(.bottom, 130)
+        .frame(width: size.width, alignment: .leading)
+        /// Finding the view's Height
+        .heightChangePreference { height in
+            sheetFirstPageHeight = height
+            /// Since the Sheet Height will be same as the First/Initial Page Height
+            sheetHeight = height
+        }
+    }
+    
+    /// Login View ()
+    @ViewBuilder
+    func LoginView(_ size: CGSize) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            
+            
                 /// Registration
                 CustomTF(hint: "Username", text: $registrationVM.username, icon: "person")
                     .padding(10)
@@ -414,7 +576,7 @@ struct IntrosView: View {
                 
                 CustomTF(hint: "*****", text: $registrationVM.password, icon: "lock", isPassword: true)
                     .padding(10)
-            }
+            
         }
         .padding(15)
         .padding(.horizontal, 10)
@@ -456,7 +618,7 @@ struct IntrosView: View {
                 .textScale(.secondary)
                 .padding(.bottom, alreadyHavingAccount ? 0 : 15)
                 
-                /*
+                
                 if !alreadyHavingAccount {
                     /// Markup Text
                     Text("By signing up, you're agreeing to our **[Terms & Condition](https:apple.com)** and **[Privacy Policy](https:apple.com)**")
@@ -467,12 +629,25 @@ struct IntrosView: View {
                         .foregroundStyle(.gray)
                         .transition(.offset(y: 100))
                 }
-                */
+                
             }
             .padding(.bottom, 15)
             .padding(.horizontal, 20)
             .multilineTextAlignment(.center)
             .frame(width: size.width)
+            .fullScreenCover(isPresented: $showEULA) {
+                    EULAView()
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    if !isEULAagreed {
+                        withAnimation {
+                            showEULA = true
+                        }
+                    }
+                }
+            }
+            
         })
         .frame(width: size.width)
         /// Finding the view's Height
@@ -495,8 +670,11 @@ struct IntrosView: View {
             sheetHeight = sheetFirstPageHeight + (diff * progress)
         }
     }
+    
 }
 
-#Preview {
-    IntrosView()
+struct IntrosView_Previews: PreviewProvider {
+    static var previews: some View {
+        IntrosView()
+    }
 }
