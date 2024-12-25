@@ -156,6 +156,8 @@
 		E0D75FD64A754FFC78E06544 /* gRPC_grpcWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 16033BFBACE6749691EF4F8F /* gRPC_grpcWrapper.bundle */; };
 		E49181842D1A63F000B4DE57 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181832D1A63F000B4DE57 /* Intro.swift */; };
 		E49181862D1A762900B4DE57 /* IntrosView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181852D1A762900B4DE57 /* IntrosView1.swift */; };
+		E491818A2D1ABB2B00B4DE57 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181892D1ABB2B00B4DE57 /* LoginView.swift */; };
+		E49181902D1BC67100B4DE57 /* HaskTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E491818F2D1BC67100B4DE57 /* HaskTextView.swift */; };
 		E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E5F9D5ABEE8EFC5976E04 /* MessageServiceProtocol.swift */; };
 		E542FC034EFD776B5414BFB9 /* GoogleUtilities_Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78281A9C0799E266964689F1 /* GoogleUtilities_Reachability.framework */; };
 		E617CA566C12CF2792973851 /* abseil_abslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = A1EE0EA0ABCEC3D3803FE4D3 /* abseil_abslWrapper.bundle */; };
@@ -353,6 +355,8 @@
 		E3514999B2FA701D10E1DE4C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		E49181832D1A63F000B4DE57 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		E49181852D1A762900B4DE57 /* IntrosView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrosView1.swift; sourceTree = "<group>"; };
+		E49181892D1ABB2B00B4DE57 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E491818F2D1BC67100B4DE57 /* HaskTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskTextView.swift; sourceTree = "<group>"; };
 		E5E40801D4E6BF3F56B6E771 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		EDF4D729B007B8B467DEAF7B /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		F073D56D5BDA125457D9E751 /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -836,6 +840,7 @@
 			children = (
 				A8CF207CA399AE4D825531C1 /* EULAView.swift */,
 				C1A635F5AE7B2805BD9C4694 /* IntrosView.swift */,
+				E49181892D1ABB2B00B4DE57 /* LoginView.swift */,
 				E49181852D1A762900B4DE57 /* IntrosView1.swift */,
 			);
 			path = View;
@@ -913,6 +918,7 @@
 		D5CAF7EA2BF23216FA9027A1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E491818F2D1BC67100B4DE57 /* HaskTextView.swift */,
 				AEFC670942293AB7A1586547 /* Color.swift */,
 				3C653CFED80ADE3C86D72C45 /* CustomRefreshView.swift */,
 				AB0482302B1AC495B9A32524 /* Date.swift */,
@@ -1237,6 +1243,7 @@
 				9133875EFB9F7A424E84CE51 /* InboxServiceProtocol.swift in Sources */,
 				E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */,
 				5D5793C89B3CA4974613C267 /* UserServiceProtocol.swift in Sources */,
+				E491818A2D1ABB2B00B4DE57 /* LoginView.swift in Sources */,
 				92C00D55FBB18893F098B3A9 /* Route.swift in Sources */,
 				0B7E426EABDBFFF63C2AF939 /* AuthService.swift in Sources */,
 				CDA6BCD11DAC280A8DB924C7 /* ChatService.swift in Sources */,
@@ -1245,6 +1252,7 @@
 				3CD2833473CBF7DB67A56EB0 /* NotificationsManager.swift in Sources */,
 				E9949853F266474DB3692DC7 /* PhotoPermissionManager.swift in Sources */,
 				E030CDCC9B50E79A5BE8CA3C /* UserService.swift in Sources */,
+				E49181902D1BC67100B4DE57 /* HaskTextView.swift in Sources */,
 				E86E6751282338C61FD832EC /* Constants.swift in Sources */,
 				F1CA89FEDA79476AE34022E6 /* ImageUploader.swift in Sources */,
 				123B2808152B25D34EE21E35 /* PhotosPickerHelper.swift in Sources */,

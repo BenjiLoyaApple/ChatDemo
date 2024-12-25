@@ -35,6 +35,9 @@
 		D556521AFDC033F37F36A954 /* MockActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD37F3C1BB61C37C9BC327 /* MockActiveNowViewModel.swift */; };
 		D7ADCCD04EA67CBC97EF927C /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E475BFE7548A891EBA42F /* LoginButtonView.swift */; };
 		E1C2810F37435C94AB5B04F0 /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD52D058A97D16E5CAFC40B /* CustomErrorView.swift */; };
+		E49181882D1AAFB900B4DE57 /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181872D1AAFB900B4DE57 /* EULAView.swift */; };
+		E491818C2D1BAAF400B4DE57 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E491818B2D1BAAF400B4DE57 /* LoginView.swift */; };
+		E491818E2D1BC5E000B4DE57 /* HaskTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E491818D2D1BC5E000B4DE57 /* HaskTextView.swift */; };
 		F4B84659F3DB04000E12242F /* UserRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B52152551305824501DF9 /* UserRepresentable.swift */; };
 		F540839CCB2CB0A0EF5B6A55 /* TuistAssets+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B49410981FAFF2A2FA5C20 /* TuistAssets+Components.swift */; };
 /* End PBXBuildFile section */
@@ -84,6 +87,9 @@
 		D5DF1D68E7A3B3F6A82ECF6E /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD254C9E2686DA9D0DF23B1F /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		E024385630EE6CAD1EA1BA9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49181872D1AAFB900B4DE57 /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
+		E491818B2D1BAAF400B4DE57 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E491818D2D1BC5E000B4DE57 /* HaskTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskTextView.swift; sourceTree = "<group>"; };
 		F510EB1DB425F481DB5DF83A /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +152,9 @@
 		771B3BDE58BCB2DD9F7CE9D8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E491818D2D1BC5E000B4DE57 /* HaskTextView.swift */,
+				E491818B2D1BAAF400B4DE57 /* LoginView.swift */,
+				E49181872D1AAFB900B4DE57 /* EULAView.swift */,
 				1DD3924BCDC3FDFE04FEDED4 /* ActiveNowViewModelProtocol.swift */,
 				0C86EF2CE8B8CD0F3BD041E2 /* MessageRepresentable.swift */,
 				911B52152551305824501DF9 /* UserRepresentable.swift */,
@@ -314,6 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F540839CCB2CB0A0EF5B6A55 /* TuistAssets+Components.swift in Sources */,
+				E491818C2D1BAAF400B4DE57 /* LoginView.swift in Sources */,
+				E491818E2D1BC5E000B4DE57 /* HaskTextView.swift in Sources */,
 				135AE2E8681D6E590F3BDF08 /* TuistBundle+Components.swift in Sources */,
 				1786ADFF28686DEA42EDDB8C /* ActiveCell.swift in Sources */,
 				732AAE97EE7C6C7870A3F327 /* ActiveNowView.swift in Sources */,
@@ -336,6 +347,7 @@
 				D556521AFDC033F37F36A954 /* MockActiveNowViewModel.swift in Sources */,
 				B14DD78A69053DEF4B1A6F21 /* MockMessage.swift in Sources */,
 				87DB9124AE6A62081142222F /* MockUser.swift in Sources */,
+				E49181882D1AAFB900B4DE57 /* EULAView.swift in Sources */,
 				34F5CAF133D7117728B41027 /* ActiveNowViewModelProtocol.swift in Sources */,
 				5656055864792E44D76F09F6 /* MessageRepresentable.swift in Sources */,
 				F4B84659F3DB04000E12242F /* UserRepresentable.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 import Components
 
 struct IntrosView: View {
-    // MARK: Animation Properties
+    /// Animation Properties
     @State private var showWalkThroughScreens: Bool = false
     @State private var currentIndex: Int = 0
     @State private var showHomeView: Bool = false
@@ -25,9 +25,9 @@ struct IntrosView: View {
     var body: some View {
         ZStack {
             if showHomeView {
-                // Home
+                /// Home view
                 InboxView()
-                .transition(.move(edge: .trailing))
+                    .transition(.move(edge: .trailing))
             } else {
                 ZStack {
                     Color(Color.theme.darkBlack)
@@ -46,7 +46,7 @@ struct IntrosView: View {
         .animation(.easeInOut(duration: 0.35), value: showHomeView)
     }
     
-    // MARK: WalkThrough Screens
+    // MARK: - WalkThrough Screens
     @ViewBuilder
     func WalkThroughScreens() -> some View {
         let isLast = currentIndex == intros.count
@@ -105,8 +105,10 @@ struct IntrosView: View {
                     if currentIndex == intros.count {
                         // Signup Action
                         if isEULAagreed {
-                              showHomeView = true
-                              isAuthenticated = true
+                            //  showHomeView = true
+                            //  isAuthenticated = true
+                            showLoginSheet.toggle()
+                            
                         }
                     } else {
                         // MARK: Updating Index
@@ -143,17 +145,12 @@ struct IntrosView: View {
             .fullScreenCover(isPresented: $showEULA) {
                 EULAView(isEULAagreed: $isEULAagreed)
             }
-            .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        if isEULAagreed {
-                            print("EULA agreed, showing EULA...")
-                            withAnimation {
-                                showEULA = true
-                            }
-                        }
-                    }
+            .sheet(isPresented: $showLoginSheet) {
+                LoginView()
+                    .presentationDetents([.height(460), .large])
+                    .presentationCornerRadius(25)
+                    .presentationDragIndicator(.hidden)
             }
-            
         }
     }
     
@@ -174,7 +171,7 @@ struct IntrosView: View {
         return attString
     }
     
-    // MARK: Indicator View
+    // MARK: - Indicator View
     @ViewBuilder
     func Indicators() -> some View {
         HStack(spacing: 8) {
@@ -195,6 +192,7 @@ struct IntrosView: View {
         .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7), value: currentIndex)
     }
     
+    // MARK: - Screen View
     @ViewBuilder
     func ScreenView(size: CGSize,index: Int) -> some View {
         let intro = intros[index]
@@ -247,7 +245,7 @@ struct IntrosView: View {
         .offset(y: -30)
     }
     
-    // MARK: Welcome Screen
+    // MARK: - Welcome View
     @ViewBuilder
     func WelcomeView(size: CGSize,index: Int)->some View {
         VStack(spacing: 10) {
@@ -276,7 +274,7 @@ struct IntrosView: View {
         .offset(y: -30)
     }
     
-    // MARK: Nav Bar
+    // MARK: - Nav Bar
     @ViewBuilder
     func NavBar()->some View {
         let isLast = currentIndex == intros.count
@@ -290,7 +288,7 @@ struct IntrosView: View {
                 padding: 10,
                 onButtonPressed: {
                     // If Greater Than Zero Then Eliminating Index
-                    if currentIndex > 0{
+                    if currentIndex > 0 {
                         currentIndex -= 1
                     }else{
                         showWalkThroughScreens.toggle()
@@ -320,6 +318,7 @@ struct IntrosView: View {
         .offset(y: showWalkThroughScreens ? 0 : -120)
     }
     
+    // MARK: - Intro View
     @ViewBuilder
     func IntroScreen() -> some View {
         GeometryReader {
@@ -373,3 +372,22 @@ struct IntrosView_Previews: PreviewProvider {
         IntrosView()
     }
 }
+
+
+
+/*
+ 
+            .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        if !isEULAagreed {
+                            print("EULA agreed, showing EULA...")
+                            withAnimation {
+                                showEULA = true
+                            }
+                        }
+                    }
+            }
+ 
+*/
+
+
