@@ -21,6 +21,7 @@ struct SettingsView: View {
     
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     @AppStorage("isFaceID") private var isFaceIDEnabled: Bool = false
+    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
     init(authService: AuthServiceProtocol) {
         self.authService = authService
@@ -272,6 +273,7 @@ struct SettingsView: View {
                             Task {
                                 do {
                                     try await authService.signOut()
+                                    isAuthenticated = false
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                         router.dismissScreenStack()}
                                 } catch {
@@ -286,6 +288,7 @@ struct SettingsView: View {
                             Task {
                                 do {
                                     try await authService.deleteUser()
+                                    isAuthenticated = false
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                         router.dismissScreenStack()}
                                 } catch {

@@ -14,10 +14,12 @@ struct ContentView: View {
     
     ///Theme
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
     var body: some View {
         Group {
-            if viewModel.userSession != nil {
+//            if viewModel.userSession != nil {
+            if isAuthenticated {
                 InboxView()
             } else {
                 IntrosView()

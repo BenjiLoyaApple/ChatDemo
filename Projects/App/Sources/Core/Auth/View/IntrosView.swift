@@ -30,7 +30,7 @@ struct IntrosView: View {
                     .transition(.move(edge: .trailing))
             } else {
                 ZStack {
-                    Color(Color.theme.darkBlack)
+                    Color(Color.themeBG)
                         .ignoresSafeArea()
                     
                     IntroScreen()
@@ -54,7 +54,7 @@ struct IntrosView: View {
         GeometryReader {
             let size = $0.size
             
-            ZStack{
+            ZStack {
                 // MARK: Walk Through Screens
                 ForEach(intros.indices,id: \.self){index in
                     ScreenView(size: size, index: index)
@@ -108,7 +108,6 @@ struct IntrosView: View {
                             //  showHomeView = true
                             //  isAuthenticated = true
                             showLoginSheet.toggle()
-                            
                         }
                     } else {
                         // MARK: Updating Index
@@ -145,9 +144,21 @@ struct IntrosView: View {
             .fullScreenCover(isPresented: $showEULA) {
                 EULAView(isEULAagreed: $isEULAagreed)
             }
-            .sheet(isPresented: $showLoginSheet) {
-                LoginView()
-                    .presentationDetents([.height(460), .large])
+//            .sheet(isPresented: $showLoginSheet) {
+//                LoginView(showLoginSheet: $showLoginSheet, isAuthenticated: $isAuthenticated)
+//                    .presentationDetents([.height(450), .large])
+//                    .presentationCornerRadius(25)
+//                    .presentationDragIndicator(.hidden)
+//            }
+            .sheet(isPresented: $showLoginSheet, onDismiss: {
+                if !showLoginSheet {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        showHomeView = true
+                    }
+                }
+            }) {
+                LoginView(showLoginSheet: $showLoginSheet, isAuthenticated: $isAuthenticated)
+                    .presentationDetents([.height(450), .large])
                     .presentationCornerRadius(25)
                     .presentationDragIndicator(.hidden)
             }
@@ -239,7 +250,6 @@ struct IntrosView: View {
                 .padding(.horizontal,20)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
                 .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
-            
             
         }
         .offset(y: -30)
@@ -389,5 +399,3 @@ struct IntrosView_Previews: PreviewProvider {
             }
  
 */
-
-

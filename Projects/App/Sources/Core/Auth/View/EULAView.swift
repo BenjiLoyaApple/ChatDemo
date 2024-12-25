@@ -50,6 +50,7 @@ struct EULAView: View {
             }) {
                 Text("I Agree")
                     .foregroundColor(.white)
+                    .fontWeight(.semibold)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
