@@ -227,34 +227,14 @@ struct IntrosView: View {
                 .offset(x: -size.width * CGFloat(currentIndex - index))
                 .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
             
-            
-//            MorphingSymbolView(
-//                symbol: intro.systemImageName,
-//                config: .init(
-//                    font: .system(size: 150, weight: .bold),
-//                    frame: .init(width: 250, height: 200),
-//                    radius: 30,
-//                    foregroundColor: .primary
-//                )
-//            )
-            
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.primary.opacity(0.001))
                 .frame(height: 250,alignment: .top)
                 .padding(.horizontal,20)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
                 .overlay {
-                    MorphingSymbolView(
-                        symbol: intro.systemImageName,
-                        config: .init(
-                            font: .system(size: 150, weight: .bold),
-                            frame: .init(width: 250, height: 200),
-                            radius: 30,
-                            foregroundColor: .primary
-                        )
-                    )
-                    .offset(x: -size.width * CGFloat(currentIndex - index))
-                    .zIndex(100)
+                    TestEffect(currentIndex: $currentIndex)
+                        .offset(x: -size.width * CGFloat(currentIndex - index))
                 }
             
             
@@ -413,6 +393,27 @@ struct IntrosView_Previews: PreviewProvider {
     }
 }
 
+
+//MARK: - Morphing Symbol View
+struct TestEffect: View {
+    @Binding var currentIndex: Int
+    var body: some View {
+        VStack {
+                  if currentIndex < intros.count {
+                      MorphingSymbolView(
+                          symbol: intros[currentIndex].systemImageName,
+                          config: .init(
+                              font: .system(size: 150, weight: .bold),
+                              frame: .init(width: 250, height: 200),
+                              radius: 30,
+                              foregroundColor: .primary.opacity(0.8)
+                          )
+                      )
+                  }
+              }
+              .padding()
+    }
+}
 
 
 /*

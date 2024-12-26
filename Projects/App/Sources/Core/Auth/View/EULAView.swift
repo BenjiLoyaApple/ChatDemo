@@ -9,12 +9,15 @@ import SwiftUI
 
 struct EULAView: View {
     @Environment(\.dismiss) private var dismiss
-   // @AppStorage("isEULAagreed") var isEULAagreed: Bool = false
 
     @Binding var isEULAagreed: Bool
     
     var body: some View {
         VStack {
+            RoundedRectangle(cornerRadius: 0)
+                .fill(Color.clear)
+                .frame(height: 20)
+            
             // Прокручиваемый текст EULA
             ScrollView(.vertical, showsIndicators: true) {
                 Text("End User License Agreement (EULA)")
@@ -58,6 +61,7 @@ struct EULAView: View {
             }
             .padding()
         }
+        .background(Color.theme.darkBlack)
     }
 }
 

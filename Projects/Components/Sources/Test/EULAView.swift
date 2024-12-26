@@ -13,6 +13,12 @@ struct EULAView: View {
     
     var body: some View {
         VStack {
+            
+            RoundedRectangle(cornerRadius: 0)
+                .fill(Color.clear)
+                .frame(height: 20)
+              
+            
             ScrollView(.vertical, showsIndicators: true) {
                 Text("End User License Agreement (EULA)")
                     .font(.headline)
@@ -54,6 +60,7 @@ struct EULAView: View {
             }
             .padding()
         }
+        .background(Color.green.opacity(0.1))
     }
 }
 
