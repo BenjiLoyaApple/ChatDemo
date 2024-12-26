@@ -2,7 +2,7 @@
 //  IntrosView.swift
 //  ChatApp
 //
-//  Created by Benji Loya on 31.08.2024.
+//  Created by Benji Loya on 25.12.2024.
 //
 
 import SwiftUI
@@ -30,7 +30,7 @@ struct IntrosView: View {
                     .transition(.move(edge: .trailing))
             } else {
                 ZStack {
-                    Color(Color.themeBG)
+                    Color(Color.theme.darkBlack)
                         .ignoresSafeArea()
                     
                     IntroScreen()
@@ -56,7 +56,7 @@ struct IntrosView: View {
             
             ZStack {
                 // MARK: Walk Through Screens
-                ForEach(intros.indices,id: \.self){index in
+                ForEach(intros.indices,id: \.self) { index in
                     ScreenView(size: size, index: index)
                 }
                 
@@ -144,15 +144,9 @@ struct IntrosView: View {
             .fullScreenCover(isPresented: $showEULA) {
                 EULAView(isEULAagreed: $isEULAagreed)
             }
-//            .sheet(isPresented: $showLoginSheet) {
-//                LoginView(showLoginSheet: $showLoginSheet, isAuthenticated: $isAuthenticated)
-//                    .presentationDetents([.height(450), .large])
-//                    .presentationCornerRadius(25)
-//                    .presentationDragIndicator(.hidden)
-//            }
             .sheet(isPresented: $showLoginSheet, onDismiss: {
                 if !showLoginSheet {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         showHomeView = true
                     }
                 }
@@ -161,6 +155,7 @@ struct IntrosView: View {
                     .presentationDetents([.height(450), .large])
                     .presentationCornerRadius(25)
                     .presentationDragIndicator(.hidden)
+            .interactiveDismissDisabled()
             }
         }
     }
@@ -243,13 +238,33 @@ struct IntrosView: View {
 //                )
 //            )
             
-            Image(intro.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.primary.opacity(0.001))
                 .frame(height: 250,alignment: .top)
                 .padding(.horizontal,20)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+                .overlay {
+                    MorphingSymbolView(
+                        symbol: intro.systemImageName,
+                        config: .init(
+                            font: .system(size: 150, weight: .bold),
+                            frame: .init(width: 250, height: 200),
+                            radius: 30,
+                            foregroundColor: .primary
+                        )
+                    )
+                    .offset(x: -size.width * CGFloat(currentIndex - index))
+                    .zIndex(100)
+                }
+            
+            
+//            Image(intro.imageName)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(height: 250,alignment: .top)
+//                .padding(.horizontal,20)
+//                .offset(x: -size.width * CGFloat(currentIndex - index))
+//                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
             
         }
         .offset(y: -30)

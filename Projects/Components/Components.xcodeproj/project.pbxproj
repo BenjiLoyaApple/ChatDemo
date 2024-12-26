@@ -37,6 +37,7 @@
 		E49181882D1AAFB900B4DE57 /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181872D1AAFB900B4DE57 /* EULAView.swift */; };
 		E491818C2D1BAAF400B4DE57 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E491818B2D1BAAF400B4DE57 /* LoginView.swift */; };
 		E491818E2D1BC5E000B4DE57 /* HaskTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E491818D2D1BC5E000B4DE57 /* HaskTextView.swift */; };
+		E49181942D1CFBC800B4DE57 /* TestEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181932D1CFBC800B4DE57 /* TestEffect.swift */; };
 		F4B84659F3DB04000E12242F /* UserRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B52152551305824501DF9 /* UserRepresentable.swift */; };
 		F540839CCB2CB0A0EF5B6A55 /* TuistAssets+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B49410981FAFF2A2FA5C20 /* TuistAssets+Components.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		E49181872D1AAFB900B4DE57 /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
 		E491818B2D1BAAF400B4DE57 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E491818D2D1BC5E000B4DE57 /* HaskTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskTextView.swift; sourceTree = "<group>"; };
+		E49181932D1CFBC800B4DE57 /* TestEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEffect.swift; sourceTree = "<group>"; };
 		F510EB1DB425F481DB5DF83A /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 				E491818D2D1BC5E000B4DE57 /* HaskTextView.swift */,
 				E491818B2D1BAAF400B4DE57 /* LoginView.swift */,
 				E49181872D1AAFB900B4DE57 /* EULAView.swift */,
+				E49181932D1CFBC800B4DE57 /* TestEffect.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				BDBE39B9916D0F15434EAB03 /* CircularProfileImageView.swift in Sources */,
 				1CBF22061FDBDC5BEA37E364 /* CustomButton.swift in Sources */,
 				7F610A3DAE12AB1CF17E0D92 /* CustomChatButton.swift in Sources */,
+				E49181942D1CFBC800B4DE57 /* TestEffect.swift in Sources */,
 				E1C2810F37435C94AB5B04F0 /* CustomErrorView.swift in Sources */,
 				585EA91FBD2DC8846B0F2EFA /* CustomProgressIndicatorStyle.swift in Sources */,
 				5BD6B52BAA92EBBA3E903BBE /* HeaderView.swift in Sources */,

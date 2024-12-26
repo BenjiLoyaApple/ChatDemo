@@ -140,7 +140,7 @@ struct LoginView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 showLoginSheet = false
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                 isAuthenticated = true
                             }
                             return .success
@@ -154,7 +154,7 @@ struct LoginView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 showLoginSheet = false
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                 isAuthenticated = true
                             }
                             return .success
