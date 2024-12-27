@@ -76,11 +76,14 @@ struct ProfileHome: View {
                 UserInfo()
                 
                 // MARK: - Sample
+#if DEBUG
                 SampleRows()
+#endif
                 
             }
             .frame(maxWidth: .infinity)
         }
+        .scrollDismissesKeyboard(.interactively)
       //  .background(Color.theme.darkBlack)
         .backgroundPreferenceValue(AnchorKey.self, { pref in
             GeometryReader { proxy in
@@ -263,7 +266,7 @@ struct ProfileHome: View {
                 .stroke(Color(.systemGray4), lineWidth: 0.5)
         }
         .cropImagePicker(
-            options: [.circle, .custom(.init(width: 300, height: 300))],
+            options: [.circle],
             show: $showPicker,
             croppedImage: $croppedImage
         )

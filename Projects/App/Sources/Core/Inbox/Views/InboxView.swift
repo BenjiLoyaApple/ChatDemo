@@ -28,7 +28,7 @@ struct InboxView: View {
     /// MARK: Shift Offset Means The Value From Where It Shifted From Up/Down
     @State private var shiftOffset: CGFloat = 0
     
-    @State private var isAuthenticated = false
+   // @State private var isAuthenticated = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -120,7 +120,7 @@ struct InboxView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
                 permissionManager.checkPhotoLibraryPermission()
             }
         }
