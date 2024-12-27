@@ -233,7 +233,7 @@ struct IntrosView: View {
                 .padding(.horizontal,20)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
                 .overlay {
-                    TestEffect(currentIndex: $currentIndex)
+                    MorphingSymbolIntros(currentIndex: $currentIndex)
                         .offset(x: -size.width * CGFloat(currentIndex - index))
                 }
             
@@ -395,7 +395,7 @@ struct IntrosView_Previews: PreviewProvider {
 
 
 //MARK: - Morphing Symbol View
-struct TestEffect: View {
+struct MorphingSymbolIntros: View {
     @Binding var currentIndex: Int
     var body: some View {
         VStack {

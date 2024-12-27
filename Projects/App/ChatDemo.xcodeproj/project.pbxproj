@@ -155,7 +155,6 @@
 		E030CDCC9B50E79A5BE8CA3C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273956535013361340123E9 /* UserService.swift */; };
 		E0D75FD64A754FFC78E06544 /* gRPC_grpcWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 16033BFBACE6749691EF4F8F /* gRPC_grpcWrapper.bundle */; };
 		E49181842D1A63F000B4DE57 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181832D1A63F000B4DE57 /* Intro.swift */; };
-		E49181862D1A762900B4DE57 /* IntrosView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181852D1A762900B4DE57 /* IntrosView1.swift */; };
 		E491818A2D1ABB2B00B4DE57 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49181892D1ABB2B00B4DE57 /* LoginView.swift */; };
 		E49181902D1BC67100B4DE57 /* HaskTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E491818F2D1BC67100B4DE57 /* HaskTextView.swift */; };
 		E4EEA8A57AC118B03C6EAF2F /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E5F9D5ABEE8EFC5976E04 /* MessageServiceProtocol.swift */; };
@@ -354,7 +353,6 @@
 		E0DB94C1475070CC102447EB /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		E3514999B2FA701D10E1DE4C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		E49181832D1A63F000B4DE57 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
-		E49181852D1A762900B4DE57 /* IntrosView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrosView1.swift; sourceTree = "<group>"; };
 		E49181892D1ABB2B00B4DE57 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E491818F2D1BC67100B4DE57 /* HaskTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskTextView.swift; sourceTree = "<group>"; };
 		E5E40801D4E6BF3F56B6E771 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
@@ -841,7 +839,6 @@
 				A8CF207CA399AE4D825531C1 /* EULAView.swift */,
 				C1A635F5AE7B2805BD9C4694 /* IntrosView.swift */,
 				E49181892D1ABB2B00B4DE57 /* LoginView.swift */,
-				E49181852D1A762900B4DE57 /* IntrosView1.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1229,7 +1226,6 @@
 				21EE1A173E6587B4394D7D19 /* Date.swift in Sources */,
 				277DB9CF2A089D144DAE0E2B /* DeviceInfo.swift in Sources */,
 				3F259C6D67AFF4C0A97FFA90 /* Extensions.swift in Sources */,
-				E49181862D1A762900B4DE57 /* IntrosView1.swift in Sources */,
 				85D2434E36A417A39C48F9EB /* FaceID.swift in Sources */,
 				A43D3794EBEC349522394226 /* FaceIDManager.swift in Sources */,
 				AF9BDDD146051F8780E047FE /* Photos.swift in Sources */,
