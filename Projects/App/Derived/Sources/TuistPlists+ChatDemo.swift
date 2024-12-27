@@ -13,7 +13,7 @@ import Foundation
 // swiftlint:disable identifier_name line_length number_separator type_body_length
 public enum GoogleServiceInfo: Sendable {
     public static let apiKey: String = "AIzaSyCmfcQ7hHxn-DjSlclyrVXqU03k7quTcWQ"
-    public static let bundleId: String = "com.benjiloya.GossipApp"
+    public static let bundleId: String = "com.benjiloya.ChatMessage"
     public static let clientId: String = "429370894245-t47ooc86ra5t11cpu8aogrtoi25na9qq.apps.googleusercontent.com"
     public static let gcmSenderId: String = "429370894245"
     public static let googleAppId: String = "1:429370894245:ios:f13623b750bac1da896a4c"

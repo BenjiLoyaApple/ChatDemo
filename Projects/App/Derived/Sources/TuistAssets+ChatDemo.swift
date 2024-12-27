@@ -45,10 +45,12 @@ public enum ChatDemoAsset: Sendable {
     public static let edit = ChatDemoImages(name: "edit")
     public static let gallery = ChatDemoImages(name: "gallery")
     public static let pen = ChatDemoImages(name: "pen")
+    public static let intro = ChatDemoImages(name: "Intro")
     public static let apple = ChatDemoImages(name: "apple")
     public static let facebook = ChatDemoImages(name: "facebook")
     public static let google = ChatDemoImages(name: "google")
     public static let instagram = ChatDemoImages(name: "instagram")
+    public static let welcome = ChatDemoImages(name: "Welcome")
     public static let nullProfile = ChatDemoImages(name: "nullProfile")
   }
   public enum PreviewAssets {
