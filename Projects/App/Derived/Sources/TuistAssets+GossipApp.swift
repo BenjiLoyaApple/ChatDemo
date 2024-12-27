@@ -19,37 +19,39 @@
 // MARK: - Asset Catalogs
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-public enum ChatDemoAsset: Sendable {
+public enum GossipAppAsset: Sendable {
   public enum Assets {
-  public static let accentColor = ChatDemoColors(name: "AccentColor")
-    public static let primaryBackground = ChatDemoColors(name: "PrimaryBackground")
-    public static let moon = ChatDemoColors(name: "Moon")
-    public static let sun = ChatDemoColors(name: "Sun")
-    public static let themeBG = ChatDemoColors(name: "ThemeBG")
-    public static let appNotification = ChatDemoColors(name: "appNotification")
-    public static let buttonsCreatePost = ChatDemoColors(name: "buttonsCreatePost")
-    public static let buttonsPostCard = ChatDemoColors(name: "buttonsPostCard")
-    public static let darkBlack = ChatDemoColors(name: "darkBlack")
-    public static let darkWhite = ChatDemoColors(name: "darkWhite")
-    public static let igChatBG = ChatDemoColors(name: "igChatBG")
-    public static let igChatViolet = ChatDemoColors(name: "igChatViolet")
-    public static let messageImputBG = ChatDemoColors(name: "messageImputBG")
-    public static let searchShadow = ChatDemoColors(name: "searchShadow")
-    public static let xmark = ChatDemoColors(name: "xmark")
-    public static let backgroundColor = ChatDemoColors(name: "BackgroundColor")
-    public static let primaryBlue = ChatDemoColors(name: "PrimaryBlue")
-    public static let primaryGray = ChatDemoColors(name: "PrimaryGray")
-    public static let primaryGray2 = ChatDemoColors(name: "PrimaryGray2")
-    public static let primaryTextColor = ChatDemoColors(name: "PrimaryTextColor")
-    public static let secondaryBackground = ChatDemoColors(name: "SecondaryBackground")
-    public static let edit = ChatDemoImages(name: "edit")
-    public static let gallery = ChatDemoImages(name: "gallery")
-    public static let pen = ChatDemoImages(name: "pen")
-    public static let apple = ChatDemoImages(name: "apple")
-    public static let facebook = ChatDemoImages(name: "facebook")
-    public static let google = ChatDemoImages(name: "google")
-    public static let instagram = ChatDemoImages(name: "instagram")
-    public static let nullProfile = ChatDemoImages(name: "nullProfile")
+  public static let accentColor = GossipAppColors(name: "AccentColor")
+    public static let primaryBackground = GossipAppColors(name: "PrimaryBackground")
+    public static let moon = GossipAppColors(name: "Moon")
+    public static let sun = GossipAppColors(name: "Sun")
+    public static let themeBG = GossipAppColors(name: "ThemeBG")
+    public static let appNotification = GossipAppColors(name: "appNotification")
+    public static let buttonsCreatePost = GossipAppColors(name: "buttonsCreatePost")
+    public static let buttonsPostCard = GossipAppColors(name: "buttonsPostCard")
+    public static let darkBlack = GossipAppColors(name: "darkBlack")
+    public static let darkWhite = GossipAppColors(name: "darkWhite")
+    public static let igChatBG = GossipAppColors(name: "igChatBG")
+    public static let igChatViolet = GossipAppColors(name: "igChatViolet")
+    public static let messageImputBG = GossipAppColors(name: "messageImputBG")
+    public static let searchShadow = GossipAppColors(name: "searchShadow")
+    public static let xmark = GossipAppColors(name: "xmark")
+    public static let backgroundColor = GossipAppColors(name: "BackgroundColor")
+    public static let primaryBlue = GossipAppColors(name: "PrimaryBlue")
+    public static let primaryGray = GossipAppColors(name: "PrimaryGray")
+    public static let primaryGray2 = GossipAppColors(name: "PrimaryGray2")
+    public static let primaryTextColor = GossipAppColors(name: "PrimaryTextColor")
+    public static let secondaryBackground = GossipAppColors(name: "SecondaryBackground")
+    public static let edit = GossipAppImages(name: "edit")
+    public static let gallery = GossipAppImages(name: "gallery")
+    public static let pen = GossipAppImages(name: "pen")
+    public static let intro = GossipAppImages(name: "Intro")
+    public static let apple = GossipAppImages(name: "apple")
+    public static let facebook = GossipAppImages(name: "facebook")
+    public static let google = GossipAppImages(name: "google")
+    public static let instagram = GossipAppImages(name: "instagram")
+    public static let welcome = GossipAppImages(name: "Welcome")
+    public static let nullProfile = GossipAppImages(name: "nullProfile")
   }
   public enum PreviewAssets {
   }
@@ -58,7 +60,7 @@ public enum ChatDemoAsset: Sendable {
 
 // MARK: - Implementation Details
 
-public final class ChatDemoColors: Sendable {
+public final class GossipAppColors: Sendable {
   public let name: String
 
   #if os(macOS)
@@ -87,9 +89,9 @@ public final class ChatDemoColors: Sendable {
   }
 }
 
-public extension ChatDemoColors.Color {
+public extension GossipAppColors.Color {
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
-  convenience init?(asset: ChatDemoColors) {
+  convenience init?(asset: GossipAppColors) {
     let bundle = Bundle.module
     #if os(iOS) || os(tvOS) || os(visionOS)
     self.init(named: asset.name, in: bundle, compatibleWith: nil)
@@ -104,14 +106,14 @@ public extension ChatDemoColors.Color {
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Color {
-  init(asset: ChatDemoColors) {
+  init(asset: GossipAppColors) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
   }
 }
 #endif
 
-public struct ChatDemoImages: Sendable {
+public struct GossipAppImages: Sendable {
   public let name: String
 
   #if os(macOS)
@@ -146,17 +148,17 @@ public struct ChatDemoImages: Sendable {
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Image {
-  init(asset: ChatDemoImages) {
+  init(asset: GossipAppImages) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle)
   }
 
-  init(asset: ChatDemoImages, label: Text) {
+  init(asset: GossipAppImages, label: Text) {
     let bundle = Bundle.module
     self.init(asset.name, bundle: bundle, label: label)
   }
 
-  init(decorative asset: ChatDemoImages) {
+  init(decorative asset: GossipAppImages) {
     let bundle = Bundle.module
     self.init(decorative: asset.name, bundle: bundle)
   }

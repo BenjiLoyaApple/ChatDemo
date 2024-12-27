@@ -1,7 +1,7 @@
 import ProjectDescription
 
 let workspace = Workspace(
-    name: "ChatDemo",
+    name: "GossipApp",
     projects: [
         "Projects/App",   
         "Projects/Models",

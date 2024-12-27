@@ -4,7 +4,7 @@ import DependencyPlugin
 import EnvironmentPlugin
 
 let project = Project.createProject(
-    name: "ChatDemo",
+    name: "GossipApp",
     bundleId: "com.benjiloya.GossipApp",
     product: .app,
     infoPlist: "Support/Info.plist",
