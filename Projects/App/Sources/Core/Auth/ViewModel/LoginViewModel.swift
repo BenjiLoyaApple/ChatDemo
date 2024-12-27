@@ -24,8 +24,8 @@ class LoginViewModel: ObservableObject {
     
     @MainActor
     func login() async throws {
-        isAuthenticating = true
-        defer { isAuthenticating = false }
+//        isAuthenticating = true
+     //   defer { isAuthenticating = false }
         
         do {
             try await authService.login(withEmail: email, password: password)
@@ -75,8 +75,8 @@ class RegistrationViewModel: ObservableObject {
     
     @MainActor
     func createUser() async throws {
-        isAuthenticating = true
-        defer { isAuthenticating = false }
+     //   isAuthenticating = true
+     //   defer { isAuthenticating = false }
 
         do {
             try await authService.createUser(

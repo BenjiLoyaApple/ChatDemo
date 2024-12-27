@@ -41,8 +41,6 @@ struct ColorTheme {
     
     let searchShadow = Color("searchShadow")
     
-   
-    
     let buttonsCreatePost = Color("buttonsCreatePost")
     let buttonsPostCard = Color("buttonsPostCard")
     let xmark = Color("xmark")
