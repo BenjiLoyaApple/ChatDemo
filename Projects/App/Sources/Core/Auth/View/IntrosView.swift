@@ -334,21 +334,24 @@ struct IntrosView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size.width, height: size.height / 2)
+                
+                /*
                     .overlay(alignment: .bottom) {
                         LinearGradient(
                             colors: [
                                 .clear,
                                 .clear,
                                 Color.theme.darkBlack.opacity(0.01),
-                                Color.theme.darkBlack.opacity(0.55),
-                                Color.theme.darkBlack.opacity(0.95),
                                 Color.theme.darkBlack
                             ],
                             startPoint: .top,
                             endPoint: .bottom
                         )
                         .padding(.bottom, -20)
+                        .frame(height: 10)
                     }
+                    */
+                
                 
                 Text("Hello")
                     .font(.system(size: 24))

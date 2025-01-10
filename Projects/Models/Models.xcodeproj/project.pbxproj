@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		7F7A273FE06C50A3439A33A3 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E51D75B7A4EBBDB4484BB /* Empty.swift */; };
 		80D6A0BF3C6D470672B9D968 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40791843976783EF4CBD68DC /* UserModel.swift */; };
-		8DB5F53B1CFD87653E63DC5C /* TuistBundle+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE435930EFBF9ED2A88E884 /* TuistBundle+Models.swift */; };
-		9B51FF85B9D7119FA1D72004 /* placeholder.txt in Resources */ = {isa = PBXBuildFile; fileRef = C55F8189BFABD9EB02A48540 /* placeholder.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,9 +28,7 @@
 		0F0E51D75B7A4EBBDB4484BB /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		40791843976783EF4CBD68DC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		444B8E8389E7755852C14F3A /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C55F8189BFABD9EB02A48540 /* placeholder.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder.txt; sourceTree = "<group>"; };
 		D2068E8EBBC1E1D3C25E8F58 /* Models-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Models-Info.plist"; sourceTree = "<group>"; };
-		FAE435930EFBF9ED2A88E884 /* TuistBundle+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Models.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,18 +54,9 @@
 			isa = PBXGroup;
 			children = (
 				D614D896F62CCC3E282B39B5 /* Derived */,
-				35D381EF4F295EB0872269CE /* Resources */,
 				CD6990396492363679DF853D /* Sources */,
 			);
 			name = Project;
-			sourceTree = "<group>";
-		};
-		35D381EF4F295EB0872269CE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C55F8189BFABD9EB02A48540 /* placeholder.txt */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		760AAA3665BEA189941E6DC3 /* Products */ = {
@@ -78,14 +65,6 @@
 				444B8E8389E7755852C14F3A /* Models.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		76F8EC2F2A486D19315A1853 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				FAE435930EFBF9ED2A88E884 /* TuistBundle+Models.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		8DB307656B3ACA71A2D4E81B /* InfoPlists */ = {
@@ -109,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				8DB307656B3ACA71A2D4E81B /* InfoPlists */,
-				76F8EC2F2A486D19315A1853 /* Sources */,
 			);
 			path = Derived;
 			sourceTree = "<group>";
@@ -168,7 +146,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B51FF85B9D7119FA1D72004 /* placeholder.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +156,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DB5F53B1CFD87653E63DC5C /* TuistBundle+Models.swift in Sources */,
 				7F7A273FE06C50A3439A33A3 /* Empty.swift in Sources */,
 				80D6A0BF3C6D470672B9D968 /* UserModel.swift in Sources */,
 			);
@@ -191,38 +167,31 @@
 		371CBA972AC499AEBF20FEA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APP_CONFIG = prod;
-				APP_NAME = GossipApp;
-				BASE_URL = "https://prod.api.com";
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/Models-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LOG_LEVEL = release;
-				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Models;
 				PRODUCT_NAME = Models;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -231,33 +200,26 @@
 		A859CDB072989C16C907A7DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APP_CONFIG = dev;
-				APP_NAME = GossipApp;
-				BASE_URL = "https://dev.api.com";
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/Models-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LOG_LEVEL = debug;
-				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Models;
 				PRODUCT_NAME = Models;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
 					"$(inherited)",
@@ -266,7 +228,7 @@
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -309,6 +271,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -320,6 +283,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -361,7 +325,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -380,6 +345,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;

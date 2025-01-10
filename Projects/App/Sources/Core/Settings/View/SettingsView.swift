@@ -242,7 +242,7 @@ struct SettingsView: View {
                 DividerView()
 #endif
                 
-                
+                /*
                 let debugViewEnvs: [BuildEnvironment] = [.dev]
                 if debugViewEnvs.contains(where: { GlobalSettings.environment == $0 }) {
                     
@@ -265,6 +265,7 @@ struct SettingsView: View {
                     
                     DividerView()
                 }
+                */
                 
                 //MARK: - Login
                 SectionView(title: "Login",items: [

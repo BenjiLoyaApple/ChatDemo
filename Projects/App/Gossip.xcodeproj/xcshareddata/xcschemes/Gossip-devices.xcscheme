@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0CE4508ABFD7D6430272BDD7"
-               BuildableName = "ChatDemo.app"
-               BlueprintName = "ChatDemo"
-               ReferencedContainer = "container:ChatDemo.xcodeproj">
+               BlueprintIdentifier = "2F00861C96B7E1E9122AE7CD"
+               BuildableName = "Gossip_devices.app"
+               BlueprintName = "Gossip-devices"
+               ReferencedContainer = "container:Gossip.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,15 +45,24 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0CE4508ABFD7D6430272BDD7"
-            BuildableName = "ChatDemo.app"
-            BlueprintName = "ChatDemo"
-            ReferencedContainer = "container:ChatDemo.xcodeproj">
+            BlueprintIdentifier = "2F00861C96B7E1E9122AE7CD"
+            BuildableName = "Gossip_devices.app"
+            BlueprintName = "Gossip-devices"
+            ReferencedContainer = "container:Gossip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+      </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -62,10 +71,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0CE4508ABFD7D6430272BDD7"
-            BuildableName = "ChatDemo.app"
-            BlueprintName = "ChatDemo"
-            ReferencedContainer = "container:ChatDemo.xcodeproj">
+            BlueprintIdentifier = "2F00861C96B7E1E9122AE7CD"
+            BuildableName = "Gossip_devices.app"
+            BlueprintName = "Gossip-devices"
+            ReferencedContainer = "container:Gossip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -73,7 +82,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

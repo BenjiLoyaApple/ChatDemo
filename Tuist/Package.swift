@@ -10,7 +10,8 @@ import PackageDescription
 #endif
 
 let package = Package(
-    name: "ChatDemo",
+    name: "GossipPackage",
+    platforms: [.iOS(.v17)],
     dependencies: [
         .package(url: "https://github.com/onevcat/Kingfisher", .upToNextMajor(from: "7.12.0")),
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", .upToNextMajor(from: "10.0.0")),
