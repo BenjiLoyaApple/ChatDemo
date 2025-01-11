@@ -135,7 +135,7 @@ public extension Target {
                 .project(
                     target: "Models", path: .modulesRelative("Models"), condition: .when([.ios])
                 ),
-                .SPM.Kingfisher,
+              //  .SPM.Kingfisher,
                 .SPM.FirebaseAuth,
                 .SPM.FirebaseFirestore,
                 .SPM.FirebaseFirestoreSwift,

@@ -80,7 +80,6 @@
 		3573E4291B041B81F21320B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A81A3650F669F16CEFF11A /* Preview Assets.xcassets */; };
 		3653EAA8978E6008538BDF8D /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902E7E25805D29E185C839E /* ChatService.swift */; };
 		377B60983CB72C4B2CD2638E /* FaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B11EB9AC9C702A00BD6DD1 /* FaceID.swift */; };
-		38F4573C22F115473EBF7E86 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CAF827F09633CDCC375A82 /* Kingfisher.framework */; };
 		3985250729A27E818D019642 /* GoogleUtilities_GoogleUtilities_Network.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9F6271A894D35A9ECD65881 /* GoogleUtilities_GoogleUtilities_Network.bundle */; };
 		3A4A9B7EDECD99A434FF52D1 /* grpcWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A6AC5E835D32C5C6D2EECE /* grpcWrapper.framework */; };
 		3A953808BD69D1714305C439 /* ResentChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144EDC44731399C785BCE2 /* ResentChatView.swift */; };
@@ -273,7 +272,6 @@
 		C96170AFB97C35C22FA0D8F8 /* LinkPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B727BB908D5B159A0689A174 /* LinkPreviewViewModel.swift */; };
 		C9DD3241C43220B24E829185 /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD2D477D539E0BCF54373E /* RecentChatCell.swift */; };
 		CA7F54259CD3F15763B8C00E /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73F1D4BC0A8224370558629 /* InboxView.swift */; };
-		CAB9032A4DC85F8AADC454C5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CAF827F09633CDCC375A82 /* Kingfisher.framework */; };
 		CBBB7B67855BDBBCF13F195D /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE9F53FEB51BAAD29E128B /* DeviceInfo.swift */; };
 		CBC9810E75B3F6E01A91E335 /* Firebase_FirebaseCoreExtension.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88E04FDB92D6DBA78D08F1B5 /* Firebase_FirebaseCoreExtension.bundle */; };
 		CBFF46E30197BE235062EE24 /* GoogleUtilities_Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E706620340608234B9312588 /* GoogleUtilities_Network.framework */; };
@@ -447,13 +445,12 @@
 		2509C1BE8B5DE0C338BEFBA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29122B0F529279ED083E4946 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		29DE8ECBB2C6871DD5863F05 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
-		2AF8F6EFA864E9EDC9BA1E64 /* grpc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = grpc.xcframework; sourceTree = "<group>"; };
+		2AF8F6EFA864E9EDC9BA1E64 /* grpc.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = grpc.xcframework; sourceTree = "<group>"; };
 		2B312F45FC1DC42D8C39C6D8 /* HaskTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskTextView.swift; sourceTree = "<group>"; };
 		2B50D7B00BBB733334D280F1 /* Firebase_FirebaseAuth.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseAuth.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDE9D0415AE135BCF74D847 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		2D071A976A7B6EC3A095F23B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2D43C50667B672C746B96B41 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		30CAF827F09633CDCC375A82 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32900CDF1949CA3005B8C2F2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		35DDAAE7678E7515D7E2892E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		379D96293C56592C97422ED6 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -485,7 +482,7 @@
 		62D452046EE3FCF1CB27DB54 /* ActiveNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowViewModel.swift; sourceTree = "<group>"; };
 		6406815936A96E7BAFD0C7BB /* SwiftfulRecursiveUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftfulRecursiveUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		655F4720946BF083D704CC47 /* GoogleUtilities_Environment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Environment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		697ED6D5AF9EADE8C1CF8EE5 /* absl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = absl.xcframework; sourceTree = "<group>"; };
+		697ED6D5AF9EADE8C1CF8EE5 /* absl.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = absl.xcframework; sourceTree = "<group>"; };
 		6A23E59AD5880F38226710BD /* GTMSessionFetcherCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcherCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5BB6AE7F44A3FAE4227067 /* EULAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
 		6D10A3CFFB81249272BBD228 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
@@ -557,14 +554,14 @@
 		E85FA9B74AC22EBF0B047F8E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		E902E7E25805D29E185C839E /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		EF798745F6F395AFADAABA82 /* Promises_FBLPromises.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Promises_FBLPromises.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0F8690AA581B4182A9455A9 /* openssl_grpc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = openssl_grpc.xcframework; sourceTree = "<group>"; };
+		F0F8690AA581B4182A9455A9 /* openssl_grpc.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = openssl_grpc.xcframework; sourceTree = "<group>"; };
 		F2197168D574CCD59B3B8230 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F4A81A3650F669F16CEFF11A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F8556866983F76848BBE334F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F8F2C2F6E3BB27F249DE6AEB /* GoogleUtilities_Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9016A97E41B96829A0B2FCF /* RecaptchaInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RecaptchaInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95EE1D22AD7B229A2F75421 /* InboxServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxServiceProtocol.swift; sourceTree = "<group>"; };
-		F9A2F65CC9117AA061712E15 /* grpcpp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = grpcpp.xcframework; sourceTree = "<group>"; };
+		F9A2F65CC9117AA061712E15 /* grpcpp.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = grpcpp.xcframework; sourceTree = "<group>"; };
 		FA5E36C5F51DA92F2160A848 /* SwiftfulUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftfulUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8EF9156B4C815ADCF1606C /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		FFFCB4CA3DCB39B087164F5B /* gRPC_grpcWrapper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gRPC_grpcWrapper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -604,7 +601,6 @@
 				490FFC036EB03D49F978B2EF /* GoogleUtilities_NSData.framework in Frameworks */,
 				6A88C817717E2AC61AAE6313 /* GoogleUtilities_Network.framework in Frameworks */,
 				100F00FAE237D686DC7DFF4F /* GoogleUtilities_Reachability.framework in Frameworks */,
-				CAB9032A4DC85F8AADC454C5 /* Kingfisher.framework in Frameworks */,
 				6A7682CC73884AC75A56D36B /* Models.framework in Frameworks */,
 				EBB87E49D529F04E9360A449 /* RecaptchaInterop.framework in Frameworks */,
 				5B7A08EBE13E318CD7A14168 /* SwiftfulRecursiveUI.framework in Frameworks */,
@@ -658,7 +654,6 @@
 				A80D978D67C43CD73602A2FE /* GoogleUtilities_NSData.framework in Frameworks */,
 				CBFF46E30197BE235062EE24 /* GoogleUtilities_Network.framework in Frameworks */,
 				8CAD2CB22000B14238DF62F1 /* GoogleUtilities_Reachability.framework in Frameworks */,
-				38F4573C22F115473EBF7E86 /* Kingfisher.framework in Frameworks */,
 				8BA940A7E99EB319178294A1 /* Models.framework in Frameworks */,
 				156BC30E6FA570FFEC046FFE /* RecaptchaInterop.framework in Frameworks */,
 				96C481A7D08CB34585EBCDE8 /* SwiftfulRecursiveUI.framework in Frameworks */,
@@ -1139,7 +1134,6 @@
 				4856645BC0F83070F9F1697F /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */,
 				6A23E59AD5880F38226710BD /* GTMSessionFetcherCore.framework */,
 				4B43645DC1DA1EB6209195B5 /* Kingfisher_Kingfisher.bundle */,
-				30CAF827F09633CDCC375A82 /* Kingfisher.framework */,
 				B90D7D6D2390864FDEA16CF7 /* leveldb_leveldb.bundle */,
 				A61F5EB72434359D8CCB46B2 /* leveldb.framework */,
 				3E121670386A5CE8B753C641 /* Models.framework */,
